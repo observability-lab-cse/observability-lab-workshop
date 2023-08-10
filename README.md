@@ -8,7 +8,7 @@ This path will introduce :
 
 - how to instrument applications using Opentelemtery on Azure
 - How to instrument your AKS cluster
-- How to create use your collected telemetry data by creating Azure Monitor Workbooks, Dashboards
+- How to use your collected telemetry data by creating Azure Monitor Workbooks, Dashboards
 
 Sections:
 
