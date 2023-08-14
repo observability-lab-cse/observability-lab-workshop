@@ -18,6 +18,8 @@ Sections:
 - [🧩 Deploy application](./02-deploy-application/README.md) - TBD
 - [🔎 Create observability infrastructure](./03-create-observability-infrastructure/README.md) - TBD
 - [📈 Dashboards](./04-dashboards/README.md) - Visualize data with dashboards
+- [📈 Alerts]() - Alert
+- [📈 Advanced Instrumentation]() - sdasad
 
 Additional Read:
 
