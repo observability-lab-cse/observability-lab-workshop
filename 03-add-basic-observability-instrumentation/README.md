@@ -1,6 +1,6 @@
 # Adding Basic Observability Instrumentation
 
-> Goal: Exploring different options to instrument standard applications with standard tooling and easily integrate them into Azure for data collection and observability.
+> Goal: Exploring different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
 
 In this section we are going to build the observability solution step by step by using automatic OpenTelemetry instrumentation.
 
