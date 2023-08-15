@@ -14,13 +14,13 @@ Sections:
 
 - [⚒️ Pre Requisites](./00-pre-requisite/README.md) - Covering the pre set up and tools that will be
   needed.
-- [⚙️ Setup Infrastructure](./01-setup-infrastructure/README.md) - Provision AKS cluster, Application Insights etc.
-- [🧩 Deploy application](./02-deploy-application/README.md) - TBD
-- [🔎 Create observability infrastructure](./03-create-observability-infrastructure/README.md) - TBD
-- [📈 Dashboards](./04-dashboards/README.md) - Visualize data with dashboards
-- [📈 Alerts]() - Alert
-- [📈 Advanced Instrumentation]() - sdasad
+- [⚙️ Provision Infrastructure](./01-provision-infrastructure/README.md) - Provision AKS cluster, Application Insights etc.
+- [🧩 Deploy application to AKS](./02-deploy-application/README.md) - Deploy tbd application
+- [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Using Opentelemetry instrument your application
+- [📈 Dashboards](./04-vizualisation/README.md) - Visualize data with dashboards
+- [🚨 Alerts](./05-alert/README.md) - Creating alerts
+- [🌟 Advanced Instrumentation](./06-advanced-observability-instrumentation/README.md) - Extend solution with more advanced instrumentation eg. Custom metrics, distributed tracing.
 
 Additional Read:
 
-- [ 📖 Azure Observability 101](./10-azure-observabity-101/README.md) - Covering the basics of the azure observability suite
+- [📖 Azure Observability 101](./10-azure-observabity-101/README.md) - Covering the basics of the azure observability suite
