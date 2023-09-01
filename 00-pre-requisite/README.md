@@ -1,5 +1,5 @@
 # Pre Requisites
 
-- Azure sub
+- Azure subscription
 - Basic Kubernetes skills
  
