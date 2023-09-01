@@ -1,2 +1,0 @@
-# Create observability infrastructure
-TBD

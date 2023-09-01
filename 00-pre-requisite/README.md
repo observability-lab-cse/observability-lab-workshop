@@ -1,3 +1,5 @@
 # Pre Requisites
 
-TBD
+- Azure subscription
+- Basic Kubernetes skills
+ 
