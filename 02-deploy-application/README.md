@@ -2,7 +2,7 @@
 
 > Goal:
 >
-> 1. Having application run full E2E and understanding the pieces.
+> 1. Having the application running fully end-to-end and understanding its components.
 >
 > 2. Getting familiar with out-of-the-box AKS cluster observability (e.g. workloads, pods etc.) Mentioning of Container Insights and its capabilities.
 
