@@ -4,7 +4,7 @@
 >
 > 1. Having application run full E2E and understanding the pieces.
 >
-> 2. Observe the application with basic "instrumentation" including emitted log lines and possibly some metrics using `kubectl`. Get familiar with out-of-the-box AKS cluster observability (eg. workloads, pods etc.) Mentioning of ContainerInsights and its capabilities.
+> 2. Getting familiar with out-of-the-box AKS cluster observability (e.g. workloads, pods etc.) Mentioning of Container Insights and its capabilities.
 
 1. Deploy the application to AKS
 2. Create Devices and see temperature and state being updated
