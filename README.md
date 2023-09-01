@@ -6,7 +6,7 @@ This is a hands-on workshop to get familiar with the observability and the relev
 
 This path will introduce :
 
-- how to instrument applications using Opentelemtery on Azure
+- how to instrument applications using OpenTelemetry with Azure
 - How to instrument your AKS cluster
 - How to use your collected telemetry data by creating Azure Monitor Workbooks, Dashboards
 
