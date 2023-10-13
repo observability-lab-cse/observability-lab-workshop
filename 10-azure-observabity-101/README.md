@@ -1,5 +1,3 @@
-Here's your text with spelling and minor grammar issues corrected:
-
 # Azure Observability 101
 
 <!-- > Goal: Understanding the resources involved, when each setup makes sense, and having key information on when to choose the appropriate visualization tool.-->

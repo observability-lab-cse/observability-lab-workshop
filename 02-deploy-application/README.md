@@ -4,21 +4,19 @@
 >
 > 1. Having the application run a full E2E and understanding the pieces.
 >
-> 2. Observe the application with basic "instrumentation," including emitted log lines and possibly some metrics using `kubectl`. Get familiar with out-of-the-box AKS cluster observability (e.g., workloads, pods, etc.). Mentioning of ContainerInsights and its capabilities.
+> 2. Observe the application with basic "instrumentation," including emitted log lines and possibly some metrics using `kubectl`. Get familiar with out-of-the-box AKS cluster observability (e.g., workloads, pods, etc.). Look at Container Insights and its capabilities.
 
-1. Deploy Services to AKS
+<!-- 1. Deploy Services to AKS
 2. Create Devices and see temperature and state being updated
-3. Try to access logs or get other insights into the solution as is
-
----
+3. Try to access logs or get other insights into the solution as is -->
 
 ## 1. Deploy Application
 
 Now, let's start deploying the individual services in our application. There are three components to our solution:
 
-Devices Manager: An API to update the values we have on our devices.
-Device API: An API that allows us to create and delete devices.
-Device Simulator: Simulates devices that publish their health and temperature.
+- Devices Manager: An API to update the values we have on our devices.
+- Device API: An API that allows us to create and delete devices.
+- Device Simulator: Simulates devices that publish their health and temperature.
 
 The provisioning script should have given you a .env file at the root of your directory with all the needed environment variables for the next steps. You can source them as follows:
 
@@ -189,8 +187,6 @@ spec:
 ```
 
 </details>
-
-Here's the text with spelling and minor grammar issues corrected:
 
 ### Deploy: Device Simulator
 

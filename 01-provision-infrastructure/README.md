@@ -2,16 +2,15 @@
 
 > Goal: Achieving a fully operational infrastructure.
 
-- Utilize Bash and Bicep scripts for infrastructure installation containing: AKS, AppInsighrs, Log Analyrtics workspace, etc.
-- Quick run through of ech resource and its uses for the workshop
-
----
+<!-- - Utilize Bash and Bicep scripts for infrastructure installation containing: AKS, AppInsighrs, Log Analyrtics workspace, etc.
+- Quick run through of ech resource and its uses for the workshop -->
 
 ## 1. Architecture
 
 First, let's take a closer look at the application we'll be using for this workshop. It's a XXXX solution comprising two microservices and a set of Azure resources. While this solution is rather simplistic and not a real-world example, its purpose is to provide you with hands-on experience in instrumenting various services written in different languages. This way, you'll become more comfortable with instrumenting your own solutions. Below, you'll find a diagram outlining our solution and the required resources
 
 <!-- TODO: Get Diagram -->
+![Architecture](path-1-architecture.jpg)
 
 <!-- > COMMENTS INTERNAL: Maybe an own section for this. -->
 
