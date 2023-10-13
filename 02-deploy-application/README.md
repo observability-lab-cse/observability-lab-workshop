@@ -2,13 +2,13 @@
 
 > Goal:
 >
-> 1. Having application run full E2E and understanding the pieces.
+> 1. Having the application run a full E2E and understanding the pieces.
 >
-> 2. Observe the application with basic "instrumentation" including emitted log lines and possibly some metrics using `kubectl`. Get familiar with out-of-the-box AKS cluster observability (eg. workloads, pods etc.) Mentioning of ContainerInsights and its capabilities.
+> 2. Observe the application with basic "instrumentation," including emitted log lines and possibly some metrics using `kubectl`. Get familiar with out-of-the-box AKS cluster observability (e.g., workloads, pods, etc.). Mentioning of ContainerInsights and its capabilities.
 
 1. Deploy Services to AKS
 2. Create Devices and see temperature and state being updated
-3. Try to access logs or get other insights of the solution as is
+3. Try to access logs or get other insights into the solution as is
 
 ---
 
@@ -20,13 +20,13 @@ Devices Manager: An API to update the values we have on our devices.
 Device API: An API that allows us to create and delete devices.
 Device Simulator: Simulates devices that publish their health and temperature.
 
-The provisioning script should have given you an .env file at the root of your directory with all the needed environment variables for the next steps. You can source them as follows:
+The provisioning script should have given you a .env file at the root of your directory with all the needed environment variables for the next steps. You can source them as follows:
 
 ```bash
 source .env
 ```
 
-### Deploy : Devices API
+### Deploy: Devices API
 
 Let's start by deploying the Device API application. The code for this service can be found [here](TODO). It's a Java Spring Boot REST API that allows you to list, create, update, and delete devices from your device registry.
 
@@ -35,7 +35,7 @@ The first step is to build and push the image to the registry.
 <!-- TODO: from where to run the below commands-->
 
 ```sh
-az acr login --name  "$ACR_NAME".azurecr.io
+az acr login --name "$ACR_NAME".azurecr.io
 docker tag "$DEVICE_API_IMAGE_NAME" "$ACR_NAME".azurecr.io/"$DEVICE_API_IMAGE_NAME"
 docker push "$ACR_NAME".azurecr.io/"$DEVICE_API_IMAGE_NAME":"$TAG"
 ```
@@ -118,9 +118,8 @@ spec:
 ```
 
 </details>
-</br>
 
-### Deploy : Devices Manager
+### Deploy: Devices Manager
 
 Next on our agenda is the deployment of the Device Manager service. You can access the source code for this service [here](TODO). This .NET application plays a critical role by updating the temperature records of devices in the database as data flows in from each device.
 
@@ -190,14 +189,15 @@ spec:
 ```
 
 </details>
-</br>
 
-### Deploy : Device Simluator
+Here's the text with spelling and minor grammar issues corrected:
+
+### Deploy: Device Simulator
 
 To generate data from virtual devices for testing purposes, we're employing the device simulator, as also utilized in the [sample](TODO). This simulator effectively generates temperature data at defined intervals for each virtual device and transmits this data as messages to Event Hub.
 
 <details markdown="1">
-<summary>Click here for the Device API deployment YAML</summary>
+<summary>Click here for the Device Simulator deployment YAML</summary>
 
 ```yaml
 kind: Deployment
@@ -235,7 +235,7 @@ spec:
             - name: MessageCount
               value: "0" # send unlimited
             - name: Interval
-              value: "60000" # each device sends message every 1 minute
+              value: "60000" # each device sends a message every 1 minute
             - name: Template
               value: '{"deviceId": "$.DeviceId", "deviceTimestamp": "$.Time", "temp": $.DoubleValue}'
             - name: Variables
@@ -243,17 +243,16 @@ spec:
 ```
 
 </details>
-</br>
 
 ## Out of the box observability
 
-Now given we have enabled the [Container Inisghts feature](TBD) on AKS we can already have a look on what Azure will give us out of the box.
+Now, given we have enabled the [Container Insights feature](TBD) on AKS, we can already have a look at what Azure will give us out of the box.
 
 <!-- TODO: go into details here -->
 
 - Overview of pods and services
 - Logs that are scraped
-- metrics that are availabe
+- Metrics that are available
 
-NOw this looks all good and great. There is an awesome over view on our cluster, but other than the logs (in a lets be honest rather unnice format) we have no reall visibility on the application. No way to know if meesages are being send across the system etc.
-But luckily there is a simple way to fix this which we will look at in the next chapter.
+Now this looks all good and great. There is an awesome overview of our cluster, but other than the logs (in a, let's be honest, rather unenice format), we have no real visibility on the application. No way to know if messages are being sent across the system, etc.
+But luckily there is a simple way to fix this, which we will look at in the next chapter.
