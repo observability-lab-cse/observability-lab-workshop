@@ -3,8 +3,8 @@ description: "Technical hands-on workshop for Observability"
 remote_theme: benc-uk/theme-msdark
 hide_github: true
 hide_tagline: true
-# favicon: https://kubernetes.io/images/favicon.png
+favicon: ./favicon.png
 buttons:
   - b0:
     text: Workshop Index
-    href: /
+    href: observability-lab-workshop/
