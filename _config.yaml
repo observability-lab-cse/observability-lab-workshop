@@ -7,4 +7,4 @@ favicon: ./favicon.png
 buttons:
   - b0:
     text: Workshop Index
-    href: observability-lab-workshop/
+    href: /observability-lab-workshop/
