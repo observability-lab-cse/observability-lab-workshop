@@ -10,6 +10,11 @@ This path will introduce :
 - How to instrument your AKS cluster
 - How to use your visualize your telemetry data by creating Azure Monitor Workbooks, Azure Dashboards
 
+## How to use this workshop
+
+For very section there is a designated branch on the following Github repository.
+To set your environment to the state of the branch you can always just run `make` in the root directory and it should bring you up to speed.
+
 Sections:
 
 - [⚒️ Pre Requisites](./00-pre-requisite/README.md) - Covering the pre set up and tools that will be

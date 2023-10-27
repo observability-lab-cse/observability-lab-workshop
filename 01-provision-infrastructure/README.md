@@ -9,10 +9,8 @@
 
 First, let's take a closer look at the application we'll be using for this workshop. It's a XXXX solution comprising two microservices and a set of Azure resources. While this solution is rather simplistic and not a real-world example, its purpose is to provide you with hands-on experience in instrumenting various services written in different languages. This way, you'll become more comfortable with instrumenting your own solutions. Below, you'll find a diagram outlining our solution and the required resources
 
-<!-- TODO: Get Diagram -->
-![Architecture](path-1-architecture.jpg)
+![Architecture](solution-resources.jpg)
 
-<!-- > COMMENTS INTERNAL: Maybe an own section for this. -->
 
 ## 2. Provisioning
 
@@ -36,5 +34,4 @@ Running the script will provision the following essential resources for your app
 - EventHub: For real-time event streaming or in our case used to send and receive device temperature and health data
 - Storage Account: This component is essential for the secure storage of EventHub checkpoints
 - ACR (Azure Container Registry): For the application conatiner images.
-<!--
-> COMMENTS INTERNAL: Do we want to deploy the observability infrastructure now, or should we do it later? (Can we do it without redeploying everything?)" -->
+<!-- -- COMMENTS INTERNAL: Do we want to deploy the observability infrastructure now, or should we do it later? (Can we do it without redeploying everything?)" --- Remove all azure monitor related infra/deploymenets -->

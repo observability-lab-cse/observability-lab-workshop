@@ -6,6 +6,11 @@ This section should be a small cheatsheet about the observability landscape of A
 
 ## Azure Monitoring: Resources and Their Interplay
 
+Lets have a look at the [Azure Monitoring](). 
+
+![Azure_Monitor](Azure_Monitor.jpg)
+
+
 <!-- - Main components: Data storage (Log Analytics workspace, Metrics workspaces), App Insights, Visualization (refer to Azure docs for details).
 - Overlap between these components, e.g., App Insights vs Log Analytics workspace. -->
 
@@ -13,24 +18,25 @@ This section should be a small cheatsheet about the observability landscape of A
 
  - Differentiating between Metrics-based and Logs-based telemetry in Azure. -->
 
-Azure has a few observability resources that can be used when creating an observability suite for your solution. For now, let us focus on the following two, as they are most commonly used and cover most use cases:
+<!-- Azure has a few observability resources that can be used when creating an observability suite for your solution. For now, let us focus on the following two, as they are most commonly used and cover most use cases:
 
 - [Log Analytics Workspace](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-workspace-overview)
 - [Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview)
-- Insights Agents: [VM Insights Agents](https://learn.microsoft.com/en-us/azure/azure-monitor/vm/vminsights-overview), [Container Insights Agents](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview), [Network Insights Agents](https://learn.microsoft.com/en-us/azure/network-watcher/network-insights-overview)
+- Insights Agents: [VM Insights Agents](https://learn.microsoft.com/en-us/azure/azure-monitor/vm/vminsights-overview), [Container Insights Agents](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview), [Network Insights Agents](https://learn.microsoft.com/en-us/azure/network-watcher/network-insights-overview) -->
 
 Let's look at what normally happens when people need observability.
 
-1. Create Application Insights resource.
+1. Create Application Insights Resource.
 2. Pass the connection string of Application Insights to the application.
 3. And bam 💥! Automatically, you get your data in beautiful dashboards on Application Insights.
 
-If this is enough for you, great! But often these dashboards don't give you all the information about your application you need. So, in cases of creating new dashboards, alerts, or just out of pure curiosity, you want to know where you can find all the awesome data your Application Insights uses to create these dashboards.
-And spoiler, Application Insights can but does not have to store your data!
+If this is enough for you, great!
+But often these dashboards don't give you all the information about your application you need. So, in cases of creating new more complex dashboards, alerts, or just out of pure curiosity, you want to know where you can find all the observability data to your availability.
+And spoiler, not all your data is stored in Application Insights!
 
 Before we go further, it's important to keep in mind that Azure handles some telemetry data differently. In particular, built-in metrics are handled differently than things like logs, traces, events, and even custom metrics.
 
-Let's have a look first at the whole group of logs, traces, events, custom metrics, etc.
+But let's first have a look at the whole group of logs, traces, events, custom metrics, etc.
 Our application sends data to Application Insights, but what then?
 
 ### Azure Log Analytics Workspace

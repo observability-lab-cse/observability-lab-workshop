@@ -18,10 +18,16 @@ Now, let's start deploying the individual services in our application. There are
 - Device API: An API that allows us to create and delete devices.
 - Device Simulator: Simulates devices that publish their health and temperature.
 
-The provisioning script should have given you a .env file at the root of your directory with all the needed environment variables for the next steps. You can source them as follows:
+WRONG: The provisioning script should have given you a .env file at the root of your directory with all the needed environment variables for the next steps. You can source them as follows:
 
 ```bash
 source .env
+```
+
+> Create an `.env`
+
+```sh
+az acr login --name "$ACR_NAME".azurecr.io
 ```
 
 ### Deploy: Devices API
@@ -33,7 +39,6 @@ The first step is to build and push the image to the registry.
 <!-- TODO: from where to run the below commands-->
 
 ```sh
-az acr login --name "$ACR_NAME".azurecr.io
 docker tag "$DEVICE_API_IMAGE_NAME" "$ACR_NAME".azurecr.io/"$DEVICE_API_IMAGE_NAME"
 docker push "$ACR_NAME".azurecr.io/"$DEVICE_API_IMAGE_NAME":"$TAG"
 ```
@@ -242,13 +247,15 @@ spec:
 
 ## Out of the box observability
 
-Now, given we have enabled the [Container Insights feature](TBD) on AKS, we can already have a look at what Azure will give us out of the box.
+AKS, we can already have a look at what Azure will give us out of the box.
 
 <!-- TODO: go into details here -->
 
 - Overview of pods and services
-- Logs that are scraped
-- Metrics that are available
+- Live logs (no history)
+- AKS level metrics that are available
 
 Now this looks all good and great. There is an awesome overview of our cluster, but other than the logs (in a, let's be honest, rather unenice format), we have no real visibility on the application. No way to know if messages are being sent across the system, etc.
 But luckily there is a simple way to fix this, which we will look at in the next chapter.
+
+<!-- No going into insights. We will mention it exists and its limitations -->
