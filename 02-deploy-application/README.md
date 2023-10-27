@@ -6,41 +6,36 @@
 >
 > 2. Observe the application with basic "instrumentation," including emitted log lines and possibly some metrics using `kubectl`. Get familiar with out-of-the-box AKS cluster observability (e.g., workloads, pods, etc.). Look at Container Insights and its capabilities.
 
-<!-- 1. Deploy Services to AKS
-2. Create Devices and see temperature and state being updated
-3. Try to access logs or get other insights into the solution as is -->
-
 ## 1. Deploy Application
 
 Now, let's start deploying the individual services in our application. There are three components to our solution:
 
-- Devices Manager: An API to update the values we have on our devices.
 - Device API: An API that allows us to create and delete devices.
-- Device Simulator: Simulates devices that publish their health and temperature.
+- Devices State Manager: A service which manages the state of the devices in he storage. I will update the device the values with the most recent one from the Device Data Simulator.
+- Devices Data Simulator: Simulates devices that publish their health and temperature.
 
-WRONG: The provisioning script should have given you a .env file at the root of your directory with all the needed environment variables for the next steps. You can source them as follows:
+> Note: make sure you have sourced the `.env` file before you continue form here.
 
 ```bash
 source .env
 ```
 
-> Create an `.env`
-
 ```sh
-az acr login --name "$ACR_NAME".azurecr.io
+az acr login --name "acr$ENV_PROJECT_NAME".azurecr.io
 ```
 
 ### Deploy: Devices API
 
-Let's start by deploying the Device API application. The code for this service can be found [here](TODO). It's a Java Spring Boot REST API that allows you to list, create, update, and delete devices from your device registry.
+Let's start by deploying the Device API application. The code for this service can be found [here](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application/sample-application/devices-api). It's a Java Spring Boot REST API that allows you to list, create, update, and delete devices from your device registry.
 
 The first step is to build and push the image to the registry.
 
 <!-- TODO: from where to run the below commands-->
 
 ```sh
-docker tag "$DEVICE_API_IMAGE_NAME" "$ACR_NAME".azurecr.io/"$DEVICE_API_IMAGE_NAME"
-docker push "$ACR_NAME".azurecr.io/"$DEVICE_API_IMAGE_NAME":"$TAG"
+TAG="v1"
+docker tag "device-api" "acr$ENV_PROJECT_NAME".azurecr.io/device-api"
+docker push "acr$ENV_PROJECT_NAME".azurecr.io/device-api":"$TAG"
 ```
 
 Referencing this image in the deployment either below or [here](TODO)
@@ -122,40 +117,40 @@ spec:
 
 </details>
 
-### Deploy: Devices Manager
+### Deploy: Devices State Manager
 
-Next on our agenda is the deployment of the Device Manager service. You can access the source code for this service [here](TODO). This .NET application plays a critical role by updating the temperature records of devices in the database as data flows in from each device.
+Next on our agenda is the deployment of the Device State Manager service. You can access the source code for this service [here](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application/sample-application/device-manager/DeviceManager). This .NET application plays a critical role by updating the temperature records of devices in the database as data flows in from each device.
 
 As with our previous steps, we'll need to build the image and ensure it's pushed to your Azure Container Registry (ACR).
 
 ```sh
-docker tag "$DEVICE_MANAGER_IMAGE_NAME" "$ACR_NAME".azurecr.io/"$DEVICE_MANAGER_IMAGE_NAME"
-docker push "$ACR_NAME".azurecr.io/"$DEVICE_MANAGER_IMAGE_NAME":"$TAG"
+TAG="v1"
+docker tag "device-state-manager" "acr$ENV_PROJECT_NAME".azurecr.io/device-state-manager"
+docker push "acr$ENV_PROJECT_NAME".azurecr.io/device-state-manager":"$TAG"
 ```
 
 <details markdown="1">
-<summary>Click here for the Device API deployment YAML</summary>
+<summary>Click here for the Device State Manager deployment YAML</summary>
 
 ```yaml
 kind: Deployment
 apiVersion: apps/v1
 
 metadata:
-  name: device-manager
-
+  name: device-state-manager
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: device-manager
+      app: device-state-manager
   template:
     metadata:
       labels:
-        app: device-manager
+        app: device-state-manager
     spec:
       containers:
-        - name: device-manager
-          image: acr${project-name}.azurecr.io/device-manager:latest
+        - name: device-state-manager
+          image: acr${project-name}.azurecr.io/device-state-manager:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8090
@@ -166,39 +161,66 @@ spec:
             limits:
               cpu: 150m
               memory: 512Mi
+          volumeMounts:
+            - name: secrets-store-inline
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
           env:
             - name: EVENT_HUB_CONNECTION_STRING
-              value: EVENT_HUB_LISTEN_POLICY_CONNECTION_STRING_PLACEHOLDER
+              valueFrom:
+                secretKeyRef:
+                  name: application-secrets
+                  key: EventHubConnectionString
             - name: EVENT_HUB_NAME
-              value: EVENT_HUB_NAME_PLACEHOLDER
+              valueFrom:
+                secretKeyRef:
+                  name: application-secrets
+                  key: EventHubName
             - name: STORAGE_CONNECTION_STRING
-              value: STORAGE_CONNECTION_STRING_PLACEHOLDER
+              valueFrom:
+                secretKeyRef:
+                  name: application-secrets
+                  key: StorageAccountConnectionString
             - name: BLOB_CONTAINER_NAME
               value: event-hub-data
             - name: DEVICE_API_URL
               value: "http://devices-api-service:8080"
+      volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "kvprovider"
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: device-manager-service
+  name: device-state-manager-service
 spec:
   type: LoadBalancer
   ports:
-    - port: 8090
-      targetPort: 8090
+  - port: 8090 
+    targetPort: 8090
   selector:
-    app: device-manager
+    app: device-state-manager
 ```
 
 </details>
 
-### Deploy: Device Simulator
+### Deploy: Devices Data Simulator
 
-To generate data from virtual devices for testing purposes, we're employing the device simulator, as also utilized in the [sample](TODO). This simulator effectively generates temperature data at defined intervals for each virtual device and transmits this data as messages to Event Hub.
+To generate data from virtual devices for testing purposes, we're demploying the device simulator, as also utilized in the [sample](TODO). This simulator effectively generates temperature data at defined intervals for each virtual device and transmits this data as messages to Event Hub.
 
-<details markdown="1">
-<summary>Click here for the Device Simulator deployment YAML</summary>
+Given we need to define how many devices we like to simluate you can either use the below yaml and  update the device list.
+Or leverage the bash script we have already created, which needs the Device API to be up and running.
+
+```sh
+make deploy-devices-simulator
+```
+
+> NOTE: Keep in mind that everytime you change something in the list of your devices (eg. Create/Delete/Update a device the simulator needs to be restarted)
 
 ```yaml
 kind: Deployment
@@ -229,21 +251,22 @@ spec:
               cpu: 100m
               memory: 128Mi
           env:
-            - name: EventHubConnectionString
-              value: EVENT_HUB_CONNECTION_STRING_PLACEHOLDER
+            - name: EVENT_HUB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: application-secrets
+                  key: EventHubConnectionString
             - name: DeviceList
-              value: "DEVICE_NAMES_PLACEHOLDER" # Specify your device names
+              value: 'DEVICE_NAMES_PLACEHOLDER' # Specify your device names
             - name: MessageCount
-              value: "0" # send unlimited
+              value: '0' # send unlimited
             - name: Interval
-              value: "60000" # each device sends a message every 1 minute
+              value: '60000' # each device sends message every 1 minute
             - name: Template
               value: '{"deviceId": "$.DeviceId", "deviceTimestamp": "$.Time", "temp": $.DoubleValue}'
             - name: Variables
               value: '[{"name": "DoubleValue", "randomDouble":true, "min":20.00, "max":28.00}]'
 ```
-
-</details>
 
 ## Out of the box observability
 

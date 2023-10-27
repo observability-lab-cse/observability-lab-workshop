@@ -21,6 +21,9 @@ To simplify this process for everyone, we have provided Bicep and Bash scripts t
 Here's what you need to do: Run the following command in the root of the repository, take a coffee break, and when you return, your resources should be provisioned and ready to go ☕️.
 
 ```sh
+az login
+az account set --subscription <name or ID of your subscription>
+
 make provision
 ```
 
