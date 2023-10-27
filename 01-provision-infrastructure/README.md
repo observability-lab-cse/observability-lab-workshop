@@ -11,7 +11,6 @@ First, let's take a closer look at the application we'll be using for this works
 
 ![Architecture](solution-resources.jpg)
 
-
 ## 2. Provisioning
 
 Before we dive into the workshop, it's essential to have your Azure resources prepared. Think of this as laying the foundation for our upcoming steps.

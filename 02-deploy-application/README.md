@@ -251,13 +251,13 @@ spec:
               cpu: 100m
               memory: 128Mi
           env:
-            - name: EVENT_HUB_CONNECTION_STRING
+            - name: EventHubConnectionString
               valueFrom:
                 secretKeyRef:
                   name: application-secrets
                   key: EventHubConnectionString
             - name: DeviceList
-              value: 'DEVICE_NAMES_PLACEHOLDER' # Specify your device names
+              value: 'DEVICE_NAMES_PLACEHOLDER' # Specify your device names with formate `<device-1>,<device-2>,..,<device-n>`
             - name: MessageCount
               value: '0' # send unlimited
             - name: Interval
