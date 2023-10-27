@@ -24,7 +24,7 @@ Here's what you need to do: Run the following command in the root of the reposit
 make provision
 ```
 
-> Note: If you are interested in how its deployed and all the bicep scripts. Dont worry, here they all are: [/infra](TODO)
+> Note: If you are interested in how its deployed and all the bicep scripts. Dont worry, here they all are: [/infra](https://github.com/observability-lab-cse/observability-lab/tree/section/01-provision-infrastructure/infrastructure)
 
 Running the script will provision the following essential resources for your application:
 
@@ -34,4 +34,3 @@ Running the script will provision the following essential resources for your app
 - EventHub: For real-time event streaming or in our case used to send and receive device temperature and health data
 - Storage Account: This component is essential for the secure storage of EventHub checkpoints
 - ACR (Azure Container Registry): For the application conatiner images.
-<!-- -- COMMENTS INTERNAL: Do we want to deploy the observability infrastructure now, or should we do it later? (Can we do it without redeploying everything?)" --- Remove all azure monitor related infra/deploymenets -->
