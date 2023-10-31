@@ -24,6 +24,14 @@ source .env
 az acr login --name "acr$ENV_PROJECT_NAME".azurecr.io
 ```
 
+Before we start deploying the application, let's set up all the secrets in the cluster with an easy command.
+
+```sh
+make deploy_secret_store
+```
+
+We will not go into more details on how to handle secrets in a K8s cluster, as this is not the main point of this workshop. But if you are interested, we leverage the Secret Store CSI driver to pull secrets from the Key Vault resource. You can read more about this [here](https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver).
+
 ### Deploy: Devices API
 
 Let's start by deploying the Device API application. The code for this service can be found [here](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application/sample-application/devices-api). It's a Java Spring Boot REST API that allows you to list, create, update, and delete devices from your device registry.
@@ -62,7 +70,7 @@ spec:
     spec:
       containers:
         - name: devices-api
-          image: acr${project-name}.azurecr.io/devices-api:latest
+          image: acr${project-name}.azurecr.io/devices-api: TODO Tags
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -81,18 +89,25 @@ spec:
             - name: AZURE_COSMOS_DB_URI
               valueFrom:
                 secretKeyRef:
-                  name: devices-api-secrets
+                  name: application-secrets
                   key: CosmosDBEndpoint
             - name: AZURE_COSMOS_DB_KEY
               valueFrom:
                 secretKeyRef:
-                  name: devices-api-secrets
+                  name: application-secrets
                   key: CosmosDBKey
             - name: AZURE_COSMOS_DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: devices-api-secrets
+                  name: application-secrets
                   key: CosmosDBName
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 20
+            initialDelaySeconds: 20
+            failureThreshold: 15
       volumes:
         - name: secrets-store-inline
           csi:
@@ -101,7 +116,9 @@ spec:
             volumeAttributes:
               secretProviderClass: "kvprovider"
 
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -109,10 +126,11 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8080
-      targetPort: 8080
+  - port: 8080
+    targetPort: 8080
   selector:
     app: devices-api
+
 ```
 
 </details>
@@ -137,20 +155,21 @@ kind: Deployment
 apiVersion: apps/v1
 
 metadata:
-  name: device-state-manager
+  name: devices-state-manager
+
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: device-state-manager
+      app: devices-state-manager
   template:
     metadata:
       labels:
-        app: device-state-manager
+        app: devices-state-manager
     spec:
       containers:
-        - name: device-state-manager
-          image: acr${project-name}.azurecr.io/device-state-manager:latest
+        - name: devices-state-manager
+          image: acr${project-name}.azurecr.io/devices-state-manager: TODO Tags
           imagePullPolicy: Always
           ports:
             - containerPort: 8090
@@ -170,7 +189,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: application-secrets
-                  key: EventHubConnectionString
+                  key: EventHubConnectionStringListen
             - name: EVENT_HUB_NAME
               valueFrom:
                 secretKeyRef:
@@ -197,14 +216,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: device-state-manager-service
+  name: devices-state-manager-service
 spec:
   type: LoadBalancer
   ports:
-  - port: 8090 
+  - port: 8090
     targetPort: 8090
   selector:
-    app: device-state-manager
+    app: devices-state-manager
+
 ```
 
 </details>
@@ -213,7 +233,7 @@ spec:
 
 To generate data from virtual devices for testing purposes, we're demploying the device simulator, as also utilized in the [sample](TODO). This simulator effectively generates temperature data at defined intervals for each virtual device and transmits this data as messages to Event Hub.
 
-Given we need to define how many devices we like to simluate you can either use the below yaml and  update the device list.
+Given we need to define how many devices we like to simluate you can either use the below yaml and update the device list.
 Or leverage the bash script we have already created, which needs the Device API to be up and running.
 
 ```sh
@@ -227,20 +247,20 @@ kind: Deployment
 apiVersion: apps/v1
 
 metadata:
-  name: devices-simulator
+  name: devices-data-simulator
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: devices-simulator
+      app: devices-data-simulator
   template:
     metadata:
       labels:
-        app: devices-simulator
+        app: devices-data-simulator
     spec:
       containers:
-        - name: devices-simulator
+        - name: devices-data-simulator
           image: mcr.microsoft.com/oss/azure-samples/azureiot-telemetrysimulator:latest
           imagePullPolicy: Always
           resources:
@@ -255,13 +275,13 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: application-secrets
-                  key: EventHubConnectionString
+                  key: EventHubConnectionStringSend
             - name: DeviceList
-              value: 'DEVICE_NAMES_PLACEHOLDER' # Specify your device names with formate `<device-1>,<device-2>,..,<device-n>`
+              value: "DEVICE_NAMES_PLACEHOLDER" # Specify your device names with formate `<device-1>,<device-2>,..,<device-n>`
             - name: MessageCount
-              value: '0' # send unlimited
+              value: "0" # send unlimited
             - name: Interval
-              value: '60000' # each device sends message every 1 minute
+              value: "60000" # each device sends message every 1 minute
             - name: Template
               value: '{"deviceId": "$.DeviceId", "deviceTimestamp": "$.Time", "temp": $.DoubleValue}'
             - name: Variables
@@ -278,7 +298,7 @@ AKS, we can already have a look at what Azure will give us out of the box.
 - Live logs (no history)
 - AKS level metrics that are available
 
-Now this looks all good and great. There is an awesome overview of our cluster, but other than the logs (in a, let's be honest, rather unenice format), we have no real visibility on the application. No way to know if messages are being sent across the system, etc.
+Now this looks all good and great. There is an awesome overview of our cluster, but other than the logs (in a, let's be honest, rather unpratical format), we have no real visibility on the application. No way to know if messages are being sent across the system, etc.
 But luckily there is a simple way to fix this, which we will look at in the next chapter.
 
 <!-- No going into insights. We will mention it exists and its limitations -->
