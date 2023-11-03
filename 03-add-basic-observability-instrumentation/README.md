@@ -42,10 +42,11 @@ Can you guess the first resource we need for this section? If you said Applicati
 
 As expected, we require Application Insights. However, we'll also need a Log Analytics workspace to support our Application Insights instance.
 
-> If you're curious about how Log Analytics and Application Insights work together, explore this section [Azure 101]() for more information.
+> If you're curious about how Log Analytics and Application Insights work together, explore this section [Azure 101](tbd) for more information.
 
+First, let's create a Log Analytics workspace in our resource group. Feel free to use either the Azure portal or any other tools for this task.
 
-
+Afterward, you can create an Application Insights resource, and be sure to specifically select the just-created Log Analytics workspace as the backing for the new Application Insights resource.
 
 
 
