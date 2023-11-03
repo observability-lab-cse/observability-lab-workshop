@@ -15,16 +15,37 @@ Additional topics:
 
 <!-- Order of chapters and when to deploy otel collector -->
 
-## Provision Resources
+Now, let's dive into the exciting part of this workshop.
 
-- App Insights
-- Log analyticsWS
+The goal of this section is to instrument the application we developed earlier to gain more visibility into its availability and health.
+
+There are a few steps we need to take to achive this:
+
+1. Provision necessary resources.
+<!-- Consider provisioning manually, potentially. -->
+2. Set up a mechanism to send application level telemetry data to these created resources.
+
+There are multiple ways to instrument your application, or even whole solution in more generally terms.
+Given we have an application running on AKS, which already provides workload level visibility regarding the health of the resources etc. However, what we're missing, as previously discussed, are application-level insights.
+
+When we look at the AKS workloads, pods, or other data tables, it doesn't provide insights into how these pods communicate with each other, or with other services, and whether their communication is successful.
+
+To gain this lower level of visibility into our solution, we have various tools at our disposal. To demonstrate how easily you can instrument an existing application, we'll explore an auto-instrumentation approach using OpenTelemetry's automated instrumentation agents and the OpenTelemetry collector to send telemetry data upstream. 😉
+
+> Note: The [section below](TODO) offers a comparison of different approaches for instrumenting applications, along with links to relevant resources and samples.
+
+But first, let's provision our resources so that we have a destination to send the newly gathered data.
+
+## Provision Resource
+
+Take a guess what is the first reosruce we need for this section?
+If you said Application Isghts than ding ding ding.. 100 points go to you!
+
+As you would expect we need Application Inisghts.
 
 ## OpenTelemetry
 
-There are many ways applications can be instrumented. Some require more custom code, some less.
-
-> Note: The [section below](TODO) contains a comparison of different approaches on how to instrument applications as well as links to relevant resources or samples.
+As mentioned there are many ways applications can be instrumented. Some require more custom code, some less.
 
 For this workshop, let's use an approach that requires no changes to the application code, as it will come in handy when working with preexisting applications.
 To do so, we will make use of the OpenTelemetry Auto instrumentation for different programming languages and the [Otel Collector](TODO).
