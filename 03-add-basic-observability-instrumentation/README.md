@@ -36,12 +36,18 @@ To gain this lower level of visibility into our solution, we have various tools 
 
 But first, let's provision our resources so that we have a destination to send the newly gathered data.
 
-## Provision Resource
+## Provision Resources
 
-Take a guess what is the first reosruce we need for this section?
-If you said Application Isghts than ding ding ding.. 100 points go to you!
+Can you guess the first resource we need for this section? If you said Application Insights, then ding, ding, ding... 100 points to you!
 
-As you would expect we need Application Inisghts.
+As expected, we require Application Insights. However, we'll also need a Log Analytics workspace to support our Application Insights instance.
+
+> If you're curious about how Log Analytics and Application Insights work together, explore this section [Azure 101]() for more information.
+
+
+
+
+
 
 ## OpenTelemetry
 
