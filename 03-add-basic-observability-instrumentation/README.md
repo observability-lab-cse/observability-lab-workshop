@@ -5,7 +5,7 @@
 <!--
 In this section we are going to build the observability solution step by step by using automatic OpenTelemetry instrumentation.
 
-1. OtelCollector introduction and ref to lower section with comparison to alternatives
+1. OpenTelemetry collector introduction and ref to lower section with comparison to alternatives
 2. Auto instrumentation of .Net application
 3. Auto instrumentation of Java application
 
@@ -25,8 +25,8 @@ There are a few steps we need to take to achive this:
 <!-- Consider provisioning manually, potentially. -->
 2. Set up a mechanism to send application level telemetry data to these created resources.
 
-There are multiple ways to instrument your application, or even whole solution in more generally terms.
-Given we have an application running on AKS, which already provides workload level visibility regarding the health of the resources etc. However, what we're missing, as previously discussed, are application-level insights.
+There are multiple ways to instrument your application, or even whole solution in more general terms.
+Our application is running in AKS, which already provides workload level visibility regarding the health of the resources. However, what we're missing, as previously mentioned, are application-level insights.
 
 When we look at the AKS workloads, pods, or other data tables, it doesn't provide insights into how these pods communicate with each other, or with other services, and whether their communication is successful.
 
@@ -46,23 +46,23 @@ As expected, we require Application Insights. However, we'll also need a Log Ana
 
 First, let's create a Log Analytics workspace in our resource group. Feel free to use either the Azure portal or any other tools for this task.
 
-Afterward, you can create an Application Insights resource, and be sure to specifically select the just-created Log Analytics workspace as the backing for the new Application Insights resource.
+Afterwards, you can create an Application Insights resource, and make sure to specifically select the just-created Log Analytics workspace as the backing instance for the new Application Insights resource.
 
 
 
 ## OpenTelemetry
 
-As mentioned there are many ways applications can be instrumented. Some require more custom code, some less.
+As mentioned, there are many ways to instrument applications. Some require writing more custom code, some less.
 
 For this workshop, let's use an approach that requires no changes to the application code, as it will come in handy when working with preexisting applications.
 To do so, we will make use of the OpenTelemetry Auto instrumentation for different programming languages and the [Otel Collector](TODO).
 
 ### Configure Applications
 
-For other auto-instrumentation, our applications need a small "agent" running alongside
+For auto-instrumentation, our applications need a small "agent" running alongside
 the service to be able to gather telemetry data from common logging, metric, and tracing libraries.
 
-Let's have a look at the applications. Here is a link to the [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation) and [OpenTelemetry Auto-instrumentation for C#](). Try to adjust the application's Docker file and configs in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
+Let's have a look at the applications. Here is a link to the [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation) and [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/). Try to adjust the application's Docker file and configs in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
 
 In case you have issues, you can see how to do it when opening the section below or check out the next section's [branch]().
 
@@ -121,7 +121,7 @@ ENTRYPOINT ["dotnet", "DeviceManager.dll"]
 
 </details>
 
-Nope, let's build the images with the agent and add a new tag to it, so we know which images are auto-instrumented. TODO
+Now, let's build the images with the agent and add a new tag to it, so that we know which images are auto-instrumented. TODO
 
 ### Configure Deployment
 

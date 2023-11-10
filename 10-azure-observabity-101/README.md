@@ -31,7 +31,7 @@ Let's look at what normally happens when people need observability.
 3. And bam 💥! Automatically, you get your data in beautiful dashboards on Application Insights.
 
 If this is enough for you, great!
-But often these dashboards don't give you all the information about your application you need. So, in cases of creating new more complex dashboards, alerts, or just out of pure curiosity, you want to know where you can find all the observability data to your availability.
+But often these dashboards don't give you all the information about your application that you need. So, in case more complex dashboards, alerts are needed, or just out of pure curiosity, you want to know where you can find all the observability data.
 And spoiler, not all your data is stored in Application Insights!
 
 Before we go further, it's important to keep in mind that Azure handles some telemetry data differently. In particular, built-in metrics are handled differently than things like logs, traces, events, and even custom metrics.
