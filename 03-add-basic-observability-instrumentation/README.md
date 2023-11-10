@@ -44,31 +44,28 @@ As expected, we require Application Insights. However, we'll also need a Log Ana
 
 > If you're curious about how Log Analytics and Application Insights work together, explore this section [Azure 101](tbd) for more information.
 
-First, let's create a Log Analytics workspace in our resource group. Feel free to use either the Azure portal or any other tools for this task.
+- First, let's create a Log Analytics workspace in our resource group. Feel free to use either the Azure portal or any other tools for this task.
 
-Afterwards, you can create an Application Insights resource, and make sure to specifically select the just-created Log Analytics workspace as the backing instance for the new Application Insights resource.
-
-
+- Afterwards, you can create an Application Insights resource, and make sure to specifically select the just-created Log Analytics workspace as the backing instance for the new Application Insights resource.
 
 ## OpenTelemetry
 
 As mentioned, there are many ways to instrument applications. Some require writing more custom code, some less.
 
 For this workshop, let's use an approach that requires no changes to the application code, as it will come in handy when working with preexisting applications.
-To do so, we will make use of the OpenTelemetry Auto instrumentation for different programming languages and the [Otel Collector](TODO).
+To do so, we will make use of the OpenTelemetry Auto instrumentation for different programming languages and the [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/).
 
 ### Configure Applications
 
 For auto-instrumentation, our applications need a small "agent" running alongside
 the service to be able to gather telemetry data from common logging, metric, and tracing libraries.
 
-Let's have a look at the applications. Here is a link to the [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation) and [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/). Try to adjust the application's Docker file and configs in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
+Let's have a look at the applications we would like to instrument.
+   
+- [devices-state-manager](TODO) is written in C#. Following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/), you can auto-instrument the plain vanilla version of the Docker file in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
+- [devices-api](TODO) is a Java application. The same instructions for Java services can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Like before, try adding the auto-instrumentation Agent into the build so we can expose all the metrics.
 
 In case you have issues, you can see how to do it when opening the section below or check out the next section's [branch]().
-
-First, we need to run the auto-instrumentation agent alongside the application.
-
-If you don't want to figure it out yourself, take a look below for the Java service:
 
 <details markdown="1">
 <summary>Click here for the Dockerfile with the auto-instrumentation Agent for Java</summary>
