@@ -42,6 +42,10 @@ The first step is to build and push the image to the registry.
 
 ```sh
 TAG="v1"
+
+cd sample-application/devices-api
+docker build -t acr.azurecr.io/devices-api:$TAG .
+
 docker tag "device-api" "acr$ENV_PROJECT_NAME.azurecr.io/devices-api"
 docker push "acr$ENV_PROJECT_NAME.azurecr.io/devices-api":"$TAG"
 ```
@@ -143,6 +147,12 @@ As with our previous steps, we'll need to build the image and ensure it's pushed
 
 ```sh
 TAG="v1"
+
+TAG="v1"
+
+cd sample-application/device-state-manager
+docker build -t acr.azurecr.io/device-state-manager:$TAG .
+
 docker tag "device-state-manager" "acr$ENV_PROJECT_NAME".azurecr.io/device-state-manager"
 docker push "acr$ENV_PROJECT_NAME".azurecr.io/device-state-manager":"$TAG"
 ```
