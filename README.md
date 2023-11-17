@@ -2,13 +2,18 @@
 
 This is a hands-on workshop to get familiar with the observability and the relevant tooling on Azure.
 
-## Path 1: Observability of a K8s cluster
+## Observability of a K8s cluster
 
 This path will introduce :
 
-- how to instrument applications using OpenTelemetry with Azure
+- How to instrument applications using OpenTelemetry on Azure
 - How to instrument your AKS cluster
-- How to use your collected telemetry data by creating Azure Monitor Workbooks, Dashboards
+- How to use your visualize your telemetry data by creating Azure Monitor Workbooks, Azure Dashboards
+
+## How to use this workshop
+
+For very section there is a designated branch on the following [Github repository](https://github.com/observability-lab-cse/observability-lab).
+To set your environment to the state of the branch you can always just run `make` in the root directory and it should bring you up to speed.
 
 Sections:
 
