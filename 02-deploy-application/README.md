@@ -300,7 +300,13 @@ spec:
 
 ## Out of the box observability
 
-AKS, we can already have a look at what Azure will give us out of the box.
+We can already have a look at what Azure will give us out of the box.
+
+### Event Hub
+
+<!-- TODO: go into details here -->
+
+### AKS
 
 <!-- TODO: go into details here -->
 

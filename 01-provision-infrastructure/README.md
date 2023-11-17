@@ -17,7 +17,15 @@ Before we dive into the workshop, it's essential to have your Azure resources pr
 
 To simplify this process for everyone, we have provided Bicep and Bash scripts that can create the entire infrastructure in one go.
 
-Here's what you need to do: Run the following command in the root of the repository, take a coffee break, and when you return, your resources should be provisioned and ready to go ☕️.
+Here's what you need to do: Create a `.env`, run the following command in the root of the repository, take a coffee break, and when you return, your resources should be provisioned and ready to go ☕️.
+
+The `.env` in the root of the project and add the following content to it.
+
+```text
+ENV_RESOURCE_GROUP_NAME=
+ENV_LOCATION="westeurope"
+ENV_PROJECT_NAME= # should just be lowercase letters or numbers
+```
 
 ```sh
 az login
