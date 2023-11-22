@@ -21,91 +21,91 @@ Let's follow the following steps to add the metric to our application:
 1. First, we need to add a new .NET package to the `devices-state-manager` application: `System.Diagnostics.DiagnosticSource`.
 2. In the application code, we need to create an instance of the [`Meter`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics.meter?view=net-8.0) class, which will be responsible for creating and tracking metrics.
 
-<details markdown="1">
-<summary>Click here to see how to create a meter.</summary>
+    <details markdown="1">
+    <summary>Click here to see how to create a meter.</summary>
 
-```csharp
-using System.Diagnostics.Metrics;
+    ```csharp
+    using System.Diagnostics.Metrics;
 
-namespace DevicesStateManager
-{
-    class EventHubReceiverService: IHostedService
+    namespace DevicesStateManager
     {
-        // other dependencies
-        // ...
-        private readonly Meter _meter;
-
-        public EventHubReceiverService(
-            string? storageConnectionString,
-            string? blobContainerName,
-            string? eventHubsConnectionString,
-            string? eventHubName,
-            string? consumerGroup,
-            string? baseUrl,
-            ILogger<EventHubReceiverService> logger)
+        class EventHubReceiverService: IHostedService
         {
-            // Set up other dependencies
+            // other dependencies
             // ...
-            _meter = new Meter("DevicesStateManager");
+            private readonly Meter _meter;
+
+            public EventHubReceiverService(
+                string? storageConnectionString,
+                string? blobContainerName,
+                string? eventHubsConnectionString,
+                string? eventHubName,
+                string? consumerGroup,
+                string? baseUrl,
+                ILogger<EventHubReceiverService> logger)
+            {
+                // Set up other dependencies
+                // ...
+                _meter = new Meter("DevicesStateManager");
+            }
         }
     }
-}
-```
+    ```
 
-</details>
+    </details>
 
 3. Now let's define our custom metric. It will track processed device state updates, so let's give it a meaningful name and description. We will use the [`Counter`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics.counter-1?view=net-7.0) class which is useful for tracking a total number of requests, events, etc.
 
-<details markdown="1">
-<summary>Click here to see how to define the metric.</summary>
+    <details markdown="1">
+    <summary>Click here to see how to define the metric.</summary>
 
-```csharp
-    _deviceUpdateCounter = _meter.CreateCounter<int>("device-updates", description: "Number of successful device state updates");
-```
+    ```csharp
+        _deviceUpdateCounter = _meter.CreateCounter<int>(
+            "device-updates", description: "Number of successful device state updates");
+    ```
 
-</details>
+    </details>
 
 4. Now that we have our metric defined, let's start tracking device updates. Try to add code that increments the counter every time a device temperature and state is updated successfully. You can optionally set tags on the counter update; try to add a tag containing the device ID.
 
-<details markdown="1">
-<summary>Click here to see how to increment the counter.</summary>
+    <details markdown="1">
+    <summary>Click here to see how to increment the counter.</summary>
 
-```csharp
-private async Task<HttpResponseMessage?> UpdateDeviceData(DeviceMessage deviceMessage)
-{
-    // Process the device update
-    // ...
-    if (response.IsSuccessStatusCode)
+    ```csharp
+    private async Task<HttpResponseMessage?> UpdateDeviceData(DeviceMessage deviceMessage)
     {
+        // Process the device update
         // ...
-        _deviceUpdateCounter.Add(1, new KeyValuePair<string, object?>("deviceId", deviceMessage.deviceId));
+        if (response.IsSuccessStatusCode)
+        {
+            // ...
+            _deviceUpdateCounter.Add(1, new KeyValuePair<string, object?>("deviceId", deviceMessage.deviceId));
+        }
+        else
+        {
+            _logger.LogWarning($"Request failed with status code {response.StatusCode}");
+        }
+        // ...
     }
-    else
-    {
-        _logger.LogWarning($"Request failed with status code {response.StatusCode}");
-    }
-    // ...
-}
-```
+    ```
 
-</details>
+    </details>
 
-Well done! You defined the first custom metric for our application.
+    Well done! You defined the first custom metric for our application.
 
-Now, it would be useful to track failed device updates. Try to add another metric to track these events.
+    Now, it would be useful to track failed device updates. Try to add another metric to track these events.
 
-5. Finally, we need to register our Meter with the previously added OTel instrumentation, by setting an additional environment variable for the `devices-state-manager` container.
-Set the `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES` environment variable with the name of the Meter created in step 2. You can do this by adding the variable to the k8s deployment manifest of `devices-state-manager`.
+5. Finally, we need to register our Meter with the previously added OTel instrumentation, by setting an additional environment variable for the `devices-state-manager` container. Set the `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES` environment variable with the name of the Meter created in step 2. You can do this by adding the variable to the k8s deployment manifest of `devices-state-manager`.
 
-<details markdown="1">
-<summary>Click here to see the snippet of the k8s deployment manifest.</summary>
+    <details markdown="1">
+    <summary>Click here to see the snippet of the k8s deployment manifest.</summary>
 
-```yaml
-- name: OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES
-  value: "<meter-name>"
-```
+    ```yaml
+    - name: OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES
+    value: "<meter-name>"
+    ```
 
-</details>
+    </details>
 
 6. Redeploy the `devices-state-manager` and wait until there are a few device temperature updates.
 
@@ -115,20 +115,20 @@ Now that we defined our custom metrics, let's try to visualize them.
 
 1. Go to Application Insights and select the **Metrics** section. You can find your custom metric telemetry as both a log-based and custom metric. Once you found your metrics, you can adjust the aggregation and time span and see how the metric graph changes.
 
-<details markdown="1">
-<summary>Click here to see the metric graph in Application Insights.</summary>
+    <details markdown="1">
+    <summary>Click here to see the metric graph in Application Insights.</summary>
 
-![Device updates](./images/custom-metrics1.png)
+    ![Device updates](./images/custom-metrics1.png)
 
-</details>
+    </details>
 
 2. You can also query your custom metrics to access more details, such as custom dimensions, including the added tags. Go to the **Logs** section of the portal and query the `customMetrics` table to see more details of the custom metrics tracking successful and failed device updates.
 
-* Pick one of the query results. Can you find the device ID which you previously used to tag the metric updates?
+    * Pick one of the query results. Can you find the device ID which you previously used to tag the metric updates?
 
-<details markdown="1">
-<summary>Click here to see the custom metric in Logs analytics query.</summary>
+    <details markdown="1">
+    <summary>Click here to see the custom metric in Logs analytics query.</summary>
 
-![Device updates](./images/custom-metrics2.png)
+    ![Device updates](./images/custom-metrics2.png)
 
-</details>
+    </details>
