@@ -118,7 +118,7 @@ Now that we defined our custom metrics, let's try to visualize them.
 <details markdown="1">
 <summary>Click here to see the metric graph in Application Insights.</summary>
 
-![Device updates](./custom-metrics1.png)
+![Device updates](./images/custom-metrics1.png)
 
 </details>
 
@@ -129,6 +129,6 @@ Now that we defined our custom metrics, let's try to visualize them.
 <details markdown="1">
 <summary>Click here to see the custom metric in Logs analytics query.</summary>
 
-![Device updates](./custom-metrics2.png)
+![Device updates](./images/custom-metrics2.png)
 
 </details>
