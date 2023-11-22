@@ -113,7 +113,7 @@ Set the `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES` environment variable with 
 
 Now that we defined our custom metrics, let's try to visualize them.
 
-1. Go to Application Insights and select the 'Metrics' section. You should be able to find the `device-updates` metric in the Metric drop-down list after selecting the custom metrics namespace - `azure.applicationinsights`. You can adjust the aggregation and time span and see how the graph changes.
+1. Go to Application Insights and select the **Metrics** section. You can find your custom metric telemetry as both a log-based and custom metric. Once you found your metrics, you can adjust the aggregation and time span and see how the metric graph changes.
 
 <details markdown="1">
 <summary>Click here to see the metric graph in Application Insights.</summary>
@@ -122,7 +122,7 @@ Now that we defined our custom metrics, let's try to visualize them.
 
 </details>
 
-2. You can also query your custom metrics to access more details, such as custom dimensions, including the added tags. Go to the 'Logs' section and query the `customMetrics` table to see more details of the custom metrics tracking successful and failed device updates.
+2. You can also query your custom metrics to access more details, such as custom dimensions, including the added tags. Go to the **Logs** section of the portal and query the `customMetrics` table to see more details of the custom metrics tracking successful and failed device updates.
 
 * Pick one of the query results. Can you find the device ID which you previously used to tag the metric updates?
 
