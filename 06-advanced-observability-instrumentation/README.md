@@ -14,9 +14,9 @@ This will typically be metrics related to the business logic of our application,
 
 Given our business logic, where devices periodically send temperature measurements, it would be useful to know how many device updates occurred in a specific time window. This will be our device update counter metric which we will define in the `devices-state-manager` application that handles all device state and temperature changes.
 
-The basic observability instrumentation with OpenTelemetry gives us a good starting point to add custom metrics to our application in just a few steps.
+The basic observability instrumentation with OpenTelemetry gives us a good starting point to add custom metrics to our application in just a few minutes.
 
-Let's follow the following steps to add the metric to our application:
+Let's follow the following steps to add the metric:
 
 * First, we need to add a new .NET package to the `devices-state-manager` application: `System.Diagnostics.DiagnosticSource`.
 * In the application code, we need to create an instance of the [`Meter`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics.meter?view=net-8.0) class, which will be responsible for creating and tracking metrics.
@@ -95,14 +95,14 @@ Let's follow the following steps to add the metric to our application:
 
     Now, it would be useful to track failed device updates. Try to add another metric to track these events.
 
-* Finally, we need to register our Meter with the previously added OTel instrumentation, by setting an additional environment variable for the `devices-state-manager` container. Set the `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES` environment variable with the name of the Meter created in step 2. You can do this by adding the variable to the k8s deployment manifest of `devices-state-manager`.
+* Finally, we need to register our Meter with the previously added OTel instrumentation, by setting an additional environment variable for the `devices-state-manager` container. Set the `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES` environment variable with value matching the name of the Meter you previously created. You can do this by adding the variable to the k8s deployment manifest of `devices-state-manager`.
 
     <details markdown="1">
     <summary>Click here to see the snippet of the k8s deployment manifest.</summary>
 
     ```yaml
     - name: OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES
-    value: "<meter-name>"
+      value: "<meter-name>"
     ```
 
     </details>
