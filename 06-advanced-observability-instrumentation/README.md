@@ -109,6 +109,16 @@ Let's follow the following steps to add the metric to our application:
 
 * Redeploy the `devices-state-manager` and wait until there are a few device temperature updates.
 
+    <details markdown="1">
+    <summary>You can use these commands from the root of the repository to redeploy the application.</summary>
+
+    ```bash
+    make push
+    make deploy
+    ```
+
+    </details>
+
 ### Visualizing custom metrics
 
 Now that we defined our custom metrics, let's try to visualize them.
