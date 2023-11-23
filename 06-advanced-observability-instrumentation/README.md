@@ -85,7 +85,6 @@ Let's follow the following steps to add the metric:
         {
             _logger.LogWarning($"Request failed with status code {response.StatusCode}");
         }
-        // ...
     }
     ```
 
@@ -93,9 +92,50 @@ Let's follow the following steps to add the metric:
 
     Well done! You defined the first custom metric for our application.
 
-    Now, it would be useful to track failed device updates. Try to add another metric to track these events.
+    >Optional: It would be useful to also track failed device updates. Try to add another metric to collect these events.
 
-* Finally, we need to register our Meter with the previously added OTel instrumentation, by setting an additional environment variable for the `devices-state-manager` container. Set the `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES` environment variable with value matching the name of the Meter you previously created. You can do this by adding the variable to the k8s deployment manifest of `devices-state-manager`.
+* So far we only used a `Counter` instrument, but there are more instrument types available. Check out the [documentation](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation#types-of-instruments) to learn about them.
+
+* Tracking temperature values reported by devices is be another useful application of custom metrics in our use case. Let's use [`Histogram`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics.histogram-1?view=net-8.0) instrument type which will allow us to visualize the distribution of temperature measurements. Try to add this new metric to the application code.
+
+    <details markdown="1">
+    <summary>Click here to see how to add the histogram.</summary>
+
+    ```csharp
+    class EventHubReceiverService: IHostedService
+    {
+        private readonly Meter _meter;
+        private readonly Counter<int> _deviceUpdateCounter;
+        private readonly Histogram<float> _temperatureHistogram;
+
+        public EventHubReceiverService()
+        {
+            _meter = new Meter("DevicesStateManager");
+            _deviceUpdateCounter = _meter.CreateCounter<int>("device-updates", description: "Number of successful device state updates");
+            _temperatureHistogram = _meter.CreateHistogram<float>("temperature", description: "Temperature measurements");
+        }
+
+        private async Task<HttpResponseMessage?> UpdateDeviceData(DeviceMessage deviceMessage)
+        {
+            // Process the device update
+            // ...
+            if (response.IsSuccessStatusCode)
+            {
+                _deviceUpdateCounter.Add(1, new KeyValuePair<string, object?>("deviceId", deviceMessage.deviceId));
+                _temperatureHistogram.Record(deviceMessage.temp);
+            }
+            else
+            {
+                _logger.LogWarning($"Request failed with status code {response.StatusCode}");
+            }
+            return response;
+        }
+    }
+    ```
+
+    </details>
+
+* Finally, we need to register our `Meter` with the previously added OTel instrumentation, by setting an additional environment variable for the `devices-state-manager` container. Set the `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES` environment variable with value matching the name of the Meter you previously created. You can do this by adding the variable to the k8s deployment manifest of `devices-state-manager`.
 
     <details markdown="1">
     <summary>Click here to see the snippet of the k8s deployment manifest.</summary>
@@ -123,12 +163,21 @@ Let's follow the following steps to add the metric:
 
 Now that we defined our custom metrics, let's try to visualize them.
 
-* Go to Application Insights and select the **Metrics** section. You can find your custom metric telemetry as both a log-based and custom metric. Once you found your metrics, you can adjust the aggregation and time span and see how the metric graph changes.
+* Go to Application Insights and select the **Metrics** section. You can find your custom metric telemetry as both a log-based and custom metric. Select the `device-updates` metric and adjust the aggregation and time span and see how the generated graph changes.
 
     <details markdown="1">
-    <summary>Click here to see the metric graph in Application Insights.</summary>
+    <summary>Click here to see the graph showing device updates.</summary>
 
-    ![Device updates](./images/custom-metrics1.png)
+    ![Device updates](./images/custom-metrics-graph.png)
+
+    </details>
+
+* Let's have a look at reported temperature values. Select the `temperature` metric, adjust the aggregation to Min, Max or Avg and change the graph type to `Bar chart`. We can now see the distribution of temperature measurements sent by our devices.
+
+    <details markdown="1">
+    <summary>Click here to see the temperature chart.</summary>
+
+    ![Device updates](./images/custom-metrics-histogram.png)
 
     </details>
 
@@ -139,6 +188,6 @@ Now that we defined our custom metrics, let's try to visualize them.
     <details markdown="1">
     <summary>Click here to see the custom metric in Logs analytics query.</summary>
 
-    ![Device updates](./images/custom-metrics2.png)
+    ![Device updates](./images/custom-metrics-logs.png)
 
     </details>
