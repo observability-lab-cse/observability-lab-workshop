@@ -205,7 +205,8 @@ In Azure Monitor, these logs can be accessed through Application Insights or Log
 
 To view your logs, navigate to Application Insights for your application, and select Logs from the left-hand menu. You can find your logs under the `traces` table.
 
-<details markdown=“1”> <summary>Click here to see where to find logs</summary>
+<details markdown="1">
+<summary>Click here to see where to find logs</summary>
 
 ![AppInsights-logs](./images/AppInsights-logs.png)
 
