@@ -67,7 +67,7 @@ For example, if you click on the *Failed requests* chart, you’ll be directed t
 <details markdown="1">
 <summary>Click here to see the Application Insights Failures view.</summary>
 
-![AppInsights-overview](./images/AppInsights-failures.png)
+![AppInsights-failures](./images/AppInsights-failures.png)
 
 </details>
 
@@ -76,19 +76,19 @@ If you click on the Server response time or Server requests chart, you'll go to 
 <details markdown="1">
 <summary>Click here to see the Application Insights Performance view.</summary>
 
-![AppInsights-overview](./images/AppInsights-performance.png)
+![AppInsights-performance](./images/AppInsights-performance.png)
 
 </details>
 
 
 The last chart shows Availability, but it won't show any data unless you set it up first. Let's do that now.
 
-Click on the Availability chart and you'll go to the Investigate Availability view.
+Click on the Availability chart and you'll go to the *Investigate Availability* view.
 
 <details markdown="1">
 <summary>Click here to see what the Application Insights Availability view should look like in your Azure Portal.</summary>
 
-![AppInsights-overview](./images/AppInsights-availability.png)
+![AppInsights-availability](./images/AppInsights-availability.png)
 
 </details>
 
@@ -97,7 +97,7 @@ Click on the Availability chart and you'll go to the Investigate Availability vi
 <details markdown="1">
 <summary>Click here to see the Application Insights Availability Standard test.</summary>
 
-![AppInsights-overview](./images/AppInsights-availability-standard-test.png)
+![AppInsights-availability-standard-test](./images/AppInsights-availability-standard-test.png)
 
 </details>
 
@@ -109,7 +109,7 @@ After some time, you should be able to see your availability results. Based on t
 <details markdown="1">
 <summary>Click here to find the answer to the first question.</summary>
 
-![AppInsights-overview](./images/AppInsights-availability-standard-test-average-duration.png)
+![AppInsights-availability-standard-test-average-duration](./images/AppInsights-availability-standard-test-average-duration.png)
 
 </details>
 
@@ -117,7 +117,7 @@ After some time, you should be able to see your availability results. Based on t
 <details markdown="1">
 <summary>Click here to find the answer to the second question.</summary>
 
-![AppInsights-overview](./images/AppInsights-availability-standard-test-exact-duration-get-health.png)
+![AppInsights-availability-standard-test-exact-duration-get-health](./images/AppInsights-availability-standard-test-exact-duration-get-health.png)
 
 </details>
 
@@ -126,7 +126,7 @@ Under the Investigate section, you'll find more views that you can explore. Go t
 <details markdown="1">
 <summary>Click here to see the Application Map.</summary>
 
-![AppInsights-overview](./images/ApplicationMap.png)
+![AppInsights-ApplicationMap](./images/ApplicationMap.png)
 
 </details>
 
@@ -142,14 +142,14 @@ And on top of that, there is a great overview dashboard that gives you a quick g
 <details markdown="1">
 <summary>Click here to view where the dashboard button is located.</summary>
 
-![AppInsights-overview](./images/AppInsights-dashboard-button.png)
+![AppInsights-dashboard-button](./images/AppInsights-dashboard-button.png)
 
 </details>
 
 <details markdown="1">
 <summary>Click here to view what the dashboard should look like in your Azure Portal.</summary>
 
-![AppInsights-overview](./images/AppInsights-default-dashboard.png)
+![AppInsights-default-dashboard](./images/AppInsights-default-dashboard.png)
 
 </details>
 
@@ -161,10 +161,10 @@ Now that you’ve gained this knowledge, it’s time to apply it. Can you answer
 1. Which dependency component is called most frequently, and how many times was it called in the last 30 minutes?
 1. Can you pinpoint the slowest dependency call?
 1. What are the response codes of failed requests, and can you determine why they failed?
-1. How many dependency calls failed, and can you figure out why?"
+1. How many dependency calls failed, and can you figure out why?
 
 
-## Metrics coming from OpenTelemetry auto-instrumentation
+## Additional metrics coming from OpenTelemetry auto-instrumentation
 
 That's already a lot of insights, but wait, there's more! OpenTelemetry auto-instrumentation for .NET and Java provides a bunch of useful metrics that can be found under the custom metric namespace `azure.applicationinsights`. These metrics can give you more insights into your application's performance, such as memory usage, CPU usage, GC count, etc.
 
@@ -173,7 +173,7 @@ To view these metrics, go to the Monitoring Metrics section in Application Insig
 <details markdown="1">
 <summary>Click here to see where to find custom metrics.</summary>
 
-![AppInsights-overview](./images/AppInsights-custom-metrics.png)
+![AppInsights-custom-metrics](./images/AppInsights-custom-metrics.png)
 
 </details>
 
@@ -189,8 +189,30 @@ There is also another way to query these metrics. These metrics are so-called lo
 <details markdown="1">
 <summary>Click here to see where to find custom metrics as logs</summary>
 
-![AppInsights-overview](./images/AppInsights-custom-metrics-as-logs.png)
+![AppInsights-custom-metrics-as-logs](./images/AppInsights-custom-metrics-as-logs.png)
 
 </details>
 
-Try to find the same metrics as you used in the previous excercise, and check what additional information is provided when looking at metrics in this view. Tip: review in details `customDimensions`.
+Try to find the same metrics as you used in the previous excercise, and check what additional information is provided when looking at metrics in this view.
+
+Tip: review in details `customDimensions`.
+
+## View logs
+
+We’ve delved into metrics, traced the paths of our data, but there’s one aspect we haven’t touched upon yet - the logs of our application.
+
+In Azure Monitor, these logs can be accessed through Application Insights or Log Analytics workspace, but let's use the first one.
+
+To view your logs, navigate to Application Insights for your application, and select Logs from the left-hand menu. You can find your logs under the `traces` table.
+
+<details markdown=“1”> <summary>Click here to see where to find logs</summary>
+
+![AppInsights-logs](./images/AppInsights-logs.png)
+
+</details>
+
+You’ll see a query editor where you can write and run queries using the Kusto Query Language (KQL). KQL is a language that lets you manipulate and transform your data in various ways. We’ll dive deeper into the ocean of KQL in the upcoming chapter, but for now, let’s get our feet wet.
+
+Take a moment to acquaint yourself with the structure of your data. Can you trace the origins of various log entries? Can you identify which application they hail from? Put on your detective hat and start connecting the dots!
+
+
