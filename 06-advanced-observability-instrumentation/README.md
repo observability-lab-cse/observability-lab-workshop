@@ -31,18 +31,9 @@ Let's follow the following steps to add the metric:
     {
         class EventHubReceiverService: IHostedService
         {
-            // other dependencies
-            // ...
             private readonly Meter _meter;
 
-            public EventHubReceiverService(
-                string? storageConnectionString,
-                string? blobContainerName,
-                string? eventHubsConnectionString,
-                string? eventHubName,
-                string? consumerGroup,
-                string? baseUrl,
-                ILogger<EventHubReceiverService> logger)
+            public EventHubReceiverService()
             {
                 // Set up other dependencies
                 // ...
