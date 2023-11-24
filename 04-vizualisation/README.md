@@ -95,7 +95,12 @@ Click on the Availability chart and you'll go to the *Investigate Availability* 
 [Application Insights availability tests](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-overview) are great for monitoring availability and responsiveness of any HTTP or HTTPS endpoint. Our devices-api and devices-state-manager expose `health` endpoints, so we can use them to set up availability tests. Find out what the `health` endpoint of the devices-api and devices-state-manager is and create [a Standard test](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-standard-tests). 
 
 <details markdown="1">
-<summary>Click here to see the Application Insights Availability Standard test.</summary>
+> How to find your application IP?
+>
+> ```shell
+> DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+> HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
+> ```
 
 ![AppInsights-availability-standard-test](./images/AppInsights-availability-standard-test.png)
 
