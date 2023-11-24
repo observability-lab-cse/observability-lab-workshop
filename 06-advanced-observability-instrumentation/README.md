@@ -183,4 +183,13 @@ Now that we defined our custom metrics, let's try to visualize them.
 
     </details>
 
+* Using the `customMetrics` table, let's write a query that will only display device updates of one of the devices.
+
+    <details markdown="1">
+    <summary>Click here to see the query showing updates of one device.</summary>
+
+    ![Device updates](./images/custom-metrics-query.png)
+
+    </details>
+
 In this section we added a few custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application.
