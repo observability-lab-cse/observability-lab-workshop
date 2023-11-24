@@ -24,7 +24,7 @@ Sections:
 - [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Using OpenTelemetry instrument your application
 - [📈 Dashboards](./04-vizualisation/README.md) - Visualize data with dashboards
 - [🚨 Alerts](./05-alert/README.md) - Creating alerts
-- [🌟 Advanced Instrumentation](./06-advanced-observability-instrumentation/README.md) - Extend solution with more advanced instrumentation eg. Custom metrics, distributed tracing.
+- [🌟 Custom metrics](./07-custom-metrics/README.md) - Adding custom metrics to your application
 
 Additional Read:
 
