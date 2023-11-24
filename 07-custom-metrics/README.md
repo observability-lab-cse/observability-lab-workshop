@@ -169,7 +169,16 @@ Let's have a look at reported temperature values. Select the `temperature` metri
 <details markdown="1">
 <summary>Click here to see the temperature chart.</summary>
 
-![Device updates](./images/custom-metrics-histogram.png)
+![Histogram](./images/custom-metrics-histogram.png)
+
+</details>
+
+In a previous section we covered the topic of creating a custom dashboard for our application. You can now pin the custom metrics to add them to your dashboard.
+
+<details markdown="1">
+<summary>Click here to see how to pin a custom metric to a dashboard.</summary>
+
+![Pin custom metric](./images/custom-metrics-dashboard.png)
 
 </details>
 
@@ -180,7 +189,7 @@ You can also query your custom metrics to access more details, such as custom di
 <details markdown="1">
 <summary>Click here to see the custom metric in Logs analytics query.</summary>
 
-![Device updates](./images/custom-metrics-logs.png)
+![Metric logs](./images/custom-metrics-logs.png)
 
 </details>
 
@@ -189,7 +198,7 @@ Using the `customMetrics` table, let's write a query that will only display devi
 <details markdown="1">
 <summary>Click here to see the query showing updates of one device.</summary>
 
-![Device updates](./images/custom-metrics-query.png)
+![Metric query](./images/custom-metrics-query.png)
 
 </details>
 
