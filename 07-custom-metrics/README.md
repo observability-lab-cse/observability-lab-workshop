@@ -164,6 +164,15 @@ Go to Application Insights and select the **Metrics** section. You can find your
 
 </details>
 
+This is interesting by it would be more useful to have a chart showing updates per device. We can do this by splitting the metric by `deviceId`. Select the `device-updates` metric in the `Log-based metrics` Namespace and then select the `Apply splitting` option to generate separate graphs for each device.
+
+<details markdown="1">
+<summary>Click here to see the device update chart split by device ID.</summary>
+
+![Histogram](./images/custom-metrics-split.png)
+
+</details>
+
 Let's have a look at reported temperature values. Select the `temperature` metric, adjust the aggregation to Min, Max or Avg and change the graph type to `Bar chart`. We can now see the distribution of temperature measurements sent by our devices.
 
 <details markdown="1">
