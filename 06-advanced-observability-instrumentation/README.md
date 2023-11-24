@@ -1,6 +1,10 @@
 # Advanced Observability Instrumentation
 
+<<<<<<< HEAD
 > Goal: Gain insights into how to add custom metrics to an application and visualize them in Application Insights.
+=======
+> Goal: Gain insights into how to add custom metrics and traces or other specific configurations.
+>>>>>>> 3e58f1449804b23857dcdeff860533bcba19bcf3
 
 ## Custom metrics
 
