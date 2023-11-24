@@ -88,7 +88,7 @@ Well done! You defined the first custom metric for our application. 🎉
 
 So far we only used a `Counter` instrument, but there are more instrument types available. Check out the [documentation](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation#types-of-instruments) to learn more about them.
 
-Tracking temperature values reported by devices is be another useful application of custom metrics in our use case. Let's use the [`Histogram`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics.histogram-1?view=net-8.0) instrument type which will allow us to visualize the distribution of temperature measurements. Try to add this new metric to the application code.
+Tracking temperature values reported by devices will be another useful application of custom metrics in our use case. Let's use the [`Histogram`](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics.histogram-1?view=net-8.0) instrument type which will allow us to visualize the distribution of temperature measurements. Try to add this new metric to the application code.
 
 <details markdown="1">
 <summary>Click here to see how to add the histogram.</summary>
@@ -134,7 +134,7 @@ Finally, we need to register our `Meter` with the previously added OTel instrume
 
 ```yaml
 - name: OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES
-    value: "<meter-name>"
+  value: "<meter-name>"
 ```
 
 </details>
