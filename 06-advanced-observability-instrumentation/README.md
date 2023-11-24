@@ -1,9 +1,6 @@
 # Advanced Observability Instrumentation
 
-> Goal: Gain insights into how to add custom metrics and traces or other specific configurations.
-<!-- 
-1. How to add custom instrumentation
-2. How to add custom traces for distributed tracing -->
+> Goal: Gain insights into how to add custom metrics to an application and visualize them in Application Insights.
 
 ## Custom metrics
 
