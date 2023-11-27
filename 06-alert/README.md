@@ -35,9 +35,9 @@ Let's [create an Action Group](https://learn.microsoft.com/en-us/azure/azure-mon
 
 ![Action Group](./images/create_ag_notification.png)
 
-Please note that Action Groups can be configured to perform various **actions** when an alert is triggered. These actions include: Email/SMS/Push/Voice, Azure Functions, Logic App, Webhook, Event Hubs etc.
+Please note that Action Groups can be configured not only to send **Notifications** but also to perform various **Actions** when an alert is triggered. These actions include: Azure Functions, Logic App, Webhook, Event Hubs etc.
 
-But for this excersise we can skip defining actions.
+But for this exercise we can skip defining Actions.
 
 > You can test your Action group by going to **Action Groups** section in **Alerts** and using **Test** button. Check if you get a test email!
 
