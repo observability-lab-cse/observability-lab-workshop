@@ -78,10 +78,9 @@ kubectl remove deployment devices-api
 
 And now wait until you get your alert email.
 
-To deploy again the deleted service you can use __make__ command from the project root folder:
+To deploy again the deleted service you can use __make__ command from the project root folder (to deploy devices-api and devices-state-manager):
 
 ```
-# to deploy devices-api and devices-state-manager
 make deploy 
 ```
 
@@ -89,9 +88,9 @@ make deploy
 
 User response is a feature that allows you to manually set the status of an alert.
 
-Now you should get our email and see the alert in the Alerts window. If you click on the fired alert you can see more details.
+Now you should get your email and see the alert in the Alerts window. If you click on the fired alert you can see more details.
 
-One thing you can do is change the User response. Let's change it to **Acknowledged** as we now saw and resolved the issue.
+One thing you can do is change the User response. Let's change it to **Acknowledged** as we noticed the alert.
 
 ![](./images/fired_alert.png)
 
@@ -216,11 +215,11 @@ Let's take a closer look at the last option!
 Go to Application Insights -> Availability section. Now create a standard test posting an endpoint to your application health check:
 
 > How to find your application IP?
->
-> ```shell
-> DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-> HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
-> ```
+
+```shell
+DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
+```
 
 ![](./images/availability_standard_test.png)
 
