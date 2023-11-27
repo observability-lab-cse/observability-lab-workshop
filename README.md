@@ -25,7 +25,7 @@ Sections:
 - [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Using OpenTelemetry instrument your application
 - [📈 Visualization](./04-vizualisation/README.md) - Use out-of-the-box Azure visualizations
 - [📋 Dashboards](./05-dashboards/README.md) - Create your custom dashboard
-- [🚨 Alerts](./05-alert/README.md) - Creating alerts
+- [🚨 Alerts](./05-alert/README.md) - Create alerts
 - [🌟 Custom metrics](./07-custom-metrics/README.md) - Add custom metrics to your application
 
 <!-- Additional Read:

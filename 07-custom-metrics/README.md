@@ -8,11 +8,11 @@ Custom metrics, also called user-defined or application-specific metrics, allow 
 This will typically be metrics related to the business logic of our application, allowing us to measure the impact of events happening in the system on the user experience or the business.
 In this section you will learn how to add custom metrics to our applications and find out how to visualize them in Application Insights. 🕵️‍♂️
 
+## 🛠️ Step-by-step
+
 > **📌 Starting point 📌**
 >
 > Check out this branch [/03-final](https://github.com/observability-lab-cse/observability-lab/tree/03-final), in case you have not done the previous section, and run `make` from the root folder.
-
-## 🛠️ Step-by-step
 
 ### Adding custom metrics
 
