@@ -1,4 +1,4 @@
-# Monitoring Dashboards
+# Custom Dashboards
 
 > Goal: Play around with KQL and learn how to create custom dashboards.
 
@@ -33,10 +33,11 @@ For now, let's proceed with option 2.
 
 As you saw in the past chapter, everything OpenTelemetry sends to our resource can be found in either our Application Insights or Log Analytics workspace resource.
 
-Let's go over to the Log Analytics workspace resource and take a look at how that resource.
+Let's go over to the Log Analytics workspace resource and take a look at how to access logs over that resources.
 Navigate to your Log Analytics workspace and select the `Logs` tab. If you navigate to `AppTraces` under `LogManagement` and run the query, you should see the list of the most recent incoming log statements.
 
 > Kusto Tip 1: Double-click tables to automatically fill them into your query window.
+
 > Kusto Tip 2: You can select a subset of your query to run, similar to some SQL editors.
 
 ![AppTraces logs](./images/LogAnalytics-logs.jpg)
