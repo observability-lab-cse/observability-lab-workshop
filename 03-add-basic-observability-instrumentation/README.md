@@ -1,4 +1,4 @@
-# Adding Basic Observability Instrumentation
+# 3. Adding Basic Observability Instrumentation
 
 >🎯 **Goal:** Exploring different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
 

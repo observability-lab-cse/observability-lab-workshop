@@ -1,4 +1,4 @@
-# Custom metrics
+# 7. Custom metrics
 
 > 🎯 **Goal:** Gain insights into how to add custom metrics to an application and visualize them in Application Insights.
 
@@ -8,9 +8,11 @@ Custom metrics, also called user-defined or application-specific metrics, allow 
 This will typically be metrics related to the business logic of our application, allowing us to measure the impact of events happening in the system on the user experience or the business.
 In this section you will learn how to add custom metrics to our applications and find out how to visualize them in Application Insights. 🕵️‍♂️
 
-Check out this branch to get started: [TODO - add link]
+> **📌 Starting point 📌**
+>
+> Check out this branch [/03-final)](TBD), in case you have not done the previous section, and run `make` from the root folder.
 
-## Step-by-step
+## 🛠️ Step-by-step
 
 ### Adding custom metrics
 
@@ -214,9 +216,6 @@ Using the `customMetrics` table, let's write a query that will only display devi
 ## Conclusion
 
 In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎
-
-
-
 
 ## Navigation
 

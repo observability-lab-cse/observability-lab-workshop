@@ -1,4 +1,4 @@
-# Deploying the applications into AKS
+# 2. Deploying the applications into AKS
 
 > 🎯 **Goal:**
 >
@@ -34,15 +34,13 @@ Before we start deploying the application, let's set up all the secrets in the c
 make deploy_secret_store
 ```
 
-We will not go into more details on how to handle secrets in a K8s cluster, as this is not the main point of this workshop. But if you are interested, we leverage the Secret Store CSI driver to pull secrets from the Key Vault resource. You can read more about this [here](https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver).
+We will not go into more details on how to handle secrets in a K8s cluster, as this is not the main point of this workshop. But if you are interested, we leverage the Secret Store CSI driver to pull secrets from the Key Vault resource. You can read more about this here ["Use the Azure Key Vault provider for Secrets Store CSI Driver in an Azure Kubernetes Service (AKS) cluster"](https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver).
 
 ### Deploy: 📱 Devices API
 
-Let's start by deploying the Devices API application. The code for this service can be found [here](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application/sample-application/devices-api). It's a Java Spring Boot REST API that allows you to list, create, update, and delete devices from your device registry.
+Let's start by deploying the Devices API application. The code for this service can be found here [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application/sample-application/devices-api). It's a Java Spring Boot REST API that allows you to list, create, update, and delete devices from your device registry.
 
 The first step is to build and push the image to the registry.
-
-<!-- TODO: from where to run the below commands-->
 
 ```sh
 TAG="latest"
@@ -66,6 +64,8 @@ Now that we’re connected, we’re ready to deploy the devices-api. You’ll fi
 ```
 kubectl apply -f k8s-files/devices-api-deployment.yaml
 ```
+
+Let’s ensure that your Devices API is up and running smoothly. You can do this by using the `kubectl get pods` command. If everything is working as expected, this command should report that the `devices-api` pod is in the `Running` status.
 
 <details markdown="1">
 <summary>Click here for the Device API deployment YAML.</summary>
@@ -154,8 +154,6 @@ spec:
 
 </details>
 
-Let’s ensure that your Devices API is up and running smoothly. You can do this by using the `kubectl get pods` command. If everything is working as expected, this command should report that the `devices-api` pod is in the `Running` status.
-
 ### Deploy: ⚙️ Devices State Manager
 
 Next on our agenda is the deployment of the Devices State Manager service. You can access the source code for this service [here](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application/sample-application/device-manager/DeviceManager). This .NET application plays a critical role by updating the temperature records of devices in the database as data flows in from each device.
@@ -175,6 +173,8 @@ Just like we did for the devices-api, you’ll find the deployment manifest for 
 ```sh
 kubectl apply -f k8s-files/devices-state-manager-deployment.yaml
 ```
+
+Let’s also make sure that your Devices State Manager is functioning properly. Run again `kubectl get pods` command and check that the `devices-state-manager` pod is in the `Running` status.
 
 <details markdown="1">
 <summary>Click here for the Devices State Manager deployment YAML.</summary>
@@ -258,8 +258,6 @@ spec:
 
 </details>
 
-Let’s also make sure that your Devices State Manager is functioning properly. Run again `kubectl get pods` command and check that the `devices-state-manager` pod is in the `Running` status.
-
 ### Deploy: 🌡️ Devices Data Simulator
 
 To generate data from virtual devices for testing purposes, we're deploying [the Device Simulator](https://learn.microsoft.com/en-us/samples/azure-samples/iot-telemetry-simulator/azure-iot-device-telemetry-simulator/). This simulator effectively generates temperature data at defined intervals for each virtual device and transmits this data as messages to Event Hub.
@@ -267,7 +265,7 @@ To generate data from virtual devices for testing purposes, we're deploying [the
 However, before we can start generating data, we need to create some devices in our device registry. To do this, we’ll use the Devices API.
 
 <details markdown="1">
-<summary>Click here to see how to find your Devices API.</summary>
+<summary>Click here to see how to find the IP address of your Devices API.</summary>
 
 ```sh
 kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}'

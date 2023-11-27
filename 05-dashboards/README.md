@@ -1,4 +1,4 @@
-# Custom Dashboards
+# 5. Custom Dashboards
 
 > 🎯 **Goal:** Play around with KQL and learn how to create custom dashboards.
 

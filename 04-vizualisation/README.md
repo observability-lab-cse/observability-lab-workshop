@@ -1,4 +1,4 @@
-# Visualization
+# 4. Visualization
 
 > 🎯 **Goal:** Gain knowledge of available out-of-the-box visualizations in Azure and learn how to use it effectively to get insights about your applications.
 
