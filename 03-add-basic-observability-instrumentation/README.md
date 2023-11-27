@@ -206,7 +206,7 @@ For the C# application there are a few more variables needed
 <details markdown="1">
 <summary>🔦 Deployment yaml for auto-instrumentation <code>device-state-manager</code> service</summary>
 
-TBD
+TODO
 
 ```yaml
 kind: Deployment
@@ -397,4 +397,4 @@ Go grab another coffee ☕ (or tea 🍵, we don't discriminate) and come back to
 ## Navigation
 
 [Previous Section ⏪](../02-deploy-application/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
-[Next Section ⏩️](../04-vizualisation/README.md)
+[Next Section ⏩️](../04-visualization/README.md)
