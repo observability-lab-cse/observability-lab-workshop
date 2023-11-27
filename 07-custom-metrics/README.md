@@ -1,6 +1,6 @@
 # Custom metrics
 
-> **Goal:** Gain insights into how to add custom metrics to an application and visualize them in Application Insights.
+> 🎯 **Goal:** Gain insights into how to add custom metrics to an application and visualize them in Application Insights.
 
 ## Intro
 
@@ -214,3 +214,10 @@ Using the `customMetrics` table, let's write a query that will only display devi
 ## Conclusion
 
 In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎
+
+
+
+
+## Navigation
+
+[Previous Section ⏪](../05-alert/README.md) ‖ [Return to Main Index 🏠](../README.md)

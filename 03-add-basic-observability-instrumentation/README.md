@@ -2,18 +2,14 @@
 
 >🎯 **Goal:** Exploring different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
 
-> **📌 Starting point 📌**
->
-> Check out this branch [/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application), in case you have not done the previous section, and run `make` from the root folder.
-
 Now, let's dive into the exciting part of this workshop.
 
 The goal of this section is to instrument the application we developed earlier to gain more visibility into its availability and health.
 
 There are a few steps we need to take to achieve this:
 
-1. Provision necessary resources.
-2. Set up a mechanism to send application level telemetry data to these created resources.
+1. ⚙️ Provision necessary resources.
+2. 🛰️ Set up a mechanism to send application level telemetry data to these created resources.
 
 There are multiple ways to instrument your application, or even whole solution in more general terms.
 Our application is running in AKS, which already provides workload level visibility regarding the health of the resources. However, what we're missing, as previously mentioned, are application-level insights.
@@ -26,26 +22,27 @@ To gain this lower level of visibility into our solution, we have various tools 
 
 But first, let's provision our resources so that we have a destination to send the newly gathered data.
 
-## Provision Resources
+## ⚙️ Provision Resources
 
-Can you guess the first resource we need for this section? If you said Application Insights, then ding, ding, ding... 100 points to you!
+> **📌 Starting point 📌**
+>
+> Check out this branch [/03-add-basic-observability-instrumentation)](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation), in case you have not done the previous section, and run `make` from the root folder.
+
+Can you guess the first resource we need for this section? If you said Application Insights, then 🛎️ ding, ding, ding... 💯 points to you!
 
 As expected, we require Application Insights. However, we'll also need a Log Analytics workspace to support our Application Insights instance.
 
-> If you're curious about how Log Analytics and Application Insights work together, explore this section [Azure 101](tbd) for more information.
+1. First, let's create a Log Analytics workspace in our resource group. Feel free to use either the Azure portal or any other tools for this task.
+1. Afterwards, you can create an Application Insights resource, and make sure to specifically select the just-created Log Analytics workspace as the backing instance for the new Application Insights resource.
 
-- First, let's create a Log Analytics workspace in our resource group. Feel free to use either the Azure portal or any other tools for this task.
-
-- Afterwards, you can create an Application Insights resource, and make sure to specifically select the just-created Log Analytics workspace as the backing instance for the new Application Insights resource.
-
-## OpenTelemetry
+## 🛰️ OpenTelemetry
 
 As mentioned, there are many ways to instrument applications. Some require writing more custom code, some less.
 
 For this workshop, let's use an approach that requires no changes to the application code, as it will come in handy when working with preexisting applications.
 To do so, we will make use of the OpenTelemetry Auto instrumentation for different programming languages and the [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/).
 
-### Configure Applications
+### 📱 Configure Applications
 
 For auto-instrumentation, our applications need a small "agent" running alongside
 the service to be able to gather telemetry data from common logging, metric, and tracing libraries.
@@ -110,7 +107,7 @@ ENTRYPOINT ["dotnet", "DeviceManager.dll"]
 
 Now, let's build the images with the agent and add a new tag to it, so that we know which images are auto-instrumented. TODO
 
-### Configure Deployment
+### 🐳 Configure Deployment
 
 For the agent to properly connect to the Collector, there are a few environment variables that need to be set. For now, let's only set the mandatory ones.
 
@@ -271,7 +268,7 @@ spec:
 
 </details>
 
-### Deployment Otel collector and auto-instrumented Application
+### 🎻 Deployment Otel collector and auto-instrumented Application
 
 Let's now first deploy the OpenTelemetry collector and then re-deploy the individual applications again.
 

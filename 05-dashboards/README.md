@@ -1,6 +1,6 @@
 # Custom Dashboards
 
-> Goal: Play around with KQL and learn how to create custom dashboards.
+> 🎯 **Goal:** Play around with KQL and learn how to create custom dashboards.
 
 As you saw previously, there are a lot of out-of-the-box dashboards that visualize things. But what if we don't have things visualized as we want? What if we want a birds-eye view on some metrics, visualization and graphs that are custom to us?
 
@@ -313,3 +313,8 @@ Your next step is to rearrange the graphs to suit your preferences and organize 
 ![Dashboard](./images/Dashboard.jpg)
 
 And just like that you have your final dashboard!
+
+## Navigation
+
+[Previous Section ⏪](../04-vizualisation/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Next Section ⏩️](../05-alert/README.md)
