@@ -8,7 +8,6 @@
 
 ## 🚀  Deploy Application
 
->
 > **📌 Starting point 📌**
 >
 > Check out this branch [/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application), in case you have not done the previous section, and run `make` from the root folder.
@@ -67,7 +66,6 @@ Now that we’re connected, we’re ready to deploy the devices-api. You’ll fi
 ```
 kubectl apply -f k8s-files/devices-api-deployment.yaml
 ```
-
 
 <details markdown="1">
 <summary>Click here for the Device API deployment YAML.</summary>
@@ -345,6 +343,7 @@ spec:
             - name: Variables
               value: '[{"name": "DoubleValue", "randomDouble":true, "min":20.00, "max":28.00}]'
 ```
+
 </details>
 
 ## 📦 Out of the box observability
@@ -381,8 +380,7 @@ If you’re finding it a bit challenging, don’t worry! Here are some screensho
 Now this looks all good and great. There is an awesome overview of our cluster, but other than the logs (in a, let's be honest, rather unpratical format), we have no real visibility on the applications. No way to know if messages are being sent across the system, etc.
 But luckily there is a simple way to fix this, which we will look at in the next chapter.
 
-
 ## Navigation
 
-[Previous Section ⏪](../01-provision-infrastructure/README.md) ‖ [Return to Main Index 🏠](../readme.md) ‖
+[Previous Section ⏪](../01-provision-infrastructure/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
 [Next Section ⏩️](../03-add-basic-observability-instrumentation/README.md)

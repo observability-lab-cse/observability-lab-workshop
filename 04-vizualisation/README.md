@@ -222,3 +222,7 @@ You’ll see a query editor where you can write and run queries using the Kusto 
 Take a moment to acquaint yourself with the structure of your data. Can you trace the origins of various log entries? Can you identify which application they hail from? Put on your detective hat and start connecting the dots!
 
 
+## Navigation
+
+[Previous Section ⏪](../03-add-basic-observability-instrumentation/) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Next Section ⏩️](../05-alert/README.md)

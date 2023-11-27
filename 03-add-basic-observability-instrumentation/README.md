@@ -1,28 +1,18 @@
 # Adding Basic Observability Instrumentation
 
-> Goal: Exploring different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
+>🎯 **Goal:** Exploring different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
 
-<!--
-In this section we are going to build the observability solution step by step by using automatic OpenTelemetry instrumentation.
-
-1. OpenTelemetry collector introduction and ref to lower section with comparison to alternatives
-2. Auto instrumentation of .Net application
-3. Auto instrumentation of Java application
-
-Additional topics:
-
-- OtelCollector and the alternatives quick comparison. -->
-
-<!-- Order of chapters and when to deploy otel collector -->
+> **📌 Starting point 📌**
+>
+> Check out this branch [/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application), in case you have not done the previous section, and run `make` from the root folder.
 
 Now, let's dive into the exciting part of this workshop.
 
 The goal of this section is to instrument the application we developed earlier to gain more visibility into its availability and health.
 
-There are a few steps we need to take to achive this:
+There are a few steps we need to take to achieve this:
 
 1. Provision necessary resources.
-<!-- Consider provisioning manually, potentially. -->
 2. Set up a mechanism to send application level telemetry data to these created resources.
 
 There are multiple ways to instrument your application, or even whole solution in more general terms.
@@ -61,7 +51,7 @@ For auto-instrumentation, our applications need a small "agent" running alongsid
 the service to be able to gather telemetry data from common logging, metric, and tracing libraries.
 
 Let's have a look at the applications we would like to instrument.
-   
+
 - [devices-state-manager](TODO) is written in C#. Following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/), you can auto-instrument the plain vanilla version of the Docker file in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
 - [devices-api](TODO) is a Java application. The same instructions for Java services can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Like before, try adding the auto-instrumentation Agent into the build so we can expose all the metrics.
 
@@ -385,3 +375,8 @@ data:
 ```
 
 </details>
+
+## Navigation
+
+[Previous Section ⏪](../02-deploy-application/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Next Section ⏩️](../04-vizualisation/README.md)

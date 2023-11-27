@@ -48,5 +48,5 @@ Running the script will provision the following essential resources for your app
 
 ## Navigation
 
-[Previous Section ⏪](../00-pre-requisite/README.md) ‖ [Return to Main Index 🏠](../readme.md) ‖
+[Previous Section ⏪](../00-pre-requisite/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
 [Next Section ⏩️](../02-deploy-application/README.md)
