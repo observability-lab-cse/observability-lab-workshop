@@ -10,7 +10,7 @@
 
 > **📌 Starting point 📌**
 >
-> Check out this branch [/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application), in case you have not done the previous section, and run `make` from the root folder.
+> Check out this branch [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application). In case you have not done the previous section, run `make` from the root folder.
 
 Now, let's start deploying the individual services in our application. There are three components to our solution:
 
@@ -156,7 +156,7 @@ spec:
 
 ### Deploy: ⚙️ Devices State Manager
 
-Next on our agenda is the deployment of the Devices State Manager service. You can access the source code for this service [here](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application/sample-application/device-manager/DeviceManager). This .NET application plays a critical role by updating the temperature records of devices in the database as data flows in from each device.
+Next on our agenda is the deployment of the Devices State Manager service. You can access the source code for this service [here](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application/sample-application/devices-state-manager/DevicesStateManager). This .NET application plays a critical role by updating the temperature records of devices in the database as data flows in from each device.
 
 As with our previous steps, we'll need to build the image and ensure it's pushed to your Azure Container Registry (ACR).
 
