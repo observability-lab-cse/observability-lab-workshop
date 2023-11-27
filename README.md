@@ -25,7 +25,7 @@ Sections:
 - [📈 Visualization](./04-vizualisation/README.md) - Use out-of-the-box Azure visualizations
 - [📋 Dashboards](./05-dashboards/README.md) - Create your custom dashboard
 - [🚨 Alerts](./05-alert/README.md) - Creating alerts
-- [🌟 Advanced Instrumentation](./06-advanced-observability-instrumentation/README.md) - Extend solution with more advanced instrumentation eg. Custom metrics, distributed tracing.
+- [🌟 Custom metrics](./07-custom-metrics/README.md) - Add custom metrics to your application
 
 Additional Read:
 
