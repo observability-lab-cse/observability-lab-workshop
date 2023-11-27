@@ -6,7 +6,7 @@
 
 ## 🧐 Why do we need alerts?
 
-In a nutshell, alerts can help you identify and troubleshoot issues before they affect your users or customers. They can also help you to align your observability goals with your business objectives, such as customer satisfaction, revenue, and growth.
+In a nutshell, alerts can help you identify 🔍 and troubleshoot issues 🙀 before they affect your users or customers. They can also help you to align your observability goals with your business objectives, such as customer satisfaction, revenue, and growth.
 
 ## 📚 A little bit of theory
 
