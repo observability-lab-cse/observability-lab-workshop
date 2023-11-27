@@ -21,9 +21,10 @@ Sections:
   needed.
 - [⚙️ Provision Infrastructure](./01-provision-infrastructure/README.md) - Provision AKS cluster, Application Insights etc.
 - [🧩 Deploy application to AKS](./02-deploy-application/README.md) - Deploy all required components of the application
-- [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Use OpenTelemetry to instrument your application
-- [📈 Dashboards](./04-vizualisation/README.md) - Visualize data with dashboards
-- [🚨 Alerts](./05-alert/README.md) - Create alerts
+- [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Using OpenTelemetry instrument your application
+- [📈 Visualization](./04-vizualisation/README.md) - Use out-of-the-box Azure visualizations
+- [📋 Dashboards](./05-dashboards/README.md) - Create your custom dashboard
+- [🚨 Alerts](./05-alert/README.md) - Creating alerts
 - [🌟 Custom metrics](./07-custom-metrics/README.md) - Add custom metrics to your application
 
 Additional Read:
