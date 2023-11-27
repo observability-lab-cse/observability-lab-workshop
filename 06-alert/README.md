@@ -45,7 +45,7 @@ But for this exercise we can skip defining Actions.
 
 Alerts are based on certain conditions that you define. Each resource has its own set of conditions.
 
-Let's create an alert condition. Feel free to create your own if you want. Here, we will go with an alert condition about AKS pods - let's set up an email notification if the number of pod in the pod lifecycle is less than 3.
+Let's create an **Alert Condition**. Feel free to create your own if you want. Here, we will go with an alert condition about AKS pods - let's set up an email notification if the number of pod in the pod lifecycle is less than 3.
 
 ![](./images/create_alert_rule.png)
 
