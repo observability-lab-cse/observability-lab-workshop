@@ -39,7 +39,7 @@ Please note that Action Groups can be configured not only to send **Notification
 
 But for this exercise we can skip defining Actions.
 
-> You can test your Action group by going to **Action Groups** section in **Alerts** and using **Test** button. Check if you get a test email!
+> You can test your Action Group Notification by going to **Action Groups** section in **Alerts** and using **Test** button. Check if you get a test email!
 
 ### Alert conditions
 
