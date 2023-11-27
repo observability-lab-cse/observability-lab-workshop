@@ -1,6 +1,6 @@
 # 1. Provision Infrastructure
 
-> 🎯 **Goal:** Achieving a fully operational infrastructure.
+> 🎯 **Goal:** Provision the infrastructure for the workshop.
 
 ## 🏗️  Architecture
 
@@ -24,20 +24,20 @@ Here's what you need to do:
 
 1. Create a `.env` in the root of the project and add the following content to it.
 
-```text
-ENV_RESOURCE_GROUP_NAME=
-ENV_LOCATION="westeurope"
-ENV_PROJECT_NAME= # should just be lowercase letters or numbers
-```
+    ```text
+    ENV_RESOURCE_GROUP_NAME=
+    ENV_LOCATION="westeurope"
+    ENV_PROJECT_NAME= # should just be lowercase letters or numbers
+    ```
 
 2. Run the following command in the root of the repository
 
-```sh
-az login
-az account set --subscription <name or ID of your subscription>
+    ```sh
+    az login
+    az account set --subscription <name or ID of your subscription>
 
-make provision
-```
+    make provision
+    ```
 
 3. Take a coffee break ☕️
 
@@ -54,7 +54,7 @@ Running the script will provision the following essential resources for your app
 - 💾 Storage Account: This component is essential for the secure storage of EventHub checkpoints
 - 📦 ACR (Azure Container Registry): To store the application container images.
 
-Head to you Azure portal and make sure your resources are indeed provisioned. Fell free to have a small look around, before heading to the next chapter to deploy the solution on our AKS cluster.
+Head to you Azure portal and make sure your resources are indeed provisioned. Fell free to have a small look around, before heading to the next chapter to deploy the solution on your AKS cluster.
 
 ## Navigation
 
