@@ -111,11 +111,15 @@ Another example would be to set up a specific action group for all Alerts in you
 >
 > - **Stateless alerts** fire each time the condition is met, even if fired previously.
 > - **Stateful alerts** fire when the rule conditions are met, and will not fire again or trigger any more actions until the conditions are resolved.
->
+> 
 > What kind of alert is the one we just created?
->
-> <details markdown="1">
-> Stateful! [Metric Alerts are stateful](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-metric-logs#overview) - only notifying once when alert is fired and once when alert is resolved; as opposed to Log alerts, which are stateless and keep firing at every interval if the alert condition is met.
+
+<details markdown="1">
+<summary>See the answer</summary>
+
+Stateful! Metric Alerts are [stateful]((https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-metric-logs#overview) - only notifying once when alert is fired and once when alert is resolved; as opposed to Log alerts, which are stateless and keep firing at every interval if the alert condition is met.
+
+</details>
 
 ## Log based alerts
 
@@ -198,15 +202,14 @@ How would you do that? Discuss with others and try out your ideas.
 
 > Suggestion: if you want to test your alert and "make your application" unhealthy you can remove the deployment from kubernetes or modify the healthcheck code to return 500 and redeploy.
 
-<details>
+<details markdown="1">
 <summary>Reveal the ideas!</summary>
 
 Some ideas (there are probably even more options to do it):
-
-1. [Resources Health alert]([Create Resource Health Alerts using Azure portal - Azure Service Health | Microsoft Learn](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide))
-2. [Alerts for Specific Exceptions with Application Insights](https://stackoverflow.com/questions/47147651/creating-alerts-for-specific-exceptions-with-application-insight-microsoft-azur)
-3. Specific for AKS: Resource logs, [Container insights log alert]([Log alerts from Container insights - Azure Monitor | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-log-alerts))
-4. [Availability Alerts with Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-alerts)
+- [Resources Health alert]([Create Resource Health Alerts using Azure portal - Azure Service Health | Microsoft Learn](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide))
+- [Alerts for Specific Exceptions with Application Insights](https://stackoverflow.com/questions/47147651/creating-alerts-for-specific-exceptions-with-application-insight-microsoft-azur)
+- Specific for AKS: Resource logs, [Container insights log alert]([Log alerts from Container insights - Azure Monitor | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-log-alerts))
+- [Availability Alerts with Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-alerts)
 
 Let's take a closer look at the last option!
 
