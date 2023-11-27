@@ -18,6 +18,10 @@ So let's look at this step by step.
 Firstly, we need to locate the information to display. In other words, find our base telemetry data and potentially a suitable KQL queries.
 Secondly, we need to visualize these queries somehow on a dashboard. 📊✨
 
+> **📌 Starting point 📌**
+>
+> Check out this branch [/03-final](https://github.com/observability-lab-cse/observability-lab/tree/03-final), in case you have not done the previous section, and run `make` from the root folder.
+
 ## 📈 How to get the data we need
 
 Let's walk through one of the examples: "We would like to actually know the temperature of each of our devices, their names, and status."

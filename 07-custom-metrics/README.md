@@ -8,11 +8,11 @@ Custom metrics, also called user-defined or application-specific metrics, allow 
 This will typically be metrics related to the business logic of our application, allowing us to measure the impact of events happening in the system on the user experience or the business.
 In this section you will learn how to add custom metrics to our applications and find out how to visualize them in Application Insights. 🕵️‍♂️
 
+## 🛠️ Step-by-step
+
 > **📌 Starting point 📌**
 >
-> Check out this branch [/03-final)](TBD), in case you have not done the previous section, and run `make` from the root folder.
-
-## 🛠️ Step-by-step
+> Check out this branch [/03-final](https://github.com/observability-lab-cse/observability-lab/tree/03-final), in case you have not done the previous section, and run `make` from the root folder.
 
 ### Adding custom metrics
 
@@ -166,7 +166,7 @@ Go to Application Insights and select the **Metrics** section. You can find your
 
 </details>
 
-This is interesting by it would be more useful to have a chart showing updates per device. We can do this by splitting the metric by `deviceId`. Select the `device-updates` metric in the `Log-based metrics` Namespace and then select the `Apply splitting` option to generate separate graphs for each device.
+This is interesting but it would be more useful to have a chart showing updates per device. We can do this by splitting the metric by `deviceId`. Select the `device-updates` metric in the `Log-based metrics` Namespace and then select the `Apply splitting` option to generate separate graphs for each device.
 
 <details markdown="1">
 <summary>Click here to see the device update chart split by device ID.</summary>
@@ -216,6 +216,10 @@ Using the `customMetrics` table, let's write a query that will only display devi
 ## Conclusion
 
 In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎
+
+> **📌 Pick up the pieces 📌**
+>
+> If you didn't manage to make all the code changes needed for custom metrics and would like to see it all work, don't worry! Check out [this branch](https://github.com/observability-lab-cse/observability-lab) to see the ready solution.
 
 ## Navigation
 
