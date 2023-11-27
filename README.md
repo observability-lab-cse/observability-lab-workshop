@@ -8,9 +8,9 @@ Understanding the inner workings of your Kubernetes cluster can be an intriguing
 
 This workshop will includes:
 
-🛠️ Instrumenting applications with OpenTelemetry on Azure
-🖥️ Shedding light on your AKS cluster with observability features
-📊 Crafting custom telemetry visualizations using Azure Monitor Workbooks and Dashboards
+- 🛠️ Instrumenting applications with OpenTelemetry on Azure
+- 🖥️ Shedding light on your AKS cluster with observability features
+- 📊 Crafting custom telemetry visualizations using Azure Monitor Workbooks and Dashboards
 
 ## Navigating this Journey
 
