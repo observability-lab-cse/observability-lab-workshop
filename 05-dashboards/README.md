@@ -18,7 +18,7 @@ So let's look at this step by step.
 Firstly, we need to locate the information to display. In other words, find our base telemetry data and potentially a suitable KQL queries.
 Secondly, we need to visualize these queries somehow on a dashboard. 📊✨
 
-## 1. How to Get the Data We Need
+## 1. How to get the data we need
 
 Let's walk through one of the examples: "We would like to actually know the temperature of each of our devices, their names, and status."
 
