@@ -1,14 +1,14 @@
-# Alerts
+# Alerts 🔔
 
 > Goal: Gain a basic understanding of alerts on Azure.
 
-Do you want to be the first to know when your apps and infra are acting up? Do you want to get ahead of the problems before they ruin your day (or night)? If you answered yes to any of these questions, then this workshop section is for you!
+❓Do you want to be the first to know when your apps and infra are acting up? Do you want to get ahead of the problems before they ruin your day (or night)? If you answered yes to any of these questions, then this workshop section is for you! 
 
-## Why do we need alerts?
+## 🧐 Why do we need alerts?
 
 In a nutshell, alerts can help you identify and troubleshoot issues before they affect your users or customers. They can also help you to align your observability goals with your business objectives, such as customer satisfaction, revenue, and growth.
 
-## A little bit of theory
+## 📚 A little bit of theory
 
 ![Diagram that explains Azure Monitor alerts.](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/media/alerts-overview/alerts.png)
 
@@ -16,7 +16,7 @@ Alerts are stored for 30 days. You can see all alert instances for all of your A
 
 Alerts consist of a few elements, presented in the next sections.
 
-### Action groups
+###  Action groups
 
 **Action groups** - Collection of notification preferences defined by the user. They are the receivers of the notifications when an alert is triggered.
 
@@ -24,7 +24,7 @@ You can configure an action group to notify you through one or more of these met
 
 Each action group is given a unique name and can be used by both Azure Monitor and Service Health alerts. An action group can be used across different subscriptions, allowing you to manage your alert actions centrally.
 
-Let's [create an Action Group](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups) for Email notification!
+Let's [create an Action Group](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups) for Email notification ✉️!
 
 1. Navigate to the Monitor tab.
 2. Under Monitor, select Alerts.
@@ -95,7 +95,7 @@ One thing you can do is change the User response. Let's change it to **Acknowled
 
 ![](./images/fired_alert.png)
 
-Once the condition changes and the alert is not longer valid (we deployed missing pods) then the Alert changes his status to **Resolved**:
+Once the condition changes and the alert is no longer valid (we deployed missing pods) then the Alert changes his status to **Resolved**:
 
 ![](./images/alert_status.png)
 
@@ -190,7 +190,7 @@ What's [Azure Service Health](https://learn.microsoft.com/en-gb/azure/service-he
 
 The portal provides you with a customizable dashboard which tracks the health of your Azure services in the regions where you use them. In this dashboard, you can track active events like ongoing service issues, upcoming planned maintenance, or relevant health advisories. When events become inactive, they get placed in your health history for up to 90 days. Service health notifications are stored in the [Azure activity log](https://learn.microsoft.com/en-gb/azure/azure-monitor/essentials/platform-logs-overview). You can use them to create your own alerts. E.g. you can create an alert that gets triggered when one of the services in your subscription is down. The alerts can be also integrated with external alerting tools, like PagerDuty.
 
-## Excersise
+## Exercise 💪
 
 We went through a few ways how to create the alerts. Imagine that you need to create an alert that is triggered when your devices-api application is not healthy.
 
@@ -199,7 +199,7 @@ How would you do that? Discuss with others and try out your ideas.
 > Suggestion: if you want to test your alert and "make your application" unhealthy you can remove the deployment from kubernetes or modify the healthcheck code to return 500 and redeploy.
 
 <details>
-<summary>See the ideas!</summary>
+<summary>Reveal the ideas!</summary>
 
 Some ideas (there are probably even more options to do it):
 
