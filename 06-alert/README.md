@@ -26,11 +26,10 @@ Each action group is given a unique name and can be used by both Azure Monitor a
 
 Let's [create an Action Group](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups) for Email notification!
 
-1. Log in to the Azure portal.
-2. Navigate to the Monitor tab.
-3. Under Monitor, select Alerts.
-4. Click on Manage action groups.
-5. Click on "+ New action group" to create a new Action Group.
+1. Navigate to the Monitor tab.
+2. Under Monitor, select Alerts.
+3. Click on Manage action groups.
+4. Click on "+ New action group" to create a new Action Group.
 
 ![Action Group](./images/create_ag.png)
 
