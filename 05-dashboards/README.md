@@ -139,7 +139,7 @@ Add the below line to your query and you are done.
 </details>
 
 <details markdown="1">
-<summary> 🔦 Possible Solution Query</summary>
+<summary> 🔦 Possible solution query</summary>
 
 ```kql
 AppTraces
@@ -227,7 +227,7 @@ Here are some operations:
 </details>
 
 <details markdown="1">
-<summary>🔦 Possible Solution Query</summary>
+<summary>🔦 Possible solution query</summary>
 
 ```kql
 AppTraces

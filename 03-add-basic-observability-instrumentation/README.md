@@ -18,7 +18,7 @@ When we look at the AKS workloads, pods, or other data tables, it doesn't provid
 
 To gain this lower level of visibility into our solution, we have various tools at our disposal. To demonstrate how easily you can instrument an existing application, we'll explore an auto-instrumentation approach using OpenTelemetry's automated instrumentation agents and the OpenTelemetry collector to send telemetry data upstream. 😉
 
-> Note: The [section below](TODO) offers a comparison of different approaches for instrumenting applications, along with links to relevant resources and samples.
+> 📝 **Note:**  This article ["Cluster observability"](https://internal.playbook.microsoft.com/code-with-platformops/capabilities/observability/k8s-observability/?h=instrumentation+based#individual-instrumentation-based-approaches) on the PlatformOps Playbook offers a comparison of a few other  approaches for instrumenting applications, along with links to relevant resources and samples.
 
 But first, let's provision our resources so that we have a destination to send the newly gathered data.
 
@@ -42,20 +42,26 @@ As mentioned, there are many ways to instrument applications. Some require writi
 For this workshop, let's use an approach that requires no changes to the application code, as it will come in handy when working with preexisting applications.
 To do so, we will make use of the OpenTelemetry Auto instrumentation for different programming languages and the [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/).
 
+This will require our application to publish their telemetry data via [otlp protocol](https://opentelemetry.io/docs/specs/otel/protocol/) (or any other of the available [receivers](https://opentelemetry.io/docs/collector/configuration/#receivers)) to the collector, which can than send them upstream into one or more of its [exporters](https://opentelemetry.io/docs/collector/configuration/#exporters). The collector allows you to do much more than just forwards telemetry data from your application to Azure for example. Using [processors](https://opentelemetry.io/docs/collector/configuration/#processors) and [connectors](https://opentelemetry.io/docs/collector/configuration/#connectors), there is a lot of preprocessing you can do before sending your data to is end location.
+However this is a conversation for another time or come back later when this workshop has extended to also cover these topics 😉.
+
+> 📝 **Note:** One final note on this topic however, for people that wonder why you would want to pre process your data. So in scenarios when your cluster is not an AKS cluster but running on an edge device which low connectivity or if your applications produce a lot of telemetry your would like to filter/control before being send upstream these features of the collector come in very handy. SO if you are interested go check out the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main) for all the options and tools you have at your disposal.
+
+Now that we know how we want to instrument our solution, lets start by auto-instrumenting our applications and then deploying the new version along side an OpenTelemetry Collector
+
 ### 📱 Configure Applications
 
-For auto-instrumentation, our applications need a small "agent" running alongside
-the service to be able to gather telemetry data from common logging, metric, and tracing libraries.
+For auto-instrumentation, our applications need a small "agent" running alongside the service to be able to gather telemetry data from common logging, metric, and tracing libraries.
 
 Let's have a look at the applications we would like to instrument.
 
-- [devices-state-manager](TODO) is written in C#. Following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/), you can auto-instrument the plain vanilla version of the Docker file in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
-- [devices-api](TODO) is a Java application. The same instructions for Java services can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Like before, try adding the auto-instrumentation Agent into the build so we can expose all the metrics.
+- The [devices-state-manager](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-state-manager) is written in C#. Following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/), you can auto-instrument the plain vanilla version of the Docker file in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
+- The [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-api) is a Java application. The same instructions for Java services can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Like before, try adding the auto-instrumentation Agent into the build so we can expose all the metrics.
 
-In case you have issues, you can see how to do it when opening the section below or check out the next section's [branch]().
+In case you have issues, you can see how to do it when opening the section below or check out the next section's [branch](TODO).
 
 <details markdown="1">
-<summary>Click here for the Dockerfile with the auto-instrumentation Agent for Java</summary>
+<summary> 🔦 Dockerfile with the auto-instrumentation for Java</summary>
 
 ```Docker
 FROM eclipse-temurin:17
@@ -77,7 +83,7 @@ ENTRYPOINT ["java", "-javaagent:opentelemetry-javaagent.jar", "-jar","build/libs
 The same again for the C# service.
 
 <details markdown="1">
-<summary>Click here for the Dockerfile with the auto-instrumentation Agent for C#</summary>
+<summary>🔦 Dockerfile with the auto-instrumentation for C#</summary>
 
 ```Docker
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
@@ -114,9 +120,9 @@ For the agent to properly connect to the Collector, there are a few environment 
 In the case of the Java agent, not much is needed.
 
 <details markdown="1">
-<summary>Click here for the new deployment yaml with the env vars for auto-instrumentation Agent for Java</summary>
+<summary>🔦 Deployment yaml for auto-instrumentation <code>devices-api</code> service</summary>
 
-There are two new variables `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_LOGS_EXPORTER`.
+TODO: There are two new variables `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_LOGS_EXPORTER`.
 
 ```yaml
 kind: Deployment
@@ -198,9 +204,9 @@ spec:
 For the C# application there are a few more variables needed
 
 <details markdown="1">
-<summary>Click here for the new deployment yaml with the env vars for autoinstrumentation Agent for C#</summary>
+<summary>🔦 Deployment yaml for auto-instrumentation <code>device-state-manager</code> service</summary>
 
-There are two new variables `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_LOGS_EXPORTER`.
+TBD
 
 ```yaml
 kind: Deployment
@@ -270,10 +276,23 @@ spec:
 
 ### 🎻 Deployment Otel collector and auto-instrumented Application
 
-Let's now first deploy the OpenTelemetry collector and then re-deploy the individual applications again.
+Before we redeploy our applications, lets have a look at the OpenTelemetry Collector deployment and how we need to configure it.
+
+Let's if given the documentation ["Install Collector"](https://opentelemetry.io/docs/collector/installation/) on how to deploy the collector you can manage to create its deployment and configure it correctly.
 
 <details markdown="1">
-<summary>Click here for the Opentelemerty Colloector</summary>
+<summary> 🔍 Hints: </summary>
+A few question that could guide you to figure out what you need to configure:
+
+1. What is our upstream location? Hence, what exporter do we need?
+1. Does our exporter need specific configuration?
+1. What do we want to export and where to?
+
+</details>
+If you managed, great! Else, not to worry. Open the below section and you have the deployment yaml as well as the configuration for your collector. Go ahead and deploy that, before you redeploy your applications.
+
+<details markdown="1">
+<summary>🔦 Deployment yaml OpenTelemetry Collector</summary>
 
 ```yaml
 apiVersion: apps/v1
@@ -372,6 +391,8 @@ data:
 ```
 
 </details>
+
+Go grab another coffee ☕ (or tea 🍵, we don't discriminate) and come back to a bunch of telemetry send already upstream! To learn how to use all this cool new data, head to the next section where we see how cool Application Insights actually is 😜.
 
 ## Navigation
 
