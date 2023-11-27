@@ -24,8 +24,8 @@ Let's walk through one of the examples: "We would like to actually know the temp
 
 This example is a bit special, and we could approach it in two ways:
 
-1. **Accessing the Cosmos DB:** We can access the information stored in there.
-2. **Using Telemetry Data:** Utilizing the telemetry data we already have to collect this information.
+- Option 1. **Accessing the Cosmos DB:** We can access the information stored in there.
+- Option 2. **Using Telemetry Data:** Utilizing the telemetry data we already have to collect this information.
 
 For now, let's proceed with option 2.
 
