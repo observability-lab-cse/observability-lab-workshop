@@ -18,7 +18,7 @@ So let's look at this step by step.
 Firstly, we need to locate the information to display. In other words, find our base telemetry data and potentially a suitable KQL queries.
 Secondly, we need to visualize these queries somehow on a dashboard. 📊✨
 
-## 1. 📈 How to get the data we need
+## 📈 How to get the data we need
 
 Let's walk through one of the examples: "We would like to actually know the temperature of each of our devices, their names, and status."
 
@@ -147,7 +147,7 @@ AppTraces
 
 </details>
 
-## 2. ✨ How to make it look nice
+## ✨ How to make it look nice
 
 Now, if you want to spice it up a little , consider this: a table is boring and not visually appealing.
  But wait, how about a honeycomb diagram 🍯? Intriguing, right?
@@ -264,29 +264,29 @@ Now that we've crafted these appealing graphs and visualizations, let's go a ste
 
 Before we can seamlessly export the diagrams into an Azure dashboard, there are some preliminary steps to ensure a smooth experience.
 
-#### 1. Time Range Picker
+1. Setup a Time Range Picker
 
-In order to manipulate the time range displaying the time-series data in the dashboards, we need to add a parameter to the workbook. Follow these [instructions for Workbook time parameters](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-time). After completing these instructions, double-check that all your queries properly use the time picker you've created.
+    In order to manipulate the time range displaying the time-series data in the dashboards, we need to add a parameter to the workbook. Follow these [instructions for Workbook time parameters](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-time). After completing these instructions, double-check that all your queries properly use the time picker you've created.
 
-<details markdown="1">
-<summary>Set Time Range to parameter</summary>
+    <details markdown="1">
+    <summary>Set Time Range to parameter</summary>
 
-![Time Range](./images/Workbook-timerange.jpg)
+    ![Time Range](./images/Workbook-timerange.jpg)
 
-</details>
+    </details>
 
-#### 2. Titles
+2. Set Diagram Titles
 
-By default, when you pin queries from a workbook, the title will be the workbook name. To avoid having to change titles every time you pin diagrams into a dashboard, let's add them to the workbook.
+    By default, when you pin queries from a workbook, the title will be the workbook name. To avoid having to change titles every time you pin diagrams into a dashboard, let's add them to the workbook.
 
-You can do this by navigating to the advanced sections.
+    You can do this by navigating to the advanced sections.
 
-<details markdown="1">
-<summary>Set Title</summary>
+    <details markdown="1">
+    <summary>Set Title</summary>
 
-![Time Range](./images/Workbook-titel.jpg)
+    ![Titel](./images/Workbook-titel.jpg)
 
-</details>
+    </details>
 
 Now, proceed to the top of your workbook and select "Pin All" or you can pin each individually.
 

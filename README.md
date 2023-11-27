@@ -28,6 +28,6 @@ Sections:
 - [🚨 Alerts](./05-alert/README.md) - Creating alerts
 - [🌟 Custom metrics](./07-custom-metrics/README.md) - Add custom metrics to your application
 
-Additional Read:
+<!-- Additional Read:
 
-- [📖 Azure Observability 101](./10-azure-observabity-101/README.md) - Covering the basics of the azure observability suite
+- [📖 Azure Observability 101](./10-azure-observabity-101/README.md) - Covering the basics of the azure observability suite -->
