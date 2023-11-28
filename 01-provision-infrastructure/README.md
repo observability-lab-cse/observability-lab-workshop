@@ -14,7 +14,7 @@ While this solution is rather simplistic and not a real-world example, its purpo
 
 > **📌 Starting point 📌**
 >
-> Check out this branch to get started [section/01-provision-infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/section/01-provision-infrastructure)
+> Check out this branch to get started: [section/01-provision-infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/section/01-provision-infrastructure)
 
 Before we dive into the workshop, it's essential to have your Azure resources prepared. Think of this as laying the foundation for our upcoming steps.
 
