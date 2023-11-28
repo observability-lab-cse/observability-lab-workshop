@@ -219,7 +219,7 @@ In this section we added custom metrics to our .NET application and learned how 
 
 > **📌 Pick up the pieces 📌**
 >
-> If you didn't manage to make all the code changes needed for custom metrics and would like to see it all work, don't worry! Check out [this branch](https://github.com/observability-lab-cse/observability-lab) to see the ready solution.
+> If you didn't manage to make all the code changes needed for custom metrics and would like to see it all work, don't worry! Check out the [main branch](https://github.com/observability-lab-cse/observability-lab) to see the ready solution.
 
 ## Navigation
 
