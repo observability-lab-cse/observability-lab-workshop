@@ -50,7 +50,7 @@ there is a lot of preprocessing you can do before sending your data to its end l
 However, this is a conversation for another time or come back later when this workshop has extended to also cover these topics 😉.
 
 > 📝 **One final note on this topic if you wonder why you would want to preprocess your data. **
-> Rhese features of the collector come in very handy especially in scenarios when your cluster is not an AKS cluster but running on an edge device with low connectivity or
+> These features of the collector come in very handy especially in scenarios when your cluster is not an AKS cluster but running on an edge device with low connectivity or
 > if your applications produce a lot of telemetry you need to filter/control before being sent upstream.
 > If you are interested go check out the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main) for all the options and tools you have at your disposal.
 
