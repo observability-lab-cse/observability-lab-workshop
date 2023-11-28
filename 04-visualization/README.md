@@ -10,9 +10,9 @@ Azure has a lot of awesome visualizations that you can use to investigate your d
 
 > **📌 Starting point 📌**
 >
-> Check out this branch [/03-final](https://github.com/observability-lab-cse/observability-lab/tree/03-final), in case you have not done the previous section, and run `make` from the root folder.
+> In case you have not completed the previous section, check out this branch: [/instrumented-app](https://github.com/observability-lab-cse/observability-lab/tree/instrumented-app), and run `make` from the root folder.
 
-Let's start from the observability pillar that is the easieast to visualize - metrics.
+Let's start from the observability pillar that is the easiest to visualize - metrics.
 
 Metrics are numerical values that measure various aspects, such as performance, reliability, and usage. They can help you identify and troubleshoot issues and optimize your resources.
 
