@@ -61,13 +61,15 @@ Let's have a look at the applications we would like to instrument.
 Lets be honest and say agree that the OpenTelemetry documentations are not the easiest to work with or find stuff in. So to give you some help we have listed the steps below on what you need to do and where to grab the information from.
 
 1. Add the auto-instrumentation of the plain vanilla `Dockerfiles` so each service gets the OpenTelemetry SDK gets injected (in what ever mechanism relevant for the set language)
+
       <details markdown="1">
       <summary> 🔍 Hints: Where to find information </summary>
 
-      - For the C# application following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/) or [GitHub: OpenTelemetry Auto-instrumentation for C#](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)to inject the OpenTelemetry SDK to capture telemetry data.
-      - For the Java application the instructions can be found here [OpenTelemetry Auto-instrumentation for Java](https://opentelemetry.io/docs/instrumentation/java/automatic/) or [GitHub: OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation) on how to load an agent JAR when starting the application, so it can attach to your application and dynamically inject the OpenTelemetry SDK to capture telemetry data.
+      * For the C# application following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/) or [GitHub: OpenTelemetry Auto-instrumentation for C#](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)to inject the OpenTelemetry SDK to capture telemetry data.
+      * For the Java application the instructions can be found here [OpenTelemetry Auto-instrumentation for Java](https://opentelemetry.io/docs/instrumentation/java/automatic/) or [GitHub: OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation) on how to load an agent JAR when starting the application, so it can attach to your application and dynamically inject the OpenTelemetry SDK to capture telemetry data.
 
       </details>
+
 1. Configure the SDK to export the telemetry data our application actually produces.
     > 📝 **Note:** For now our applications only produce log statements 😉
       <details markdown="1">
