@@ -10,7 +10,10 @@ Azure has a lot of awesome visualizations that you can use to investigate your d
 
 > **📌 Starting point 📌**
 >
-> In case you have not completed the previous section, check out this branch: [/instrumented-app](https://github.com/observability-lab-cse/observability-lab/tree/instrumented-app), and run `make` from the root folder.
+> In case you have not completed the previous sections:
+> - Check out this branch: [section/04-visualization](https://github.com/observability-lab-cse/observability-lab/tree/section/04-visualization)
+> - Copy .env.example file into .env and update the file with your values
+> - Run `make` from the root folder.
 
 Let's start from the observability pillar that is the easiest to visualize - metrics.
 
