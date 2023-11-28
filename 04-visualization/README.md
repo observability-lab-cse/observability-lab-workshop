@@ -71,7 +71,7 @@ Clicking on the charts in Application Insights offers a different experience com
 For example, if you click on the *Failed requests* chart, you’ll be directed to the *Investigate Failures* view. This isn’t just a page with metrics, it’s an interactive section where you can delve deeper into your data and make sense out of metrics, logs and traces. So go ahead, click on a chart, and start exploring.
 
 <details markdown="1">
-<summary>Click here to see the Application Insights Failures view.</summary>
+<summary>Click here to see the Application Insights Failures view ⚠️</summary>
 
 ![AppInsights-failures](./images/AppInsights-failures.png)
 
@@ -80,7 +80,7 @@ For example, if you click on the *Failed requests* chart, you’ll be directed t
 If you click on the Server response time or Server requests chart, you'll go to the *Investigate Performance* view.
 
 <details markdown="1">
-<summary>Click here to see the Application Insights Performance view.</summary>
+<summary>Click here to see the Application Insights Performance view 🚀</summary>
 
 ![AppInsights-performance](./images/AppInsights-performance.png)
 
@@ -91,7 +91,7 @@ The last chart shows Availability, but it won't show any data unless you set it 
 Click on the Availability chart and you'll go to the *Investigate Availability* view.
 
 <details markdown="1">
-<summary>Click here to see what the Application Insights Availability view should look like in your Azure Portal.</summary>
+<summary>Click here to see the Application Insights Availability Test 🕵️‍♂️</summary>
 
 ![AppInsights-availability](./images/AppInsights-availability.png)
 
@@ -100,6 +100,7 @@ Click on the Availability chart and you'll go to the *Investigate Availability* 
 [Application Insights availability tests](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-overview) are great for monitoring availability and responsiveness of any HTTP or HTTPS endpoint. Our devices-api and devices-state-manager expose `health` endpoints, so we can use them to set up availability tests. Find out what the `health` endpoint of the devices-api and devices-state-manager is and create [a Standard test](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-standard-tests).
 
 <details markdown="1">
+<summary>Click here to see what the Application Insights Availability view should look like in your Azure Portal.</summary>
 > How to find your application IP?
 >
 > ```shell

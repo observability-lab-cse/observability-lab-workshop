@@ -51,17 +51,21 @@ Now that we know how we want to instrument our solution, lets start by auto-inst
 
 ### 📱 Configure Applications
 
-For auto-instrumentation, our applications need a small "agent" running alongside the service to be able to gather telemetry data from common logging, metric, and tracing libraries.
+For auto-instrumentation, our applications needs to get the OpenTelemetry SDK injected and configured, so it is able to gather telemetry data from common logging, metric, and tracing libraries.
 
 Let's have a look at the applications we would like to instrument.
 
 - The [devices-state-manager](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-state-manager) is written in C#. Following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/), you can auto-instrument the plain vanilla version of the Docker file in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
-- The [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-api) is a Java application. The same instructions for Java services can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Like before, try adding the auto-instrumentation Agent into the build so we can expose all the metrics.
+- The [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-api) is a Java application. The same instructions for Java services can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Like before, try adding the auto-instrumentation Agent JAR into the build, so it can  attach to your application and dynamically inject bytecode to capture telemetry data.
 
-In case you have issues, you can see how to do it when opening the section below or check out the next section's [branch](TODO).
+In case you have issues, you can see how to do it when opening the section below or check out the next section's branch [section/04-visualization](TODO).
 
 <details markdown="1">
 <summary> 🔦 Dockerfile with the auto-instrumentation for Java</summary>
+
+In the case of our Java application, we need to download the OpenTelemetry Agent Jar and load it along side our application at start up.
+
+> 📝 **Note:** Take a note on which environment variables need to be set for the Java Agent to inject the correct bytecode so it collects all the telemetry we need.
 
 ```Docker
 FROM eclipse-temurin:17
@@ -80,10 +84,12 @@ ENTRYPOINT ["java", "-javaagent:opentelemetry-javaagent.jar", "-jar","build/libs
 
 </details>
 
-The same again for the C# service.
-
 <details markdown="1">
 <summary>🔦 Dockerfile with the auto-instrumentation for C#</summary>
+
+For our C# service the auto-instrumentation look slightly different.
+Here we need to download a `bash` script that will install and inject the [OpenTelemetry .NET SDK](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry/README.md#opentelemetry-net-sdk) into our application, using the startup hook.
+> 📝 **Note:** Take a note on which environment variables need to be set for the scripts to inject the libraries so it collects all the telemetry we need.
 
 ```Docker
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
@@ -111,11 +117,176 @@ ENTRYPOINT ["dotnet", "DeviceManager.dll"]
 
 </details>
 
-Now, let's build the images with the agent and add a new tag to it, so that we know which images are auto-instrumented. TODO
+Now, let's build the images with the auto-instrumentation like in our previous chapter. In case you don't remember, go back to this section [🚀  Deploy Application](../02-deploy-application/README.md#🚀-deploy-application)
+
+### 🎻 Deployment OpenTelemetry collector
+
+Before we redeploy our newly auto-instrumented applications, lets have a look at the OpenTelemetry Collector. Especially how we need to deployment and configure it so our data gets send to our Application Insights.
+
+Let see if, given the documentation ["Install Collector"](https://opentelemetry.io/docs/collector/installation/) on how to deploy the collector, you can manage to create its deployment and configure it correctly. If you don't feel very comfortable yet with this, open the `🔍 Hints` section below and get some more guidance how to approach this task 😉
+
+<details markdown="1">
+<summary> 🔍 Hints: </summary>
+Start with creating your collector deployment and then proceed with configuring the collector as you need using the `collector-config.yaml`
+A few question that could guide you to figure out what you need to configure:
+
+1. What is our upstream and downstream sources?
+1. What receivers and exporters do we need to configure?
+1. What what type of data do we want to collect?
+
+</details>
+
+<details markdown="1">
+<summary> 🛠️ Step-by-Step guide on deploying the OpenTelemetry Collector</summary>
+
+1. So first of all we can focus on the deployment
+TODO
+
+2. Now lets have a look at the configuration.
+
+    i. As mentioned before, the auto-instrumentation exposes the telemetry data using the otlp protocol. Now according to this docs on [receivers](https://opentelemetry.io/docs/collector/configuration/#receivers) our `receiver` section needs to contain the following
+
+      ```yaml
+        otlp:
+          protocols:
+            grpc:
+            http:
+      ```
+
+    ii. Given we don't really want to process the data withing the collector, we can skip all the other sections and directly go to the [exporter](https://opentelemetry.io/docs/collector/configuration/#exporters). Interestingly enough we wont find anything regarding Azure in this docs 🤔. As mention above, there are two repositories when it comes to the `exporter`,`receivers`, etc. the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and the [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main). If we look in the `contrib` repository, we can find the [`azuremonitorexporter`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuremonitorexporter). So this now means we need the following section in the `exporter` configuration:
+
+    ```yaml
+    azuremonitor:
+        instrumentation_key: INSTRUMENTATION_KEY_PLACEHOLDER
+    ```
+
+    To be able to debug the deployment and see if the metric is also flowing through the collector, lets also set the log level of the collector to `normal` by adding this below snippet to the `exporter` configuration:
+
+      ```yaml
+      logging:
+              verbosity: normal
+      ```
+
+    iii. Finally, we need to tell the Collector what to do with the data it ingest. This is done using the [service.pipelines](https://opentelemetry.io/docs/collector/configuration/#service) section of the configuration yaml. For now we want all our telemetry data to be ingested form the `otlp` source (also because we don't have another any other configure 😆), not processed and the forwarded to our two exporters. This is how that would look for each metric.
+
+    ```yaml
+          receivers: [otlp]
+          processors: []
+          exporters: [azuremonitor, logging]
+    ```
+
+    Add this in for all telemetry data we need and you have your `collector-config.yaml` 🥳.
+
+</details>
+
+If you managed, great 🎉! Else, not to worry. Open the section below and you have the deployment yaml as well as the configuration for your collector. Go ahead and deploy that, before you redeploy your applications.
+
+> 📝 **Note:** Don't forget to replace the `INSTRUMENTATION_KEY_PLACEHOLDER` with your Application Insights instrumentation key. 
+
+<details markdown="1">
+<summary>🔦 Deployment yaml OpenTelemetry Collector</summary>
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opentelemetrycollector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: opentelemetrycollector
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: opentelemetrycollector
+    spec:
+      hostAliases:
+      containers:
+        - name: otelcol
+          args:
+            - --config=/conf/collector-config.yaml
+          image: otel/opentelemetry-collector-contrib:0.83.0
+          volumeMounts:
+            - mountPath: /conf
+              name: config
+          resources:
+            requests:
+              cpu: "0.2"
+              memory: "200Mi"
+            limits:
+              cpu: "0.3"
+              memory: "300Mi"
+      volumes:
+        - configMap:
+            items:
+              - key: "collector-config.yaml"
+                path: collector-config.yaml
+            name: config
+          name: config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opentelemetrycollector
+spec:
+  ports:
+    - name: grpc-otlp
+      port: 4317
+      targetPort: 4317
+      protocol: TCP
+    - name: http-otlp
+      port: 4318
+      targetPort: 4318
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: opentelemetrycollector
+  type: ClusterIP
+```
+
+As well as the `collector-config.yaml`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  collector-config.yaml: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+    processors:
+      batch:
+    exporters:
+      azuremonitor:
+        instrumentation_key: INSTRUMENTATION_KEY_PLACEHOLDER
+      logging:
+        verbosity: normal
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: []
+          exporters: [azuremonitor, logging]
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [azuremonitor, logging]
+        logs:
+          receivers: [otlp]
+          processors: []
+          exporters: [azuremonitor, logging]
+```
+
+</details>
 
 ### 🐳 Configure Deployment
 
-For the agent to properly connect to the Collector, there are a few environment variables that need to be set. For now, let's only set the mandatory ones.
+For the service to properly connect to the Collector, there are a few environment variables that need to be set. For now, let's only set the mandatory ones.
 
 In the case of the Java agent, not much is needed.
 
@@ -270,124 +441,6 @@ spec:
               value: event-hub-data
             - name: DEVICE_API_URL
               value: "http://devices-api-service:8080"
-```
-
-</details>
-
-### 🎻 Deployment Otel collector and auto-instrumented Application
-
-Before we redeploy our applications, lets have a look at the OpenTelemetry Collector deployment and how we need to configure it.
-
-Let's if given the documentation ["Install Collector"](https://opentelemetry.io/docs/collector/installation/) on how to deploy the collector you can manage to create its deployment and configure it correctly.
-
-<details markdown="1">
-<summary> 🔍 Hints: </summary>
-A few question that could guide you to figure out what you need to configure:
-
-1. What is our upstream location? Hence, what exporter do we need?
-1. Does our exporter need specific configuration?
-1. What do we want to export and where to?
-
-</details>
-If you managed, great! Else, not to worry. Open the below section and you have the deployment yaml as well as the configuration for your collector. Go ahead and deploy that, before you redeploy your applications.
-
-<details markdown="1">
-<summary>🔦 Deployment yaml OpenTelemetry Collector</summary>
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: opentelemetrycollector
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: opentelemetrycollector
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: opentelemetrycollector
-    spec:
-      hostAliases:
-      containers:
-        - name: otelcol
-          args:
-            - --config=/conf/collector-config.yaml
-          image: otel/opentelemetry-collector-contrib:0.83.0
-          volumeMounts:
-            - mountPath: /conf
-              name: config
-          resources:
-            requests:
-              cpu: "0.2"
-              memory: "200Mi"
-            limits:
-              cpu: "0.3"
-              memory: "300Mi"
-      volumes:
-        - configMap:
-            items:
-              - key: "collector-config.yaml"
-                path: collector-config.yaml
-            name: config
-          name: config
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: opentelemetrycollector
-spec:
-  ports:
-    - name: grpc-otlp
-      port: 4317
-      targetPort: 4317
-      protocol: TCP
-    - name: http-otlp
-      port: 4318
-      targetPort: 4318
-      protocol: TCP
-  selector:
-    app.kubernetes.io/name: opentelemetrycollector
-  type: ClusterIP
-```
-
-As well as the `collector-config.yaml`
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: config
-data:
-  collector-config.yaml: |
-    receivers:
-      otlp:
-        protocols:
-          grpc:
-          http:
-    processors:
-      batch:
-    exporters:
-      azuremonitor:
-        instrumentation_key: INSTRUMENTATION_KEY_PLACEHOLDER
-      logging:
-        verbosity: normal
-    service:
-      pipelines:
-        traces:
-          receivers: [otlp]
-          processors: []
-          exporters: [azuremonitor, logging]
-        metrics:
-          receivers: [otlp]
-          processors: []
-          exporters: [azuremonitor, logging]
-        logs:
-          receivers: [otlp]
-          processors: []
-          exporters: [azuremonitor, logging]
 ```
 
 </details>
