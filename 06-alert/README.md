@@ -1,4 +1,4 @@
-# Alerts 🔔
+# 6. Alerts 🔔
 
 > Goal: Gain a basic understanding of alerts on Azure.
 
