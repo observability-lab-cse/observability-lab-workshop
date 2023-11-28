@@ -1,6 +1,6 @@
 # 3. Adding Basic Observability Instrumentation
 
->🎯 **Goal:** Exploring different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
+>🎯 **Goal:** Explore different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
 
 Now, let's dive into the exciting part of this workshop.
 
@@ -58,7 +58,7 @@ Let's have a look at the applications we would like to instrument.
 - The [devices-state-manager](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-state-manager) is written in C#. Following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/), you can auto-instrument the plain vanilla version of the Docker file in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
 - The [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-api) is a Java application. The same instructions for Java services can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Like before, try adding the auto-instrumentation Agent into the build so we can expose all the metrics.
 
-In case you have issues, you can see how to do it when opening the section below or check out the next section's [branch](TODO).
+In case you have issues, you can see how to do it when opening the section below or check out the next section's [branch](https://github.com/observability-lab-cse/observability-lab/tree/instrumented-app).
 
 <details markdown="1">
 <summary> 🔦 Dockerfile with the auto-instrumentation for Java</summary>
