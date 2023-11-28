@@ -4,7 +4,7 @@
 
 ## 🏗️  Architecture
 
-First, let's take a closer look at the application we'll be using for this workshop. It's a solution comprising two microservices, one written in C# and the other in Java, and a set of Azure resources. The solution allows users to onboard and manage simplistic smart-home devices (e.g. a smart thermometer). A simulator component will generates the temperatures each device measures and sends them to our small device management solution over EventHub.
+First, let's take a closer look at the application we'll be using for this workshop. It's a solution comprising two microservices, one written in C# and the other in Java, and a set of Azure resources. The solution allows users to onboard and manage simplistic smart-home devices (e.g. a smart thermometer). A simulator component will generate the temperatures each device measures and sends them to our small device management solution over EventHub.
 
 While this solution is rather simplistic and not a real-world example, its purpose is to provide you with hands-on experience in instrumenting various services written in different languages. This way, you'll become more comfortable with instrumenting your own solutions. Below, you'll find a diagram outlining our solution and the required resources.
 
@@ -43,15 +43,15 @@ Here's what you need to do:
 
 When you return, your resources should be provisioned and ready to go 🚀.
 
-> 📝 **Note:** If you are interested in how its deployed and all the Bicep scripts. Don't worry, here they all are: [/infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/section/01-provision-infrastructure/infrastructure)
+> 📝 **Note:** If you are interested in how its deployed and all the Bicep scripts, here they all are: [/infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/section/01-provision-infrastructure/infrastructure)
 
 Running the script will provision the following essential resources for your application:
 
 - 🌐  AKS (Azure Kubernetes Service): This is where your applications will be hosted.
-- 🗄️  CosmosDB: This serves as your device registry.
+- 🗄️ CosmosDB: This serves as your device registry.
 - 🔒 KeyVault: A secure place to store your application secrets.
-- 📨 EventHub: For real-time event streaming or in our case used to send and receive device temperature and health data
-- 💾 Storage Account: This component is essential for the secure storage of EventHub checkpoints
+- 📨 EventHub: For real-time event streaming or in our case used to send and receive device temperature and health data.
+- 💾 Storage Account: This component is essential for the secure storage of EventHub checkpoints.
 - 📦 ACR (Azure Container Registry): To store the application container images.
 
 Head to you Azure portal and make sure your resources are indeed provisioned. Fell free to have a small look around, before heading to the next chapter to deploy the solution on your AKS cluster.
