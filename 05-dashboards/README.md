@@ -18,9 +18,14 @@ So let's look at this step by step.
 Firstly, we need to locate the information to display. In other words, find our base telemetry data and potentially a suitable KQL queries.
 Secondly, we need to visualize these queries somehow on a dashboard. 📊✨
 
+## 🛠️ Step-by-step
+
 > **📌 Starting point 📌**
 >
-> In case you have not completed the previous section, check out this branch: [/instrumented-app](https://github.com/observability-lab-cse/observability-lab/tree/instrumented-app), and run `make` from the root folder.
+> In case you have not completed the previous sections:
+> - Check out this branch: [section/05-dashboards](https://github.com/observability-lab-cse/observability-lab/tree/section/05-dashboards)
+> - Copy .env.example file into .env and update the file with your values
+> - Run `make` from the root folder.
 
 ## 📈 How to get the data we need
 
