@@ -14,7 +14,7 @@
 > 
 > In case you have not done the [previous section](../01-provision-infrastructure/README.md) get yourself up to speed by executing these steps:
 > - Check out branch [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application)
-> - Copy .env.example file into .env and add your names
+> - Copy .env.example file into .env and update the file with your values
 > - Run `make provision`
 
 Now, let's start deploying the individual services in our application. There are three components to our solution:
