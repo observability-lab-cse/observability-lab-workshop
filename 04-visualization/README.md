@@ -1,14 +1,18 @@
-# Visualization
+# 4. Visualization
 
-> Goal: Gain knowledge of available out-of-the-box visualizations in Azure and learn how to use it effectively to get insights about your applications.
+> 🎯 **Goal:** Gain knowledge of available out-of-the-box visualizations in Azure and learn how to use it effectively to get insights about your applications.
 
 You’ve done a great job collecting telemetry data from your applications, but that's only half of the story. Now you need to see what your data can tell you about your application's performance, reliability, and user experience. 🕵️‍♂️
 
 Azure has a lot of awesome visualizations that you can use to investigate your data in depth. In this section we will have a look what is available out-of-the-box.
 
-## Platform metrics visualizations
+## 📈 Platform metrics visualizations
 
-Let's start from the observability pillar that is the easieast to visualize - metrics.
+> **📌 Starting point 📌**
+>
+> In case you have not completed the previous section, check out this branch: [/instrumented-app](https://github.com/observability-lab-cse/observability-lab/tree/instrumented-app), and run `make` from the root folder.
+
+Let's start from the observability pillar that is the easiest to visualize - metrics.
 
 Metrics are numerical values that measure various aspects, such as performance, reliability, and usage. They can help you identify and troubleshoot issues and optimize your resources.
 
@@ -38,20 +42,22 @@ Let’s see if you can answer some questions based on the Event Hub metrics:
 
 Try to create your own metric charts to find the answers. You can use the hints below if you get stuck.
 
-Hints:
+<details markdown="1">
+<summary> 🔍 Hint </summary>
 
 * To change the time window or granularity, click on the selected time in the right upper corner and select your Time range or Time granularity.
 * To add or remove metrics, click on the Add metric button and select or deselect the metrics you want.
 * To change the chart type, click on the Line chart button and select Area, Bar, or Scatter.
 
+</details>
 
-## Curated visualizations - Insights
+## 💡 Curated visualizations - Insights
 
 You’ve already mastered Azure’s built-in metric charts to visualize your data, but did you know there’s more to it? Now, let’s play a little guessing game. Can you guess where the telemetry data from OpenTelemetry auto-instrumentation lands? 🤔
 
 If you guessed Application Insights, you’re absolutely right! 🎉 Azure’s Application Insights is not just a service, it’s your personal observability wizard. It offers a curated monitoring experience with different views for various aspects of your application, such as failures, performance, availability, and more. Let’s dive into it and see what we can learn. 🚀
 
-Navigate to your Application Insights Overview page and check available metrics charts. 
+Navigate to your Application Insights Overview page and check available metrics charts.
 
 <details markdown="1">
 <summary>Click here to see what the Application Insights Overview metrics should look like in your Azure Portal.</summary>
@@ -80,7 +86,6 @@ If you click on the Server response time or Server requests chart, you'll go to 
 
 </details>
 
-
 The last chart shows Availability, but it won't show any data unless you set it up first. Let's do that now.
 
 Click on the Availability chart and you'll go to the *Investigate Availability* view.
@@ -92,7 +97,7 @@ Click on the Availability chart and you'll go to the *Investigate Availability* 
 
 </details>
 
-[Application Insights availability tests](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-overview) are great for monitoring availability and responsiveness of any HTTP or HTTPS endpoint. Our devices-api and devices-state-manager expose `health` endpoints, so we can use them to set up availability tests. Find out what the `health` endpoint of the devices-api and devices-state-manager is and create [a Standard test](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-standard-tests). 
+[Application Insights availability tests](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-overview) are great for monitoring availability and responsiveness of any HTTP or HTTPS endpoint. Our devices-api and devices-state-manager expose `health` endpoints, so we can use them to set up availability tests. Find out what the `health` endpoint of the devices-api and devices-state-manager is and create [a Standard test](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-standard-tests).
 
 <details markdown="1">
 > How to find your application IP?
@@ -112,21 +117,20 @@ After some time, you should be able to see your availability results. Based on t
 1. What was the exact duration of the GET /health request in one of your selected locations?
 
 <details markdown="1">
-<summary>Click here to find the answer to the first question.</summary>
+<summary> 🔦 Answer to the first question.</summary>
 
 ![AppInsights-availability-standard-test-average-duration](./images/AppInsights-availability-standard-test-average-duration.png)
 
 </details>
 
-
 <details markdown="1">
-<summary>Click here to find the answer to the second question.</summary>
+<summary> 🔦 Answer to the second question.</summary>
 
 ![AppInsights-availability-standard-test-exact-duration-get-health](./images/AppInsights-availability-standard-test-exact-duration-get-health.png)
 
 </details>
 
-Under the Investigate section, you'll find more views that you can explore. Go through them, especially check the Application map. It shows you how your application components are connected and how they perform. 
+Under the Investigate section, you'll find more views that you can explore. Go through them, especially check the Application map. It shows you how your application components are connected and how they perform.
 
 <details markdown="1">
 <summary>Click here to see the Application Map.</summary>
@@ -142,7 +146,6 @@ Under the Monitoring section, you'll find Workbooks. They are interactive report
 * Performance Analysis
 
 And on top of that, there is a great overview dashboard that gives you a quick glance at your application's health and performance.
-
 
 <details markdown="1">
 <summary>Click here to view where the dashboard button is located.</summary>
@@ -168,8 +171,7 @@ Now that you’ve gained this knowledge, it’s time to apply it. Can you answer
 1. What are the response codes of failed requests, and can you determine why they failed?
 1. How many dependency calls failed, and can you figure out why?
 
-
-## Additional metrics coming from OpenTelemetry auto-instrumentation
+## 🔦 Additional metrics coming from OpenTelemetry auto-instrumentation
 
 That's already a lot of insights, but wait, there's more! OpenTelemetry auto-instrumentation for .NET and Java provides a bunch of useful metrics that can be found under the custom metric namespace `azure.applicationinsights`. These metrics can give you more insights into your application's performance, such as memory usage, CPU usage, GC count, etc.
 
@@ -187,7 +189,7 @@ Based on these metrics, find out:
 1. What is the memory usage for the devices-api application?
 1. What is the memory usage for the devices-state-manager application?
 
-Optional: 
+Optional:
 
 There is also another way to query these metrics. These metrics are so-called log-based metrics, which means they are stored in the Log Analytics workspace in the `customMetrics` table. This way, you can access more details about the metrics, such as the custom dimensions.
 
@@ -202,7 +204,7 @@ Try to find the same metrics as you used in the previous excercise, and check wh
 
 Tip: review in details `customDimensions`.
 
-## View logs
+## 📔 View logs
 
 We’ve delved into metrics, traced the paths of our data, but there’s one aspect we haven’t touched upon yet - the logs of our application.
 
@@ -221,4 +223,7 @@ You’ll see a query editor where you can write and run queries using the Kusto 
 
 Take a moment to acquaint yourself with the structure of your data. Can you trace the origins of various log entries? Can you identify which application they hail from? Put on your detective hat and start connecting the dots!
 
+## Navigation
 
+[Previous Section ⏪](../03-add-basic-observability-instrumentation/) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Next Section ⏩️](../05-alert/README.md)
