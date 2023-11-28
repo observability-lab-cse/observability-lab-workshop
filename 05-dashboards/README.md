@@ -320,5 +320,5 @@ And just like that you have your final dashboard!
 
 ## Navigation
 
-[Previous Section ⏪](../04-vizualisation/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Previous Section ⏪](../04-visualization/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
 [Next Section ⏩️](../06-alert/README.md)
