@@ -26,7 +26,7 @@ But first, let's provision our resources so that we have a destination to send t
 
 > **📌 Starting point 📌**
 >
-> In case you have not completed the previous section, check out this branch: [/03-add-basic-observability-instrumentation)](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation), and run `make` from the root folder.
+> In case you have not completed the previous section, check out this branch: [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application), and run `make` from the root folder.
 
 Can you guess the first resource we need for this section? If you said Application Insights, then 🛎️ ding, ding, ding... 💯 points to you!
 
