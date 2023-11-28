@@ -11,7 +11,7 @@ Before we dive into the world of observability, let's ensure you've got the righ
 Next, let’s get the codebase ready:
 
 - Get the code: Clone the [observability-lab](https://github.com/observability-lab-cse/observability-lab) repository.
-- Setup yout local environment: Open the cloned repository in the Dev Container, which is equipped with all the necessary tools.
+- Setup your local environment: Open the cloned repository in the Dev Container, which is equipped with all the necessary tools.
 
 ## Navigation
 
