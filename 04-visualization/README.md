@@ -228,4 +228,4 @@ Take a moment to acquaint yourself with the structure of your data. Can you trac
 ## Navigation
 
 [Previous Section ⏪](../03-add-basic-observability-instrumentation/) ‖ [Return to Main Index 🏠](../README.md) ‖
-[Next Section ⏩️](../05-alert/README.md)
+[Next Section ⏩️](../05-dashboards/README.md)

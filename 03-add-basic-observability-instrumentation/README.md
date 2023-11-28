@@ -1,6 +1,6 @@
 # 3. Adding Basic Observability Instrumentation
 
->🎯 **Goal:** Exploring different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
+>🎯 **Goal:** Explore different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
 
 Now, let's dive into the exciting part of this workshop.
 
@@ -94,7 +94,7 @@ Lets be honest and say agree that the OpenTelemetry documentations are not the e
 
       </details>
 
-In case you have issues, you can see how to do it when opening the section below or check out the next section's branch [section/04-visualization](TODO).
+In case you have issues, you can see how to do it when opening the section below or check out the next section's branch [branch](https://github.com/observability-lab-cse/observability-lab/tree/instrumented-app)..
 
 <details markdown="1">
 <summary> 🔦 Dockerfile with the auto-instrumentation for Java</summary>

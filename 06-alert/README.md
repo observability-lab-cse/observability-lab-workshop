@@ -1,4 +1,4 @@
-# Alerts 🔔
+# 6. Alerts 🔔
 
 > Goal: Gain a basic understanding of alerts on Azure.
 
@@ -250,3 +250,8 @@ If you need to create custom alerts in your infrastructure you can add Azure Mon
 7. Deploy the Bicep File: Then you’re ready to deploy it.
   
 Move your custom alert from previous section to bicep.
+
+## Navigation
+
+[Previous Section ⏪](../05-dashboards/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Next Section ⏩️](../07-custom-metrics/README.md)
