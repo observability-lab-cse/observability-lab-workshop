@@ -16,11 +16,9 @@ Alerts are stored for 30 days. You can see all alert instances for all of your A
 
 Alerts consist of a few elements, presented in the next sections.
 
-###  Action groups
+### Action groups
 
-**Action groups** - Collection of notification preferences defined by the user. They are the receivers of the notifications when an alert is triggered.
-
-You can configure an action group to notify you through one or more of these methods when an alert is triggered. This allows you to respond quickly and effectively to issues in your environment.
+**Action groups** - Collection of notification preferences defined by the user. You can configure an Action Group to notify you through one or more of these collections when an alert is triggered. This allows you to respond quickly and effectively to issues in your environment.
 
 Each action group is given a unique name and can be used by both Azure Monitor and Service Health alerts. An action group can be used across different subscriptions, allowing you to manage your alert actions centrally.
 
