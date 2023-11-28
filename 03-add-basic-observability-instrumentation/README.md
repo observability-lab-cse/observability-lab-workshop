@@ -322,7 +322,7 @@ data:
 
 Now that we have the collector deployed, let's redeploy our new shiny auto-instrumented services ✨.
 
-Remember the the environment variables you looked up to configure the SDK? Now its time to use those and pass them into your deployment. 
+Remember the the environment variables you looked up to configure the SDK? Now its time to use those and pass them into your deployment.
 In cas you are stuck, just open the section below to see what the update deployment manifest should look like.
 
 <details markdown="1">
@@ -405,7 +405,6 @@ spec:
 
 </details>
 
-
 <details markdown="1">
 <summary>🔦 Deployment yaml for auto-instrumentation <code>device-state-manager</code> service</summary>
 
@@ -428,7 +427,7 @@ spec:
     spec:
       containers:
         - name: device-manager
-          image: acr${project-name}.azurecr.io/device-manager:latest TODO: Tags
+          image: acr${project-name}.azurecr.io/device-manager:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8090
