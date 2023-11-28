@@ -43,7 +43,7 @@ As expected, we require Application Insights. However, we'll also need a Log Ana
 As mentioned, there are many ways to instrument applications. Some require writing more custom code, some less.
 
 For this workshop, let's use an approach that requires no changes to the application code, as it will come in handy when working with preexisting applications.
-To do so, we will make use of the OpenTelemetry Auto instrumentation for different programming languages and the [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/).
+To do so, we will make use of the [OpenTelemetry Auto instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) for different programming languages and the [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/).
 
 This will require our application to publish their telemetry data via [otlp protocol](https://opentelemetry.io/docs/specs/otel/protocol/) (or any other of the available [receivers](https://opentelemetry.io/docs/collector/configuration/#receivers)) to the collector, which can than send them upstream into one or more of its [exporters](https://opentelemetry.io/docs/collector/configuration/#exporters). The collector allows you to do much more than just forwards telemetry data from your application to Azure for example. Using [processors](https://opentelemetry.io/docs/collector/configuration/#processors) and [connectors](https://opentelemetry.io/docs/collector/configuration/#connectors),
 there is a lot of preprocessing you can do before sending your data to its end location.
