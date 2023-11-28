@@ -167,7 +167,7 @@ Go to http://DEVICES_IP:8080/swagger-ui.html and create devices.
 make deploy-devices-data-simulator 
 ```
 
-## Built in alerts
+## Built-in alerts
 
 Let's review first the built-in alerts in Azure Portal. It's usefult to check them out as they may be useful for your solution.
 
