@@ -55,8 +55,42 @@ For auto-instrumentation, our applications needs to get the OpenTelemetry SDK in
 
 Let's have a look at the applications we would like to instrument.
 
-- The [devices-state-manager](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-state-manager) is written in C#. Following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/), you can auto-instrument the plain vanilla version of the Docker file in such a way that we can scrape the logs and send them to the OpenTelemetry collector.
-- The [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-api) is a Java application. The same instructions for Java services can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Like before, try adding the auto-instrumentation Agent JAR into the build, so it can  attach to your application and dynamically inject bytecode to capture telemetry data.
+- The [devices-state-manager](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-state-manager) is a C# application.
+- The [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-api) is a Java application.
+
+Lets be honest and say agree that the OpenTelemetry documentations are not the easiest to work with or find stuff in. So to give you some help we have listed the steps below on what you need to do and where to grab the information from.
+
+1. Add the auto-instrumentation of the plain vanilla `Dockerfiles` so each service gets the OpenTelemetry SDK gets injected (in what ever mechanism relevant for the set language)
+      <details markdown="1">
+      <summary> 🔍 Hints: Where to find information </summary>
+
+      - For the C# application following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/) to inject the OpenTelemetry SDK to capture telemetry data.
+      - For the Java application the instructions can be found here [OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation) on how to load an agent JAR when starting the application, so it can attach to your application and dynamically inject the OpenTelemetry SDK to capture telemetry data.
+
+      </details>
+1. Configure the SDK to export the telemetry data our application actually produces.
+    > 📝 **Note:** For now our applications only produce log statements 😉
+      <details markdown="1">
+      <summary> 🔍 Hints: Where to find information </summary>
+
+      Check out how you can configure the SDK using environment variables [SDK Configuration](https://opentelemetry.io/docs/concepts/sdk-configuration/)
+
+      </details>
+
+1. You need to configure said OpenTelemetry SDK to export the collected telemetry data to an endpoint that accepts the otlp protocol data.
+      <details markdown="1">
+      <summary> 🔍 Hints: Where to find information </summary>
+
+      Check out how you can configure the SDK using environment variables [SDK Configuration](https://opentelemetry.io/docs/concepts/sdk-configuration/)
+
+      </details>
+1. To make our life easier down the line, we recommend you also configure your service name. This will allow you to later distinguish from which service your data originated form.
+      <details markdown="1">
+      <summary> 🔍 Hints: Where to find information </summary>
+
+      Check out how you can configure the SDK using environment variables [SDK Configuration](https://opentelemetry.io/docs/concepts/sdk-configuration/)
+
+      </details>
 
 In case you have issues, you can see how to do it when opening the section below or check out the next section's branch [section/04-visualization](TODO).
 
@@ -65,7 +99,7 @@ In case you have issues, you can see how to do it when opening the section below
 
 In the case of our Java application, we need to download the OpenTelemetry Agent Jar and load it along side our application at start up.
 
-> 📝 **Note:** Take a note on which environment variables need to be set for the Java Agent to inject the correct bytecode so it collects all the telemetry we need.
+> 📝 **Note:** Take a note on which environment variables need to be set for injected OpenTelemetry SDK to correctly collect all the telemetry we need.
 
 ```Docker
 FROM eclipse-temurin:17
@@ -181,7 +215,7 @@ TODO
 
 If you managed, great 🎉! Else, not to worry. Open the section below and you have the deployment yaml as well as the configuration for your collector. Go ahead and deploy that, before you redeploy your applications.
 
-> 📝 **Note:** Don't forget to replace the `INSTRUMENTATION_KEY_PLACEHOLDER` with your Application Insights instrumentation key. 
+> 📝 **Note:** Don't forget to replace the `INSTRUMENTATION_KEY_PLACEHOLDER` with your Application Insights instrumentation key.
 
 <details markdown="1">
 <summary>🔦 Deployment yaml OpenTelemetry Collector</summary>
@@ -284,16 +318,15 @@ data:
 
 </details>
 
-### 🐳 Configure Deployment
+### 🐳 Deploy auto-instrumented Applications
 
-For the service to properly connect to the Collector, there are a few environment variables that need to be set. For now, let's only set the mandatory ones.
+Now that we have the collector deployed, let's redeploy our new shiny auto-instrumented services ✨.
 
-In the case of the Java agent, not much is needed.
+Remember the the environment variables you looked up to configure the SDK? Now its time to use those and pass them into your deployment. 
+In cas you are stuck, just open the section below to see what the update deployment manifest should look like.
 
 <details markdown="1">
 <summary>🔦 Deployment yaml for auto-instrumentation <code>devices-api</code> service</summary>
-
-TODO: There are two new variables `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_LOGS_EXPORTER`.
 
 ```yaml
 kind: Deployment
@@ -314,7 +347,7 @@ spec:
     spec:
       containers:
         - name: devices-api
-          image: acr${project-name}.azurecr.io/devices-api:latest TODO: Tags
+          image: acr${project-name}.azurecr.io/devices-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -372,12 +405,9 @@ spec:
 
 </details>
 
-For the C# application there are a few more variables needed
 
 <details markdown="1">
 <summary>🔦 Deployment yaml for auto-instrumentation <code>device-state-manager</code> service</summary>
-
-TODO
 
 ```yaml
 kind: Deployment
@@ -445,7 +475,11 @@ spec:
 
 </details>
 
-Go grab another coffee ☕ (or tea 🍵, we don't discriminate) and come back to a bunch of telemetry send already upstream! To learn how to use all this cool new data, head to the next section where we see how cool Application Insights actually is 😜.
+Using these new deployment yaml's, you can redeploy the application into your AKS cluster.  In cas you forgot how to do that section  [🚀  Deploy Application](../02-deploy-application/README.md#🚀-deploy-application) is your friend! 😉
+
+Nearly done! Go grab another coffee ☕ (or tea 🍵, we don't discriminate) and come back to a bunch of telemetry  already send upstream and in your Application Insights!
+
+To learn how to use all this cool new data, head to the next section where we see how cool Application Insights actually is 😜.
 
 ## Navigation
 
