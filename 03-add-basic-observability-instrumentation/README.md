@@ -65,8 +65,8 @@ Lets be honest and say agree that the OpenTelemetry documentations are not the e
       <details markdown="1">
       <summary> 🔍 Hints: Where to find information </summary>
 
-      * For the C# application following the instructions on [OpenTelemetry Auto-instrumentation for C#](https://opentelemetry.io/docs/instrumentation/net/automatic/) or [GitHub: OpenTelemetry Auto-instrumentation for C#](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)to inject the OpenTelemetry SDK to capture telemetry data.
-      * For the Java application the instructions can be found here [OpenTelemetry Auto-instrumentation for Java](https://opentelemetry.io/docs/instrumentation/java/automatic/) or [GitHub: OpenTelemetry Auto-instrumentation for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation) on how to load an agent JAR when starting the application, so it can attach to your application and dynamically inject the OpenTelemetry SDK to capture telemetry data.
+      * For the C# application following the instructions on [_OpenTelemetry Auto-instrumentation for C#_](https://opentelemetry.io/docs/instrumentation/net/automatic/) or [_GitHub: OpenTelemetry Auto-instrumentation for C#_](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)to inject the OpenTelemetry SDK to capture telemetry data.
+      * For the Java application the instructions can be found here [_OpenTelemetry Auto-instrumentation for Java_](https://opentelemetry.io/docs/instrumentation/java/automatic/) or [_GitHub: OpenTelemetry Auto-instrumentation for Java_](https://github.com/open-telemetry/opentelemetry-java-instrumentation) on how to load an agent JAR when starting the application, so it can attach to your application and dynamically inject the OpenTelemetry SDK to capture telemetry data.
 
       </details>
 
@@ -75,7 +75,7 @@ Lets be honest and say agree that the OpenTelemetry documentations are not the e
       <details markdown="1">
       <summary> 🔍 Hints: Where to find information </summary>
 
-      Check out how you can configure the SDK using environment variables [SDK Configuration](https://opentelemetry.io/docs/concepts/sdk-configuration/)
+      Check out how you can configure the SDK using environment variables [_SDK Configuration_](https://opentelemetry.io/docs/concepts/sdk-configuration/)
 
       </details>
 
@@ -83,14 +83,14 @@ Lets be honest and say agree that the OpenTelemetry documentations are not the e
       <details markdown="1">
       <summary> 🔍 Hints: Where to find information </summary>
 
-      Check out how you can configure the SDK using environment variables [SDK Configuration](https://opentelemetry.io/docs/concepts/sdk-configuration/)
+      Check out how you can configure the SDK using environment variables [_SDK Configuration_](https://opentelemetry.io/docs/concepts/sdk-configuration/)
 
       </details>
 1. To make our life easier down the line, we recommend you also configure your service name. This will allow you to later distinguish from which service your data originated form.
       <details markdown="1">
       <summary> 🔍 Hints: Where to find information </summary>
 
-      Check out how you can configure the SDK using environment variables [SDK Configuration](https://opentelemetry.io/docs/concepts/sdk-configuration/)
+      Check out how you can configure the SDK using environment variables [_SDK Configuration_](https://opentelemetry.io/docs/concepts/sdk-configuration/)
 
       </details>
 
