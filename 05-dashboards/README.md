@@ -316,7 +316,9 @@ Your next step is to rearrange the graphs to suit your preferences and organize 
 
 ![Dashboard](./images/Dashboard.jpg)
 
-And just like that you have your final dashboard!
+And just like that you have your final dashboard! 🥳
+
+Head to the next section to learn how to set up alerts so you will always know if something is going wrong 📟
 
 ## Navigation
 

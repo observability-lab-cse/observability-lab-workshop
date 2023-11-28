@@ -1,8 +1,8 @@
 # 6. Alerts 🔔
 
-> Goal: Gain a basic understanding of alerts on Azure.
+> 🎯 **Goal:**  Gain a basic understanding of alerts on Azure.
 
-❓Do you want to be the first to know when your apps and infra are acting up? Do you want to get ahead of the problems before they ruin your day (or night)? If you answered yes to any of these questions, then this workshop section is for you! 
+Do you want to be the first to know when your apps and infra are acting up? Do you want to get ahead of the problems before they ruin your day (or night)? If you answered yes to any of these questions, then this workshop section is for you!
 
 ## 🧐 Why do we need alerts?
 
@@ -16,7 +16,7 @@ Alerts are stored for 30 days. You can see all alert instances for all of your A
 
 Alerts consist of a few elements, presented in the next sections.
 
-### Action groups
+### 🎬 Action groups
 
 **Action groups** - Collection of notification preferences defined by the user. You can configure an Action Group to notify you through one or more of these collections when an alert is triggered. This allows you to respond quickly and effectively to issues in your environment.
 
@@ -27,19 +27,15 @@ Let's [create an Action Group](https://learn.microsoft.com/en-us/azure/azure-mon
 1. Navigate to the Monitor tab.
 2. Under Monitor, select Alerts.
 3. Click on Manage action groups.
+  ![Action Group](./images/create_ag.png)
 4. Click on "+ New action group" to create a new Action Group.
+  ![Action Group](./images/create_ag_notification.png)
 
-![Action Group](./images/create_ag.png)
+> 📝 **Note:**  Action Groups can not only be configured to send **Notifications** but also to perform various **Actions** when an alert is triggered. These actions include: Azure Functions, Logic App, Webhook, Event Hubs etc. But for this exercise we can skip defining Actions. 😉
 
-![Action Group](./images/create_ag_notification.png)
+> 📝 **Note:** You can test your Action Group Notification by going to **Action Groups** section in **Alerts** and using **Test** button. 📧 Try it out and check if you get a test email!
 
-Please note that Action Groups can be configured not only to send **Notifications** but also to perform various **Actions** when an alert is triggered. These actions include: Azure Functions, Logic App, Webhook, Event Hubs etc.
-
-But for this exercise we can skip defining Actions.
-
-> You can test your Action Group Notification by going to **Action Groups** section in **Alerts** and using **Test** button. Check if you get a test email!
-
-### Alert conditions
+### 🚨 Alert conditions
 
 Alerts are based on certain conditions that you define. Each resource has its own set of conditions.
 
@@ -51,17 +47,17 @@ In the Actions tab pick the **Action Group** that you created previously.
 
 ![](./images/create_alert_rule_details.png)
 
-> Please note that you can set up if the alert should be resolved automatically. If we uncheck that then the user needs to manually resolve the alert.
+> 📝 **Note:**  You can set up if the alert should be resolved automatically. If we uncheck that then the user needs to manually resolve the alert.
 
 Now let's test our alert. We need to delete one of our pods.
 
-```
+```sh
 kubectl get deployment
 ```
 
 You should see the output:
 
-```
+```sh
 NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
 devices-api              0/1     1            0           3h
 devices-state-manager    1/1     1            1           3h
@@ -70,19 +66,15 @@ opentelemetrycollector   1/1     1            1           3h1m
 
 Grab the name of one of the deployments
 
-```
+```sh
 kubectl remove deployment devices-api
 ```
 
 And now wait until you get your alert email.
 
-To deploy again the deleted service you can use __make__ command from the project root folder (to deploy devices-api and devices-state-manager):
+> 📝 **Note:**  Don't forget to redeploy the deleted service! To do so you can now just use the `make deploy` command from the project root folder
 
-```
-make deploy 
-```
-
-### User response
+### 👷 User response
 
 User response is a feature that allows you to manually set the status of an alert.
 
@@ -96,7 +88,7 @@ Once the condition changes and the alert is no longer valid (we deployed missing
 
 ![](./images/alert_status.png)
 
-### Alert processing rules
+### 🔩 Alert processing rules
 
 Alert processing rules allow you to apply processing on fired alerts. Alert processing rules are different from alert rules. Alert rules generate new alerts, while alert processing rules modify the fired alerts as they're being fired.
 
@@ -104,21 +96,20 @@ For example, you can use Alert processing rules to temporarily disable all actio
 
 Another example would be to set up a specific action group for all Alerts in your resource with a Critical severity, for instance if you want to notify the support team immediately when critical alert occurs.
 
-> Alerts can be stateless and stateful.
+> 📝 **Note:**  Alerts can be stateless and stateful.
 >
 > - **Stateless alerts** fire each time the condition is met, even if fired previously.
 > - **Stateful alerts** fire when the rule conditions are met, and will not fire again or trigger any more actions until the conditions are resolved.
-> 
-> What kind of alert is the one we just created?
+>
 
 <details markdown="1">
-<summary>See the answer</summary>
+<summary> 🔦 What kind of alert is the one we just created?</summary>
 
 Stateful! [Metric Alerts are stateful](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-metric-logs#overview) - only notifying once when alert is fired and once when alert is resolved; as opposed to Log alerts, which are stateless and keep firing at every interval if the alert condition is met.
 
 </details>
 
-## Log based alerts
+## 📔 Log based alerts
 
 In the [previous step](#alert-conditions) we have created a metric alert rule using one of the predefined alerts for AKS. Let's take a look now how we can create alerts based on the logs.
 
@@ -158,14 +149,14 @@ For the learning purposes modify the processing time threshold so that the alert
 
 After it's done, create a few devices using swagger, then run your simulator and observe the alerts!
 
-Go to http://DEVICES_IP:8080/swagger-ui.html and create devices.
+Go to `http://DEVICES_IP:8080/swagger-ui.html` and create devices.
 
-```
+```sh
 # run simulator
 make deploy-devices-data-simulator 
 ```
 
-## Built-in alerts
+## 🚧 Built-in alerts
 
 Let's review first the built-in alerts in Azure Portal. It's usefult to check them out as they may be useful for your solution.
 
@@ -175,7 +166,7 @@ Virtual Machines, AKS and Log Analytics workspaces support [Alert rule recommend
 
 ![](./images/log_analytics_alert_rules.png)
 
-### Smart detection alerts
+### 🧠 Smart detection alerts
 
 [Smart detection](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/proactive-diagnostics) performs proactive analysis of the telemetry that your app sends to Application Insights. If there’s a sudden rise in failure rates or abnormal patterns in client or server performance, you get an alert. This feature is enabled by default and operates if your application sends enough telemetry.
 
@@ -185,7 +176,7 @@ In Alerts view you should see also alert rules created by Smart Detector:
 
 ![](./images/smart_detector_alerts.png)
 
-## Service Health alerts
+## 🩺 Service Health alerts
 
 What's [Azure Service Health](https://learn.microsoft.com/en-gb/azure/service-health/overview)?
 
@@ -197,12 +188,13 @@ We went through a few ways how to create the alerts. Imagine that you need to cr
 
 How would you do that? Discuss with others and try out your ideas.
 
-> Suggestion: if you want to test your alert and "make your application" unhealthy you can remove the deployment from kubernetes or modify the healthcheck code to return 500 and redeploy.
+>🔍 Hint:  If you want to test your alert and "make your application" unhealthy you can remove the deployment from kubernetes or modify the healthcheck code to return 500 and redeploy.
 
 <details markdown="1">
-<summary>Reveal the ideas!</summary>
+<summary>🔦 Reveal the ideas!</summary>
 
 Some ideas (there are probably even more options to do it):
+
 - [Resources Health alert](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide)
 - [Alerts for Specific Exceptions with Application Insights](https://stackoverflow.com/questions/47147651/creating-alerts-for-specific-exceptions-with-application-insight-microsoft-azur)
 - [Container insights log alert](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-log-alerts)
@@ -214,7 +206,7 @@ Go to Application Insights -> Availability section. Now create a standard test p
 
 > How to find your application IP?
 
-```shell
+```sh
 DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
 ```
@@ -241,9 +233,9 @@ If you need to create custom alerts in your infrastructure you can add Azure Mon
 
    In Bicep, you can create log alerts with the type [`Microsoft.Insights/scheduledQueryRules`](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/scenarios-monitoring). The created bicep file should create one resource of that type.
 
-4. Modify the Bicep File: When you have converted the ARM template into a Bicep file, you should make any necessary modifications for your specific situation, e.g. add miningful names.
+4. Modify the Bicep File: When you have converted the ARM template into a Bicep file, you should make any necessary modifications for your specific situation, e.g. add meaningful names.
 
-5. You cany put your alert e.g. in log_analytics.bicep file.
+5. You can put your alert e.g. in log_analytics.bicep file.
 
 6. For simplicity don't specify any Action Groups (they can be added using [`Microsoft.Insights/actionGroup`](https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/actiongroups) resource type).
 

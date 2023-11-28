@@ -107,7 +107,7 @@ Click on the Availability chart and you'll go to the *Investigate Availability* 
 
 <details markdown="1">
 <summary> 🔍 Hint: How to find your application IP </summary>
-```shell
+```sh
 DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
 ```
