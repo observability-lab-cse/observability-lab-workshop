@@ -45,27 +45,27 @@ As mentioned, there are many ways to instrument applications. Some require writi
 For this workshop, let's use an approach that requires no changes to the application code, as it will come in handy when working with preexisting applications.
 To do so, we will make use of the [OpenTelemetry Auto instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) for different programming languages and the [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/).
 
-This will require our application to publish their telemetry data via [otlp protocol](https://opentelemetry.io/docs/specs/otel/protocol/) (or any other of the available [receivers](https://opentelemetry.io/docs/collector/configuration/#receivers)) to the collector, which can than send them upstream into one or more of its [exporters](https://opentelemetry.io/docs/collector/configuration/#exporters). The collector allows you to do much more than just forwards telemetry data from your application to Azure for example. Using [processors](https://opentelemetry.io/docs/collector/configuration/#processors) and [connectors](https://opentelemetry.io/docs/collector/configuration/#connectors),
+This will require our application to publish their telemetry data via [otlp protocol](https://opentelemetry.io/docs/specs/otel/protocol/) (or any other of the available [receivers](https://opentelemetry.io/docs/collector/configuration/#receivers)) to the collector, which can than send them upstream into one or more of its [exporters](https://opentelemetry.io/docs/collector/configuration/#exporters). The collector allows you to do much more than just forward telemetry data from your application to Azure. Using [processors](https://opentelemetry.io/docs/collector/configuration/#processors) and [connectors](https://opentelemetry.io/docs/collector/configuration/#connectors),
 there is a lot of preprocessing you can do before sending your data to its end location.
 However, this is a conversation for another time or come back later when this workshop has extended to also cover these topics 😉.
 
-> 📝 **One final note on this topic if you wonder why you would want to preprocess your data. **
+> 📝 **One final note on this topic if you wonder why you would want to preprocess your data.**
 > These features of the collector come in very handy especially in scenarios when your cluster is not an AKS cluster but running on an edge device with low connectivity or
 > if your applications produce a lot of telemetry you need to filter/control before being sent upstream.
-> If you are interested go check out the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main) for all the options and tools you have at your disposal.
+> If you are interested, go check out the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main) for all the options and tools you have at your disposal.
 
 Now that we know how we want to instrument our solution, lets start by auto-instrumenting our applications and then deploying the new version alongside an OpenTelemetry Collector.
 
 ### 📱 Configure Applications
 
-For auto-instrumentation, our applications needs to get the OpenTelemetry SDK injected and configured, so it is able to gather telemetry data from common logging, metric, and tracing libraries.
+For auto-instrumentation, our applications need to get the OpenTelemetry SDK injected and configured, so it is able to gather telemetry data from common logging, metric, and tracing libraries.
 
 Let's have a look at the applications we would like to instrument.
 
 - The [devices-state-manager](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-state-manager) is a .NET application.
 - The [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-api) is a Java application.
 
-Lets be honest and agree that the OpenTelemetry documentations are not the easiest to work with or find stuff in. So to give you some help we have listed the steps below on what you need to do and where to grab the information from.
+Let's be honest and agree that the OpenTelemetry documentation is not the easiest to work with or find stuff in. So, to give you some help, we have listed the steps below on what you need to do and where to grab the information from.
 
 For both applications we will add auto-instrumentation through `Dockerfile`.
 
@@ -121,7 +121,7 @@ Here’s what you need to do in your Devices State Manager `Dockerfile`:
 
   </details>
 
-> 📝 **Note:** Take a note on which environment variables need to be set for the scripts to inject the libraries so it collects all the telemetry we need.
+> 📝 **Note:** Take a note on which environment variables need to be set for the scripts to inject the libraries so that it collects all the telemetry we need.
 
 That’s all for the Dockerfile changes! We’ll need to make additional configuration changes later. For now, you’re ready to build images with auto-instrumentation injected. Build them as described in the previous section [🚀  Deploy Application](../02-deploy-application/README.md#🚀-deploy-application), or use the `make push` command from the root folder to build and push the devices-api and devices-state-manager images.
 
@@ -185,7 +185,7 @@ Let’s now focus on the deployment and configuration of the OpenTelemetry Colle
 
 There are several methods to deploy the collector to a Kubernetes cluster, such as using the OpenTelemetry Helm chart or the OpenTelemetry Operator. However, to thoroughly understand the collector configuration, we will deploy the collector using a simple Kubernetes Deployment with ConfigMap.
 
-Feel free to explore the [Install the Collector](https://opentelemetry.io/docs/collector/installation/#kubernetes) documentation, though below you will find step-by-step guidance on how to approach this task 😉
+Feel free to explore the [Install the Collector](https://opentelemetry.io/docs/collector/installation/#kubernetes) documentation, though below you will find step-by-step guidance on how to approach this task 😉.
 
 #### Collector configuration
 
@@ -368,14 +368,14 @@ kubectl apply -f k8s-files/collector-deployment.yaml
 
 Now that we have the collector deployed, let's redeploy our new shiny auto-instrumented services ✨.
 
-Remember the the environment variables you looked up to configure the SDK? Now its time to use those and pass them into your deployment.
+Remember the environment variables you looked up to configure the SDK? Now it's time to use those and pass them into your deployment.
 
 In case you haven't found them, these are important SDK Configuration OpenTelemetry environment variables: 
 
 Common to all languages: 
 * [OTEL_EXPORTER_OTLP_ENDPOINT](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#endpoint-configuration) - this environment variables let you configure an OTLP/gRPC or OTLP/HTTP endpoint for your traces, metrics, and logs. In our case, we want to send it to OpenTelemetry Collector, so we need to specify here OpenTelemetry Collector endpoint.
-* [OTEL_SERVICE_NAME](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_service_name) - This will allow you to later distinguish from which service your data originated from.
-* [OTEL_LOGS_EXPORTER](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_logs_exporter) - Specifies which exporter is used for logs. It defaults to `otlp`, though in Java application needs to be explictily specified.
+* [OTEL_SERVICE_NAME](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_service_name) - This will allow you to later distinguish which service your data originated from.
+* [OTEL_LOGS_EXPORTER](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_logs_exporter) - Specifies which exporter is used for logs. It defaults to `otlp`, though in Java application needs to be explicitly specified.
 
 Specific environment variables to .NET auto-instrumentation can be found [here](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#instrument-a-net-application).
 
@@ -577,7 +577,7 @@ spec:
 
 </details>
 
-Using these new deployment yaml's, you can redeploy the application into your AKS cluster.  In case you forgot how to do that section  [🚀  Deploy Application](../02-deploy-application/README.md#🚀-deploy-application) is your friend! 😉
+Using these new deployment yaml's, you can redeploy the applications into your AKS cluster.  In case you forgot how to do that, section  [🚀  Deploy Application](../02-deploy-application/README.md#🚀-deploy-application) is your friend! 😉
 
 Nearly done! Go grab another coffee ☕ (or tea 🍵, we don't discriminate) and come back to a bunch of telemetry  already send upstream and in your Application Insights!
 
