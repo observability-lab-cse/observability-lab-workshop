@@ -9,10 +9,11 @@
 ## 🚀  Deploy Application
 
 > **📌 Starting point 📌**
+> 
+> ❗️Check out branch [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application)
 >
 > You need to provision your resources before you start with this section.
 > In case you have not done the [previous section](../01-provision-infrastructure/README.md) get yourself up to speed by executing these steps:
-> - Check out branch [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application)
 > - Copy .env.example file into .env and update the file with your values
 > - Run `make provision`
 
