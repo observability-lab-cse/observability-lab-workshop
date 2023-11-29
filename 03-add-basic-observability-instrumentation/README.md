@@ -362,6 +362,16 @@ kubectl apply -f k8s-files/collector-deployment.yaml
 Now that we have the collector deployed, let's redeploy our new shiny auto-instrumented services ✨.
 
 Remember the the environment variables you looked up to configure the SDK? Now its time to use those and pass them into your deployment.
+
+In case you haven't found them, these are important SDK Configuration OpenTelemetry environment variables: 
+
+Common to all languages: 
+* [OTEL_EXPORTER_OTLP_ENDPOINT](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#endpoint-configuration) - this environment variables let you configure an OTLP/gRPC or OTLP/HTTP endpoint for your traces, metrics, and logs. In our case, we want to send it to OpenTelemetry Collector, so we need to specify here OpenTelemetry Collector endpoint.
+* [OTEL_SERVICE_NAME](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_service_name) - This will allow you to later distinguish from which service your data originated from.
+* [OTEL_LOGS_EXPORTER](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_logs_exporter) - Specifies which exporter is used for logs. It defaults to `otlp`, though in Java application needs to be explictily specified.
+
+Specific environment variables to .NET auto-instrumentation can be found [here](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#instrument-a-net-application).
+
 In case you are stuck, just open the section below to see what the update deployment manifest should look like.
 
 <details markdown="1">
@@ -536,15 +546,6 @@ spec:
               value: event-hub-data
             - name: DEVICE_API_URL
               value: "http://devices-api-service:8080"
-            - name: OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES
-              value: "DevicesStateManager"
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 5000
-            periodSeconds: 5
-            initialDelaySeconds: 5
-            failureThreshold: 15
       volumes:
         - name: secrets-store-inline
           csi:
@@ -561,7 +562,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 8090 
+  - port: 8090
     targetPort: 8090
   selector:
     app: devices-state-manager
