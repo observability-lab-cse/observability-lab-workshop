@@ -120,7 +120,7 @@ Stateful! [Metric Alerts are stateful](https://learn.microsoft.com/en-us/azure/a
 
 ## 📔 Log based alerts
 
-In the [previous step](#alert-conditions) we have created a metric alert rule using one of the predefined alerts for AKS. Let's take a look now how we can create alerts based on the logs.
+In the [previous step](#-alert-conditions) we have created a metric alert rule using one of the predefined alerts for AKS. Let's take a look now how we can create alerts based on the logs.
 
 In the [Custom Dashboards](../05-dashboards) section you have created the dashboard showing different metrics. One of them was **Average processing time for last 10min**. Let's create an alert based on it!
 
@@ -189,7 +189,19 @@ In Alerts view you should see also alert rules created by Smart Detector:
 
 What's [Azure Service Health](https://learn.microsoft.com/en-gb/azure/service-health/overview)?
 
-The portal provides you with a customizable dashboard which tracks the health of your Azure services in the regions where you use them. In this dashboard, you can track active events like ongoing service issues, upcoming planned maintenance, or relevant health advisories. When events become inactive, they get placed in your health history for up to 90 days. Service health notifications are stored in the [Azure activity log](https://learn.microsoft.com/en-gb/azure/azure-monitor/essentials/platform-logs-overview). You can use them to create your own alerts. E.g. you can create an alert that gets triggered when one of the services in your subscription is down. The alerts can be also integrated with external alerting tools, like PagerDuty.
+The portal provides you with a customizable dashboard which tracks the health of your Azure services in the regions where you use them.
+In this dashboard, you can track active events like ongoing service issues, upcoming planned maintenance, or relevant health advisories.
+When events become inactive, they get placed in your health history for up to 90 days.
+Service health notifications are stored in the [Azure activity log](https://learn.microsoft.com/en-gb/azure/azure-monitor/essentials/platform-logs-overview).
+You can use them to create **your own alerts**. E.g. you can create an alert that gets triggered when one of the services in your subscription is down.
+The alerts can be also integrated with external alerting tools, like PagerDuty.
+
+## ⚖️ Resource Health Alerts
+
+Azure Service Health provides you also with a section called Resource Health, which keeps you informed about health of your Azure resources.
+Same as Service health notifications, Resource health notifications are stored in the Azure activity log. And they also can be used to create alerts!
+
+Find Azure Service Health in Azure portal and pause here for a moment to explore the differences between Service and Resource Health Alerts.
 
 ## Exercise 💪
 
