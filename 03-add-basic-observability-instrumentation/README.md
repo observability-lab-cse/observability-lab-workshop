@@ -58,7 +58,7 @@ Let's have a look at the applications we would like to instrument.
 - The [devices-state-manager](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-state-manager) is a .NET application.
 - The [devices-api](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation/sample-application/devices-api) is a Java application.
 
-Lets be honest and say agree that the OpenTelemetry documentations are not the easiest to work with or find stuff in. So to give you some help we have listed the steps below on what you need to do and where to grab the information from.
+Lets be honest and agree that the OpenTelemetry documentations are not the easiest to work with or find stuff in. So to give you some help we have listed the steps below on what you need to do and where to grab the information from.
 
 For both applications we will add auto-instrumentation through `Dockerfile`.
 
