@@ -15,5 +15,5 @@ Next, let’s get the codebase ready:
 
 ## Navigation
 
-[Return to Main Index 🏠](../readme.md) ‖
+[Return to Main Index 🏠](../README.md) ‖
 [Next Section ⏩️](../01-provision-infrastructure/README.md)
