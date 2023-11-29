@@ -74,7 +74,7 @@ sed -i "s/\${project-name}/$ENV_PROJECT_NAME/g" k8s-files/devices-api-deployment
 
 Then, deploy it using the following command from the **root** repository folder:
 
-```
+```sh
 kubectl apply -f k8s-files/devices-api-deployment.yaml
 ```
 

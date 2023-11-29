@@ -46,7 +46,7 @@ Let’s see if you can answer some questions based on the Event Hub metrics:
 Try to create your own metric charts to find the answers. You can use the hints below if you get stuck.
 
 <details markdown="1">
-<summary> 🔍 Hint </summary>
+<summary> 🔍 Hint: How to create own metrics chart </summary>
 
 * To change the time window or granularity, click on the selected time in the right upper corner and select your Time range or Time granularity.
 * To add or remove metrics, click on the Add metric button and select or deselect the metrics you want.
@@ -74,7 +74,7 @@ Clicking on the charts in Application Insights offers a different experience com
 For example, if you click on the *Failed requests* chart, you’ll be directed to the *Investigate Failures* view. This isn’t just a page with metrics, it’s an interactive section where you can delve deeper into your data and make sense out of metrics, logs and traces. So go ahead, click on a chart, and start exploring.
 
 <details markdown="1">
-<summary>Click here to see the Application Insights Failures view.</summary>
+<summary>Click here to see the Application Insights Failures view ⚠️</summary>
 
 ![AppInsights-failures](./images/AppInsights-failures.png)
 
@@ -83,7 +83,7 @@ For example, if you click on the *Failed requests* chart, you’ll be directed t
 If you click on the Server response time or Server requests chart, you'll go to the *Investigate Performance* view.
 
 <details markdown="1">
-<summary>Click here to see the Application Insights Performance view.</summary>
+<summary>Click here to see the Application Insights Performance view 🚀</summary>
 
 ![AppInsights-performance](./images/AppInsights-performance.png)
 
@@ -94,7 +94,7 @@ The last chart shows Availability, but it won't show any data unless you set it 
 Click on the Availability chart and you'll go to the *Investigate Availability* view.
 
 <details markdown="1">
-<summary>Click here to see what the Application Insights Availability view should look like in your Azure Portal.</summary>
+<summary>Click here to see the Application Insights Availability Test 🕵️‍♂️</summary>
 
 ![AppInsights-availability](./images/AppInsights-availability.png)
 
@@ -103,15 +103,17 @@ Click on the Availability chart and you'll go to the *Investigate Availability* 
 [Application Insights availability tests](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-overview) are great for monitoring availability and responsiveness of any HTTP or HTTPS endpoint. Our devices-api and devices-state-manager expose `health` endpoints, so we can use them to set up availability tests. Find out what the `health` endpoint of the devices-api and devices-state-manager is and create [a Standard test](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-standard-tests).
 
 <details markdown="1">
-> How to find your application IP?
->
-> ```shell
-> DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-> HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
-> ```
-
+<summary>Click here to see what the Application Insights Availability view should look like in your Azure Portal.</summary>
 ![AppInsights-availability-standard-test](./images/AppInsights-availability-standard-test.png)
 
+</details>
+
+<details markdown="1">
+<summary> 🔍 Hint: How to find your application IP </summary>
+```sh
+DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
+```
 </details>
 
 After some time, you should be able to see your availability results. Based on the data, find out:
@@ -136,7 +138,7 @@ After some time, you should be able to see your availability results. Based on t
 Under the Investigate section, you'll find more views that you can explore. Go through them, especially check the Application map. It shows you how your application components are connected and how they perform.
 
 <details markdown="1">
-<summary>Click here to see the Application Map.</summary>
+<summary>Click here to see the Application Map 🗺️</summary>
 
 ![AppInsights-ApplicationMap](./images/ApplicationMap.png)
 
@@ -192,7 +194,7 @@ Based on these metrics, find out:
 1. What is the memory usage for the devices-api application?
 1. What is the memory usage for the devices-state-manager application?
 
-Optional:
+### Optional: Metrics with a twist 🍋
 
 There is also another way to query these metrics. These metrics are so-called log-based metrics, which means they are stored in the Log Analytics workspace in the `customMetrics` table. This way, you can access more details about the metrics, such as the custom dimensions.
 
@@ -205,7 +207,7 @@ There is also another way to query these metrics. These metrics are so-called lo
 
 Try to find the same metrics as you used in the previous excercise, and check what additional information is provided when looking at metrics in this view.
 
-Tip: review in details `customDimensions`.
+> ✏️ **Tip:** review in details `customDimensions`.
 
 ## 📔 View logs
 
@@ -229,4 +231,4 @@ Take a moment to acquaint yourself with the structure of your data. Can you trac
 ## Navigation
 
 [Previous Section ⏪](../03-add-basic-observability-instrumentation/) ‖ [Return to Main Index 🏠](../README.md) ‖
-[Next Section ⏩️](../05-alert/README.md)
+[Next Section ⏩️](../05-dashboards/README.md)
