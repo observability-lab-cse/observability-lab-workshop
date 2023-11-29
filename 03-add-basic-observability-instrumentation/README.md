@@ -96,7 +96,7 @@ Here’s how to modify your Devices API `Dockerfile`:
 
 OpenTelemetry .NET Automatic Instrumentation injects and configures the OpenTelemetry .NET SDK into the application and adds OpenTelemetry Instrumentation to key packages and APIs used by the application.
 
-How to set it up? There are various options, we’ll focus on modifications within the `Dockerfile`. An installer script is available for download and can be run as part of the `Dockerfile`. Detailed instructions can be found on GitHub: [OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#get-started). Pay special attention to the [Instrument a container section](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#instrument-a-container), where you’ll find an example `Dockerfile`.
+How to set it up? There are various options, we’ll focus on modifications within the `Dockerfile` for consistency reasons. An installer script is available for download and can be run as part of the `Dockerfile`. Detailed instructions can be found on GitHub: [OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#get-started). Pay special attention to the [Instrument a container section](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#instrument-a-container), where you’ll find an example `Dockerfile`.
 
 Here’s what you need to do in your Devices State Manager `Dockerfile`:
 
