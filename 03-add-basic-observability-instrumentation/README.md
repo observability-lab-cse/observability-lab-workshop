@@ -62,7 +62,7 @@ Lets be honest and say agree that the OpenTelemetry documentations are not the e
 
 For both applications we will inject auto-instrumentation through `Dockerfile`.
 
-#### Add auto-instrumentation to the Devices API
+#### Add Java auto-instrumentation to the Devices API
 
 OpenTelemetry provides an instrumentation Java agent JAR that can be attached to your Java 8+ application. This agent dynamically injects bytecode to capture telemetry from a number of popular libraries and frameworks.
 
