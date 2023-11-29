@@ -10,7 +10,7 @@
 
 > **📌 Starting point 📌**
 > 
-> ❗️Check out branch [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application)
+> ❗️First, check out branch [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application) ️to get the application code used in this section.
 >
 > You need to provision your resources before you start with this section.
 > In case you have not done the [previous section](../01-provision-infrastructure/README.md) get yourself up to speed by executing these steps:
