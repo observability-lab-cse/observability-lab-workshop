@@ -8,7 +8,7 @@ Do you want to be the first to know when your apps and infra are acting up? Do y
 
 In a nutshell, alerts can help you identify 🔍 and troubleshoot issues 🙀 before they affect your users or customers. They can also help you to align your observability goals with your business objectives, such as customer satisfaction, revenue, and growth.
 
-## 📚 A little bit of theory
+## 📚 Intro
 
 ![Diagram that explains Azure Monitor alerts.](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/media/alerts-overview/alerts.png)
 
@@ -16,7 +16,16 @@ Alerts are stored for 30 days. You can see all alert instances for all of your A
 
 Alerts consist of a few elements, presented in the next sections.
 
-### 🎬 Action groups
+## 🛠️ Step-by-step
+
+> **📌 Starting point 📌**
+>
+> In case you have not completed the previous sections:
+> - Check out this branch: [section/06-alert](https://github.com/observability-lab-cse/observability-lab/tree/section/06-alert)
+> - Copy .env.example file into .env and update the file with your values
+> - Run `make` from the root folder.
+
+### Action groups
 
 **Action groups** - Collection of notification preferences defined by the user. You can configure an Action Group to notify you through one or more of these collections when an alert is triggered. This allows you to respond quickly and effectively to issues in your environment.
 

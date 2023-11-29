@@ -10,7 +10,10 @@ In this section you will learn how to add custom metrics to our applications and
 
 > **📌 Starting point 📌**
 >
-> In case you have not completed the previous section, check out this branch: [/instrumented-app](https://github.com/observability-lab-cse/observability-lab/tree/instrumented-app), and run `make` from the root folder.
+> In case you have not completed the previous sections:
+> - Check out this branch: [section/07-custom-metrics](https://github.com/observability-lab-cse/observability-lab/tree/section/07-custom-metrics)
+> - Copy .env.example file into .env and update the file with your values
+> - Run `make` from the root folder.
 
 Given our business logic, where devices periodically send temperature measurements, it would be useful to know how many device updates occurred in a specific time window. This will be our device update counter metric which we will define in the `devices-state-manager` application that handles all device state and temperature changes.
 

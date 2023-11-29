@@ -26,7 +26,10 @@ But first, let's provision our resources so that we have a destination to send t
 
 > **📌 Starting point 📌**
 >
-> In case you have not completed the previous section, check out this branch: [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application), and run `make` from the root folder.
+> In case you have not completed the previous section:
+> - Check out this branch: [section/03-add-basic-observability-instrumentation](https://github.com/observability-lab-cse/observability-lab/tree/section/section/03-add-basic-observability-instrumentation)
+> - Copy .env.example file into .env and update the file with your values
+> - Run `make` from the root folder.
 
 Can you guess the first resource we need for this section? If you said Application Insights, then 🛎️ ding, ding, ding... 💯 points to you!
 
@@ -40,14 +43,18 @@ As expected, we require Application Insights. However, we'll also need a Log Ana
 As mentioned, there are many ways to instrument applications. Some require writing more custom code, some less.
 
 For this workshop, let's use an approach that requires no changes to the application code, as it will come in handy when working with preexisting applications.
-To do so, we will make use of the OpenTelemetry Auto instrumentation for different programming languages and the [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/).
+To do so, we will make use of the [OpenTelemetry Auto instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) for different programming languages and the [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/).
 
-This will require our application to publish their telemetry data via [otlp protocol](https://opentelemetry.io/docs/specs/otel/protocol/) (or any other of the available [receivers](https://opentelemetry.io/docs/collector/configuration/#receivers)) to the collector, which can than send them upstream into one or more of its [exporters](https://opentelemetry.io/docs/collector/configuration/#exporters). The collector allows you to do much more than just forwards telemetry data from your application to Azure for example. Using [processors](https://opentelemetry.io/docs/collector/configuration/#processors) and [connectors](https://opentelemetry.io/docs/collector/configuration/#connectors), there is a lot of preprocessing you can do before sending your data to is end location.
-However this is a conversation for another time or come back later when this workshop has extended to also cover these topics 😉.
+This will require our application to publish their telemetry data via [otlp protocol](https://opentelemetry.io/docs/specs/otel/protocol/) (or any other of the available [receivers](https://opentelemetry.io/docs/collector/configuration/#receivers)) to the collector, which can than send them upstream into one or more of its [exporters](https://opentelemetry.io/docs/collector/configuration/#exporters). The collector allows you to do much more than just forwards telemetry data from your application to Azure for example. Using [processors](https://opentelemetry.io/docs/collector/configuration/#processors) and [connectors](https://opentelemetry.io/docs/collector/configuration/#connectors),
+there is a lot of preprocessing you can do before sending your data to its end location.
+However, this is a conversation for another time or come back later when this workshop has extended to also cover these topics 😉.
 
-> 📝 **Note:** One final note on this topic however, for people that wonder why you would want to pre process your data. So in scenarios when your cluster is not an AKS cluster but running on an edge device which low connectivity or if your applications produce a lot of telemetry your would like to filter/control before being send upstream these features of the collector come in very handy. SO if you are interested go check out the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main) for all the options and tools you have at your disposal.
+> 📝 **One final note on this topic if you wonder why you would want to preprocess your data. **
+> These features of the collector come in very handy especially in scenarios when your cluster is not an AKS cluster but running on an edge device with low connectivity or
+> if your applications produce a lot of telemetry you need to filter/control before being sent upstream.
+> If you are interested go check out the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main) for all the options and tools you have at your disposal.
 
-Now that we know how we want to instrument our solution, lets start by auto-instrumenting our applications and then deploying the new version along side an OpenTelemetry Collector
+Now that we know how we want to instrument our solution, lets start by auto-instrumenting our applications and then deploying the new version alongside an OpenTelemetry Collector.
 
 ### 📱 Configure Applications
 
