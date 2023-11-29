@@ -8,17 +8,17 @@ Understanding the inner workings of your Kubernetes cluster can be an intriguing
 
 This workshop will includes:
 
-- 🛠️ Instrumenting applications with OpenTelemetry on Azure
-- 🖥️ Shedding light on your AKS cluster with observability features
-- 📊 Crafting custom telemetry visualizations using Azure Monitor Workbooks and Dashboards
+- 🛠️ Auto-instrumenting applications with OpenTelemetry
+- 🖥️ Inspect Azure's AKS observability features
+- 📊 Explore Application Insights and crafting custom telemetry visualizations using Azure Monitor Workbooks and Dashboards
 
 ## Navigating this Journey
 
-Each section of this workshop has a designated branch in our Github repository. Running `make` in the root directory ensures your environment is up to speed.
+> 📝 **Note:** Each section of this workshop has a designated branch in the corresponding code  Github repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). The **📌 Starting point 📌** paragraph in each section will give you further instructions on how to get your workshop environment up to speed 😉.
 
 Sections:
 
-- [⚒️ Pre Requisites](./00-pre-requisite/README.md) - Covering the pre set up and tools that will be
+- [⚒️ Pre Requisites](./00-pre-requisite/README.md) - Covering the tools that will be
   needed.
 - [⚙️ Provision Infrastructure](./01-provision-infrastructure/README.md) - Provision AKS cluster, Application Insights etc.
 - [🧩 Deploy application to AKS](./02-deploy-application/README.md) - Deploy all required components of the application
@@ -27,7 +27,3 @@ Sections:
 - [📋 Dashboards](./05-dashboards/README.md) - Create your custom dashboard
 - [🚨 Alerts](./06-alert/README.md) - Create alerts
 - [🌟 Custom metrics](./07-custom-metrics/README.md) - Add custom metrics to your application
-
-<!-- Additional Read:
-
-- [📖 Azure Observability 101](./10-azure-observabity-101/README.md) - Covering the basics of the azure observability suite -->
