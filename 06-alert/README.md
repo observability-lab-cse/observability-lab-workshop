@@ -68,7 +68,7 @@ You should see the output:
 
 ```sh
 NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-devices-api              0/1     1            0           3h
+devices-api              1/1     1            1           3h
 devices-state-manager    1/1     1            1           3h
 opentelemetrycollector   1/1     1            1           3h1m
 ```
@@ -76,7 +76,7 @@ opentelemetrycollector   1/1     1            1           3h1m
 Grab the name of one of the deployments
 
 ```sh
-kubectl remove deployment devices-api
+kubectl remove deployment devices-state-manager
 ```
 
 And now wait until you get your alert email.
@@ -158,7 +158,7 @@ For the learning purposes modify the processing time threshold so that the alert
 
 After it's done, create a few devices using swagger, then run your simulator and observe the alerts!
 
-Go to `http://DEVICES_IP:8080/swagger-ui.html` and create devices.
+Go to `http://DEVICES_IP:8080/swagger-ui.html` and create a few new devices (don't worry if you forgot how to do it, [Section 2: Deploy 🌡️ Devices Data Simulator](../02-deploy-application/README.md#deploy---devices-state-manager) you can find instructions how to do it).
 
 ```sh
 # run simulator
@@ -167,7 +167,7 @@ make deploy-devices-data-simulator
 
 ## 🚧 Built-in alerts
 
-Let's review first the built-in alerts in Azure Portal. It's usefult to check them out as they may be useful for your solution.
+Let's review first the built-in alerts in Azure Portal. It's useful to check them out as they may be useful for your solution.
 
 Virtual Machines, AKS and Log Analytics workspaces support [Alert rule recommendation feature](https://learn.microsoft.com/en-gb/azure/azure-monitor/alerts/alerts-manage-alert-rules#enable-recommended-alert-rules-in-the-azure-portal). After enabling it you can use predefined Alert rules and combine them with your Action groups.
 
@@ -211,7 +211,11 @@ Some ideas (there are probably even more options to do it):
 
 Let's take a closer look at the last option!
 
-Go to Application Insights -> Availability section. Now create a standard test posting an endpoint to your application health check:
+Go to Application Insights -> Availability section.
+
+If you did the steps from [Section 4: Visualisation](../04-visualization/README.md#-curated-visualizations---insights) you should have the Availability Standard test created there already.
+
+If you didn't, just create a standard test posting an endpoint to your application health check as shown below:
 
 > How to find your application IP?
 
@@ -222,9 +226,11 @@ HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
 
 ![](./images/availability_standard_test.png)
 
-The alert will be automatically created for you!
-
 ![](./images/availability_alert.png)
+
+The Alert Rule will be automatically created for you!
+
+![](./images/alert_rules_availability_check.png)
 
 </details>
 
