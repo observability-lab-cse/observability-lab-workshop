@@ -14,6 +14,8 @@ Azure has a lot of awesome visualizations that you can use to investigate your d
 > - Check out this branch: [section/04-visualization](https://github.com/observability-lab-cse/observability-lab/tree/section/04-visualization)
 > - Copy .env.example file into .env and update the file with your values
 > - Run `make` from the root folder.
+> 
+> To trigger sending messages in your system follow the instructions from [Section 2: Deploy: 🌡️ Devices Data Simulator](../02-deploy-application/README.md#deploy---devices-data-simulator)
 
 Let's start from the observability pillar that is the easiest to visualize - metrics.
 
