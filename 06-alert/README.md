@@ -209,11 +209,29 @@ Some ideas (there are probably even more options to do it):
 - [Container insights log alert](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-log-alerts)
 - [Availability Alerts with Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-alerts)
 
-Let's take a closer look at the last option!
+</details>
+
+<details markdown="1">
+<summary>👑 Recommended solution</summary>
+
+One of the [best practices](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#configuration-recommendations) for alerts
+is to set up resource health alert rules. As mentioned already in this section
+Resource Health alerts can notify you in near real-time when these resources have a change in their health status.
+
+Please note also that resource alerts are [free of charge](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#cost-optimization) (same as service health alerts).
+
+Go ahead and [create a Resource Alert](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide) in Azure Portal.
+
+</details>
+
+<details markdown="1">
+<summary>💭 Another solution</summary>
+
+Let's now take a closer look at the last idea - Availability Standard test alert!
 
 Go to Application Insights -> Availability section.
 
-If you did the steps from [Section 4: Visualisation](../04-visualization/README.md#-curated-visualizations---insights) you should have the Availability Standard test created there already.
+If you did the steps from [Section 4: Visualisation](../04-visualization/README.md#-curated-visualizations---insights) you should have the Availability Standard test for devices-api health-check created there already.
 
 If you didn't, just create a standard test posting an endpoint to your application health check as shown below:
 
