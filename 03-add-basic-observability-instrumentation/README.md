@@ -60,7 +60,7 @@ Let's have a look at the applications we would like to instrument.
 
 Lets be honest and say agree that the OpenTelemetry documentations are not the easiest to work with or find stuff in. So to give you some help we have listed the steps below on what you need to do and where to grab the information from.
 
-For both applications we will inject auto-instrumentation through `Dockerfile`.
+For both applications we will add auto-instrumentation through `Dockerfile`.
 
 #### Add Java auto-instrumentation to the Devices API
 
@@ -92,7 +92,7 @@ Here’s how to modify your Devices API `Dockerfile`:
 
 > 📝 **Note:** Take a note on which environment variables need to be set for injected OpenTelemetry SDK to correctly collect all the telemetry we need.
 
-#### Add .Net auto-instrumentation to the Devices State Manager
+#### Add .NET auto-instrumentation to the Devices State Manager
 
 OpenTelemetry .NET Automatic Instrumentation injects and configures the OpenTelemetry .NET SDK into the application and adds OpenTelemetry Instrumentation to key packages and APIs used by the application.
 
@@ -174,7 +174,7 @@ ENTRYPOINT ["dotnet", "DevicesStateManager.dll"]
 
 ### 🎻 Deploy OpenTelemetry collector
 
-Let’s begin by focusing on the deployment and configuration of the OpenTelemetry Collector. This will allow our telemetry data to be received and subsequently exported to our Application Insights.
+Let’s now focus on the deployment and configuration of the OpenTelemetry Collector. This will allow our telemetry data to be received and subsequently exported to our Application Insights.
 
 There are several methods to deploy the collector to a Kubernetes cluster, such as using the OpenTelemetry Helm chart or the OpenTelemetry Operator. However, to thoroughly understand the collector configuration, we will deploy the collector using a simple Kubernetes Deployment with ConfigMap.
 
