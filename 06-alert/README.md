@@ -227,10 +227,10 @@ Some ideas (there are probably even more options to do it):
 <summary>👑 Recommended solution</summary>
 
 One of the [best practices](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#configuration-recommendations) for alerts
-is to set up resource health alert rules. As mentioned already in this section
+is to set up Resource Health alert rules.
 Resource Health alerts can notify you in near real-time when these resources have a change in their health status.
 
-Please note also that resource alerts are [free of charge](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#cost-optimization) (same as service health alerts).
+Please note also that Resource Health alerts are [free of charge](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#cost-optimization) (same as service health alerts).
 
 Go ahead and [create a Resource Alert](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide) in Azure Portal.
 
@@ -250,7 +250,7 @@ If you didn't, just create a standard test posting an endpoint to your applicati
 > How to find your application IP?
 
 ```sh
-DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+DEVICES _API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
 ```
 
