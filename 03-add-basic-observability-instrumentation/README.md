@@ -92,7 +92,7 @@ Here’s how to modify your Devices API `Dockerfile`:
 
 > 📝 **Note:** Take a note on which environment variables need to be set for injected OpenTelemetry SDK to correctly collect all the telemetry we need.
 
-#### Add auto-instrumentation to the Devices State Manager
+#### Add .Net auto-instrumentation to the Devices State Manager
 
 OpenTelemetry .NET Automatic Instrumentation injects and configures the OpenTelemetry .NET SDK into the application and adds OpenTelemetry Instrumentation to key packages and APIs used by the application.
 
