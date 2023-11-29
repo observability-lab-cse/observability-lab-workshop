@@ -61,7 +61,7 @@ az aks get-credentials \
 
 Now that we’re connected, we’re ready to deploy the devices-api. You’ll find the devices-api Kubernetes deployment manifest below or in the [k8s-files folder](https://github.com/observability-lab-cse/observability-lab/blob/section/02-deploy-application/k8s-files/devices-api-deployment.yaml). Don’t forget to replace `${project-name}` with the value of your `$ENV_PROJECT_NAME`. Then, deploy it using the following command from the root repository folder:
 
-```
+```sh
 kubectl apply -f k8s-files/devices-api-deployment.yaml
 ```
 
