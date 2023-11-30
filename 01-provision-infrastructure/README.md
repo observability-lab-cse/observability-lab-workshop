@@ -4,9 +4,9 @@
 
 ## 🏗️  Architecture
 
-First, let's take a closer look at the application we'll be using for this workshop. It's a solution comprising two microservices, one written in C# and the other in Java, and a set of Azure resources. The solution allows users to onboard and manage simplistic smart-home devices (e.g. a smart thermometer). A simulator component will generate the temperatures each device measures and sends them to our small device management solution over EventHub.
+First, let's take a closer look at the application we'll be using for this workshop. It's a solution comprising two microservices, one written in C# and the other in Java, and a set of Azure resources. The solution allows users to onboard and manage simplistic smart-home devices in this case a temperature sensor. A simulator component will act as the sensor, generate the temperatures each device would measure and sends them to our small device management solution over EventHub.
 
-While this solution is rather simplistic and not a real-world example, its purpose is to provide you with hands-on experience in instrumenting various services written in different languages. This way, you'll become more comfortable with instrumenting your own solutions. Below, you'll find a diagram outlining our solution and the required resources.
+While this solution is rather oversimple and not really a real-world example, its purpose is to provide you with hands-on experience in instrumenting various services written in different languages. This way, you'll become more comfortable with instrumenting your own solutions. Below, you'll find a diagram outlining our solution and the required resources.
 
 ![Architecture](./images/solution-resources.jpg)
 
