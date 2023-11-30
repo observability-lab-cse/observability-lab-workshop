@@ -251,7 +251,7 @@ If you didn't, just create a standard test posting an endpoint to your applicati
 > How to find your application IP?
 
 ```sh
-DEVICES _API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
 ```
 
