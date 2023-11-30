@@ -27,7 +27,7 @@ But first, let's provision our resources so that we have a destination to send t
 > **📌 Starting point 📌**
 >
 > In case you have not completed the previous section:
-> - Check out this branch: [section/03-add-basic-observability-instrumentation](https://github.com/observability-lab-cse/observability-lab/tree/section/section/03-add-basic-observability-instrumentation)
+> - Check out this branch: [section/03-add-basic-observability-instrumentation](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation)
 > - Copy .env.example file into .env and update the file with your values
 > - Run `make` from the root folder.
 
@@ -204,7 +204,7 @@ Next, we need to populate it with a valid OpenTelemetry Collector configuration.
 
 As previously mentioned, the auto-instrumentation exposes the telemetry data using the OTLP protocol. Thanks to the `otlp` receivers that we just configured, the OpenTelemetry collector will be able to receive telemetry from .NET and Java auto-instrumentations.
 
-Next, let’s focus on exporters. There is one exporter: `otlp` in our config. However, we want to send data to Azure Monitor. So, let’s refer to the documentation: [exporters](https://opentelemetry.io/docs/collector/configuration/#exporters). Interestingly, we won’t find anything regarding Azure in this documentation 🤔. As mentioned previously, there are two repositories when it comes to exporters, receivers, etc.: [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main). If we look in the `contrib` repository, we can find the [`azuremonitorexporter`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuremonitorexporter), which allows to export telemetry to Application Insights. This means we need to replace the `otlp` exporter with `azuremonitor`:
+Next, let’s focus on exporters. There is one exporter: `otlp` in our config. However, we want to send data to Azure Monitor. So, let’s refer to the documentation: [exporters](https://opentelemetry.io/docs/collector/configuration/#exporters). Interestingly, we won’t find anything regarding Azure in this documentation 🤔. Like already hinted at, there are two repositories when it comes to exporters, receivers, etc.: [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main) and [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main). If we look in the `contrib` repository, we can find the [`azuremonitorexporter`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuremonitorexporter), which allows to export telemetry to Application Insights. This means we need to replace the `otlp` exporter with `azuremonitor`:
 
   ```yaml
   azuremonitor:
@@ -233,12 +233,6 @@ If you’d like to view the complete `collector-config.yaml`, please click on th
 <summary>🔦 OpenTelemetry Collector Configuration YAML</summary>
 
 ```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: config
-data:
-  collector-config.yaml: |
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -288,7 +282,7 @@ Now, we need to create the collector Deployment with the previously created `col
 
 In addition to the Deployment, we will need a Service that exposes the `grpc-otlp` and `http-otlp` ports. 
 
-Create a `collector-deployment.yaml` under `k8s` folder and feel free to figure out the syntax, or use the file provided below.
+Create a `collector-deployment.yaml` under `k8s-files` folder and feel free to figure out the syntax, or use the file provided below.
 
 <details markdown="1">
 <summary>🔦 OpenTelemetry Collector Deployment YAML </summary>
