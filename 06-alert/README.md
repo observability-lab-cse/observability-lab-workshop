@@ -21,6 +21,7 @@ Alerts consist of a few elements, presented in the next sections.
 > **📌 Starting point 📌**
 >
 > In case you have not completed the previous sections:
+>
 > - Check out this branch: [section/06-alert](https://github.com/observability-lab-cse/observability-lab/tree/section/06-alert)
 > - Copy .env.example file into .env and update the file with your values
 > - Run `make` from the root folder.
@@ -35,14 +36,14 @@ Let's [create an Action Group](https://learn.microsoft.com/en-us/azure/azure-mon
 
 1. Navigate to the Monitor tab.
 2. Under Monitor, select Alerts.
-3. Click on Manage action groups.
+3. Click on "Action groups".
   ![Action Group](./images/create_ag.png)
-4. Click on "+ New action group" to create a new Action Group.
+4. Click on "+ Create" to create a new Action Group.
   ![Action Group](./images/create_ag_notification.png)
 
 > 📝 **Note:**  Action Groups can not only be configured to send **Notifications** but also to perform various **Actions** when an alert is triggered. These actions include: Azure Functions, Logic App, Webhook, Event Hubs etc. But for this exercise we can skip defining Actions. 😉
 
-> 📝 **Note:** You can test your Action Group Notification by going to **Action Groups** section in **Alerts** and using **Test** button. 📧 Try it out and check if you get a test email!
+> 📝 **Note:** You can test your Action Group Notification by going to **Action Groups** section in **Alerts** and using **Test** button.Try it out and check if you get a test email 📧!
 
 ### 🚨 Alert conditions
 
