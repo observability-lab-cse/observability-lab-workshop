@@ -33,7 +33,7 @@ First we need to log into our Azure Container registry, so we can upload our doc
 az acr login --name "acr$ENV_PROJECT_NAME".azurecr.io
 ```
 
-### Deploy: 🔐 Secretes into AKS
+### Deploy: 🔐 Secrets into AKS
 
 Next, before deploying the application, we should set up all the secrets in the cluster with an easy command.
 
