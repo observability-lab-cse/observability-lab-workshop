@@ -6,7 +6,7 @@ Understanding the inner workings of your Kubernetes cluster can be an intriguing
 
 ## Observability of a K8s cluster
 
-This workshop will includes:
+This workshop will include:
 
 - 🛠️ Auto-instrumenting applications with OpenTelemetry
 - 🖥️ Inspect Azure's AKS observability features
