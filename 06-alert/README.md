@@ -68,7 +68,7 @@ You should see the output:
 
 ```sh
 NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-devices-api              0/1     1            0           3h
+devices-api              1/1     1            1           3h
 devices-state-manager    1/1     1            1           3h
 opentelemetrycollector   1/1     1            1           3h1m
 ```
@@ -76,7 +76,7 @@ opentelemetrycollector   1/1     1            1           3h1m
 Grab the name of one of the deployments
 
 ```sh
-kubectl remove deployment devices-api
+kubectl remove deployment devices-state-manager
 ```
 
 And now wait until you get your alert email.
@@ -120,7 +120,7 @@ Stateful! [Metric Alerts are stateful](https://learn.microsoft.com/en-us/azure/a
 
 ## 📔 Log based alerts
 
-In the [previous step](#alert-conditions) we have created a metric alert rule using one of the predefined alerts for AKS. Let's take a look now how we can create alerts based on the logs.
+In the [previous step](#-alert-conditions) we have created a metric alert rule using one of the predefined alerts for AKS. Let's take a look now how we can create alerts based on the logs.
 
 In the [Custom Dashboards](../05-dashboards) section you have created the dashboard showing different metrics. One of them was **Average processing time for last 10min**. Let's create an alert based on it!
 
@@ -158,7 +158,7 @@ For the learning purposes modify the processing time threshold so that the alert
 
 After it's done, create a few devices using swagger, then run your simulator and observe the alerts!
 
-Go to `http://DEVICES_IP:8080/swagger-ui.html` and create devices.
+Go to `http://DEVICES_IP:8080/swagger-ui.html` and create a few new devices (don't worry if you forgot how to do it, [Section 2: Deploy 🌡️ Devices Data Simulator](../02-deploy-application/README.md#deploy---devices-state-manager) you can find instructions how to do it).
 
 ```sh
 # run simulator
@@ -167,7 +167,7 @@ make deploy-devices-data-simulator
 
 ## 🚧 Built-in alerts
 
-Let's review first the built-in alerts in Azure Portal. It's usefult to check them out as they may be useful for your solution.
+Let's review first the built-in alerts in Azure Portal. It's useful to check them out as they may be useful for your solution.
 
 Virtual Machines, AKS and Log Analytics workspaces support [Alert rule recommendation feature](https://learn.microsoft.com/en-gb/azure/azure-monitor/alerts/alerts-manage-alert-rules#enable-recommended-alert-rules-in-the-azure-portal). After enabling it you can use predefined Alert rules and combine them with your Action groups.
 
@@ -189,7 +189,19 @@ In Alerts view you should see also alert rules created by Smart Detector:
 
 What's [Azure Service Health](https://learn.microsoft.com/en-gb/azure/service-health/overview)?
 
-The portal provides you with a customizable dashboard which tracks the health of your Azure services in the regions where you use them. In this dashboard, you can track active events like ongoing service issues, upcoming planned maintenance, or relevant health advisories. When events become inactive, they get placed in your health history for up to 90 days. Service health notifications are stored in the [Azure activity log](https://learn.microsoft.com/en-gb/azure/azure-monitor/essentials/platform-logs-overview). You can use them to create your own alerts. E.g. you can create an alert that gets triggered when one of the services in your subscription is down. The alerts can be also integrated with external alerting tools, like PagerDuty.
+The portal provides you with a customizable dashboard which tracks the health of your Azure services in the regions where you use them.
+In this dashboard, you can track active events like ongoing service issues, upcoming planned maintenance, or relevant health advisories.
+When events become inactive, they get placed in your health history for up to 90 days.
+Service health notifications are stored in the [Azure activity log](https://learn.microsoft.com/en-gb/azure/azure-monitor/essentials/platform-logs-overview).
+You can use them to create **your own alerts**. E.g. you can create an alert that gets triggered when one of the services in your subscription is down.
+The alerts can be also integrated with external alerting tools, like PagerDuty.
+
+## ⚖️ Resource Health Alerts
+
+Azure Service Health provides you also with a section called Resource Health, which keeps you informed about health of your Azure resources.
+Same as Service health notifications, Resource health notifications are stored in the Azure activity log. And they also can be used to create alerts!
+
+Find Azure Service Health in Azure portal and pause here for a moment to explore the differences between Service and Resource Health Alerts.
 
 ## Exercise 💪
 
@@ -209,22 +221,46 @@ Some ideas (there are probably even more options to do it):
 - [Container insights log alert](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-log-alerts)
 - [Availability Alerts with Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/availability-alerts)
 
-Let's take a closer look at the last option!
+</details>
 
-Go to Application Insights -> Availability section. Now create a standard test posting an endpoint to your application health check:
+<details markdown="1">
+<summary>👑 Recommended solution</summary>
+
+One of the [best practices](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#configuration-recommendations) for alerts
+is to set up Resource Health alert rules.
+Resource Health alerts can notify you in near real-time when these resources have a change in their health status.
+
+Please note also that Resource Health alerts are [free of charge](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#cost-optimization) (same as service health alerts).
+
+Go ahead and [create a Resource Alert](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide) in Azure Portal.
+
+</details>
+
+<details markdown="1">
+<summary>💭 Another solution</summary>
+
+Let's now take a closer look at the last idea - Availability Standard test alert!
+
+Go to Application Insights -> Availability section.
+
+If you did the steps from [Section 4: Visualisation](../04-visualization/README.md#-curated-visualizations---insights) you should have the Availability Standard test for devices-api health-check created there already.
+
+If you didn't, just create a standard test posting an endpoint to your application health check as shown below:
 
 > How to find your application IP?
 
 ```sh
-DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+DEVICES _API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
 ```
 
 ![](./images/availability_standard_test.png)
 
-The alert will be automatically created for you!
-
 ![](./images/availability_alert.png)
+
+The Alert Rule will be automatically created for you!
+
+![](./images/alert_rules_availability_check.png)
 
 </details>
 
