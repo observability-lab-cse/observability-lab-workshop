@@ -14,16 +14,26 @@ This workshop will include:
 
 ## Navigating this Journey
 
-> 📝 **Note:** Each section of this workshop has a designated branch in the corresponding code  Github repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). The **📌 Starting point 📌** paragraph in each section will give you further instructions on how to get your workshop environment up to speed 😉.
+> 📌 **Starting Point:** If you follow through the workshop from the start all you need is the starting branch [/00-starting-point](TODO). Everything else you will build as you go.
+>
+> 📝 **Note:** In case you are only interested in certain section or parts of the workshop, each section of this workshop has a designated branch in the corresponding code Github repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). Check the branch of the section out your are interested in and the **📌 Getting up to speed if you missed previous sections 🏎️💨** paragraph in that section will give you further instructions on how to get your workshop environment up to speed, as if you had done all previous sections all yourself 😉.
 
-Sections:
+### 📱 Application
+
+This few sections will only deploy the infra and application. Not a lof of observability happening yet.
 
 - [⚒️ Pre Requisites](./00-pre-requisite/README.md) - Covering the tools that will be
   needed.
 - [⚙️ Provision Infrastructure](./01-provision-infrastructure/README.md) - Provision AKS cluster, Application Insights etc.
 - [🧩 Deploy application to AKS](./02-deploy-application/README.md) - Deploy all required components of the application
+
+### 🎻 Instrumentation
+
 - [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Using OpenTelemetry instrument your application
+- [🌟 Custom metrics](./07-custom-metrics/README.md) - Add custom metrics to your application
+
+### 🎨 Visualization
+
 - [📈 Visualization](./04-visualization/README.md) - Use out-of-the-box Azure visualizations
 - [📋 Dashboards](./05-dashboards/README.md) - Create your custom dashboard
 - [🚨 Alerts](./06-alert/README.md) - Create alerts
-- [🌟 Custom metrics](./07-custom-metrics/README.md) - Add custom metrics to your application
