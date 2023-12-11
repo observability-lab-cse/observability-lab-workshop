@@ -31,7 +31,7 @@ Now, let's start deploying the individual services in our application. There are
 First we need to log into our Azure Container registry, so we can upload our docker images.
 
 ```sh
-az acr login --name "acr$ENV_PROJECT_NAME".azurecr.io
+az acr login --name "acr$ENV_PROJECT_NAME"
 ```
 
 ### Deploy: 🔐 Secrets into AKS
@@ -52,9 +52,8 @@ The first step is to build and push the image to the registry.
 
 ```sh
 TAG="latest"
-cd sample-application/devices-api
 
-docker build -t "acr$ENV_PROJECT_NAME.azurecr.io/devices-api":"$TAG" .
+docker build -t "acr$ENV_PROJECT_NAME.azurecr.io/devices-api":"$TAG" ./sample-application/devices-api
 docker push "acr$ENV_PROJECT_NAME.azurecr.io/devices-api":"$TAG"
 ```
 
@@ -183,9 +182,8 @@ As with our previous steps, we'll need to build the image and ensure it's pushed
 
 ```sh
 TAG="latest"
-cd sample-application/devices-state-manager/DevicesStateManager
 
-docker build -t "acr$ENV_PROJECT_NAME.azurecr.io/devices-state-manager":"$TAG" .
+docker build -t "acr$ENV_PROJECT_NAME.azurecr.io/devices-state-manager":"$TAG" ./sample-application/devices-state-manager/DevicesStateManager
 docker push "acr$ENV_PROJECT_NAME.azurecr.io/devices-state-manager":"$TAG"
 ```
 

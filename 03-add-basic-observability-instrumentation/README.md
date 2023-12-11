@@ -83,7 +83,7 @@ Here’s how to modify your Devices API `Dockerfile`:
   <summary> 🔍 Hint: step for downloading the instrumentation agent </summary>
 
   ```Docker
-  RUN curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.31.0/opentelemetry-javaagent.jar
+  ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.31.0/opentelemetry-javaagent.jar ./
   ```
   </details>
 
@@ -103,7 +103,7 @@ Here’s how to modify your Devices API `Dockerfile`:
 
 OpenTelemetry .NET Automatic Instrumentation injects and configures the OpenTelemetry .NET SDK into the application and adds OpenTelemetry Instrumentation to key packages and APIs used by the application.
 
-How to set it up? There are various options, we’ll focus on modifications within the `Dockerfile` for consistency reasons. An installer script is available for download and can be run as part of the `Dockerfile`. Detailed instructions can be found on GitHub: [OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#get-started). Pay special attention to the [Instrument a container section](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#instrument-a-container), where you’ll find an example `Dockerfile`.
+How to set it up? There are various options, we’ll focus on modifications within the `Dockerfile` for consistency reasons. An installer script is available for download and can be run as part of the `Dockerfile`. Detailed instructions can be found on GitHub: [OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#get-started). Pay special attention to the [Instrument a container section](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation#instrument-a-container), where you’ll find an example `Dockerfile`. Make sure the installer script is run just before the application is started.
 
 Here’s what you need to do in your Devices State Manager `Dockerfile`:
 
@@ -114,7 +114,7 @@ Here’s what you need to do in your Devices State Manager `Dockerfile`:
 
   ```Docker
   ARG OTEL_VERSION=1.1.0
-  ADD https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/download/v${OTEL_VERSION}/otel-dotnet-auto-install.sh otel-dotnet-auto-install.sh
+  ADD https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/download/v${OTEL_VERSION}/otel-dotnet-auto-install.sh ./
   RUN apt-get update && apt-get install -y unzip && apt-get install -y curl && \
       OTEL_DOTNET_AUTO_HOME="/otel-dotnet-auto" sh otel-dotnet-auto-install.sh
   ```
@@ -139,7 +139,7 @@ WORKDIR /app
 
 RUN ./gradlew build
 
-RUN curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.31.0/opentelemetry-javaagent.jar
+ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.31.0/opentelemetry-javaagent.jar ./
 
 ENTRYPOINT ["java", "-javaagent:opentelemetry-javaagent.jar", "-jar","build/libs/devices-api.jar"]
 ```
@@ -169,7 +169,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 ARG OTEL_VERSION=1.1.0
-ADD https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/download/v${OTEL_VERSION}/otel-dotnet-auto-install.sh otel-dotnet-auto-install.sh
+ADD https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/download/v${OTEL_VERSION}/otel-dotnet-auto-install.sh ./
 RUN apt-get update && apt-get install -y unzip && apt-get install -y curl && \
     OTEL_DOTNET_AUTO_HOME="/otel-dotnet-auto" sh otel-dotnet-auto-install.sh
 
