@@ -228,4 +228,4 @@ In this section we added custom metrics to our .NET application and learned how 
 
 ## Navigation
 
-[Previous Section ⏪](../06-alert/README.md) ‖ [Return to Main Index 🏠](../README.md)
+[Previous Section ⏪](../07-alert/README.md) ‖ [Return to Main Index 🏠](../README.md)

@@ -123,7 +123,7 @@ Stateful! [Metric Alerts are stateful](https://learn.microsoft.com/en-us/azure/a
 
 In the [previous step](#-alert-conditions) we have created a metric alert rule using one of the predefined alerts for AKS. Let's take a look now how we can create alerts based on the logs.
 
-In the [Custom Dashboards](../05-dashboards) section you have created the dashboard showing different metrics. One of them was **Average processing time for last 10min**. Let's create an alert based on it!
+In the [Custom Dashboards](../06-dashboards) section you have created the dashboard showing different metrics. One of them was **Average processing time for last 10min**. Let's create an alert based on it!
 
 Go to Application Insights and the Section Logs on the left pane. Don't close the existing pop up right away! There are many predefined alert logs that can be useful in your application. Feel free to review them.  
 
@@ -244,7 +244,7 @@ Let's now take a closer look at the last idea - Availability Standard test alert
 
 Go to Application Insights -> Availability section.
 
-If you did the steps from [Section 4: Visualisation](../04-visualization/README.md#-curated-visualizations---insights) you should have the Availability Standard test for devices-api health-check created there already.
+If you did the steps from [Section 4: Visualisation](../05-visualization/README.md#-curated-visualizations---insights) you should have the Availability Standard test for devices-api health-check created there already.
 
 If you didn't, just create a standard test posting an endpoint to your application health check as shown below:
 
@@ -291,5 +291,5 @@ Move your custom alert from previous section to bicep.
 
 ## Navigation
 
-[Previous Section ⏪](../05-dashboards/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Previous Section ⏪](../06-dashboards/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
 [Next Section ⏩️](../07-custom-metrics/README.md)

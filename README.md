@@ -18,9 +18,8 @@ This workshop will include:
 >
 > 📝 **Note:** In case you are only interested in certain section or parts of the workshop, each section of this workshop has a designated branch in the corresponding code Github repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). Check the branch of the section out your are interested in and the **📌 Getting up to speed if you missed previous sections 🏎️💨** paragraph in that section will give you further instructions on how to get your workshop environment up to speed, as if you had done all previous sections all yourself 😉.
 
-### 📱 Application
 
-This few sections will only deploy the infra and application. Not a lof of observability happening yet.
+### 📱 Application
 
 - [⚒️ Pre Requisites](./00-pre-requisite/README.md) - Covering the tools that will be
   needed.
@@ -34,6 +33,6 @@ This few sections will only deploy the infra and application. Not a lof of obser
 
 ### 🎨 Visualization
 
-- [📈 Visualization](./04-visualization/README.md) - Use out-of-the-box Azure visualizations
-- [📋 Dashboards](./05-dashboards/README.md) - Create your custom dashboard
-- [🚨 Alerts](./06-alert/README.md) - Create alerts
+- [📈 Visualization](./05-visualization/README.md) - Use out-of-the-box Azure visualizations
+- [📋 Dashboards](./06-dashboards/README.md) - Create your custom dashboard
+- [🚨 Alerts](./07-alert/README.md) - Create alerts
