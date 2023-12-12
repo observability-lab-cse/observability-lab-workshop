@@ -371,6 +371,12 @@ spec:
 
 </details>
 
+### 🏗️  Architecture
+
+Below, you'll find a diagram showing our solution with all components we just deployed.
+
+![Architecture](./images/solution-resources.jpg)
+
 ## 📦 Out of the box observability
 
 Let’s embark on a journey of discovery and see what Azure AKS has to offer right out of the box! Head over to the Azure Portal and navigate to your AKS cluster. Try to find out:
