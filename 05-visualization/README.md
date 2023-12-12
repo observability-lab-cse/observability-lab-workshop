@@ -11,7 +11,7 @@ Azure has a lot of awesome visualizations that you can use to investigate your d
 > **📌 Starting point 📌**
 >
 > In case you have not completed the previous sections:
-> - Check out this branch: [section/04-visualization](https://github.com/observability-lab-cse/observability-lab/tree/section/04-visualization)
+> - Check out this branch: [section/05-visualization](https://github.com/observability-lab-cse/observability-lab/tree/section/05-visualization)
 > - Copy .env.example file into .env and update the file with your values
 > - Run `make` from the root folder.
 > 
@@ -233,4 +233,4 @@ Take a moment to acquaint yourself with the structure of your data. Can you trac
 ## Navigation
 
 [Previous Section ⏪](../03-add-basic-observability-instrumentation/) ‖ [Return to Main Index 🏠](../README.md) ‖
-[Next Section ⏩️](../05-dashboards/README.md)
+[Next Section ⏩️](../06-dashboards/README.md)

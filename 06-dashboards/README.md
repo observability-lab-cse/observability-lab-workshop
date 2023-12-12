@@ -24,7 +24,7 @@ Secondly, we need to visualize these queries somehow on a dashboard. 📊✨
 >
 > In case you have not completed the previous sections:
 >
-> - Check out this branch: [section/05-dashboards](https://github.com/observability-lab-cse/observability-lab/tree/section/05-dashboards)
+> - Check out this branch: [section/06-dashboards](https://github.com/observability-lab-cse/observability-lab/tree/section/06-dashboards)
 > - Copy .env.example file into .env and update the file with your values
 > - Run `make` from the root folder.
 
@@ -328,5 +328,5 @@ Head to the next section to learn how to set up alerts so you will always know i
 
 ## Navigation
 
-[Previous Section ⏪](../04-visualization/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Previous Section ⏪](../05-visualization/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
 [Next Section ⏩️](../06-alert/README.md)
