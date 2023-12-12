@@ -16,7 +16,7 @@ This workshop will include:
 
 > 📌 **Starting Point:** If you follow through the workshop from the start all you need is the starting branch [/00-starting-point](TODO). Everything else you will build as you go.
 >
-> 📝 **Note:** In case you are only interested in certain section or parts of the workshop, each section of this workshop has a designated branch in the corresponding code Github repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). Check the branch of the section out your are interested in and the **📌 Getting up to speed if you missed previous sections 🏎️💨** paragraph in that section will give you further instructions on how to get your workshop environment up to speed, as if you had done all previous sections all yourself 😉.
+> 📝 **Note:** In case you are only interested in certain section or parts of the workshop, each section has a designated branch in the corresponding GitHub code repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). Check out the branch of the section your are interested in and the **📌 Getting up to speed if you missed previous sections 🏎️💨** paragraph in that section will give you further instructions on how to get your workshop environment up to speed, as if you had done all previous sections all yourself 😉.
 
 
 ### 📱 Application
