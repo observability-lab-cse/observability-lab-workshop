@@ -15,6 +15,8 @@ While this solution is rather oversimple and not really a real-world example, it
 > **📌 Starting point 📌**
 >
 > Check out this branch to get started: [section/01-provision-infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/section/01-provision-infrastructure)
+>
+> We recommend opening the project in [VS Code within Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) or using [GitHub Codespaces](https://docs.github.com/en/codespaces/overview).
 
 Before we dive into the workshop, it's essential to have your Azure resources prepared. Think of this as laying the foundation for our upcoming steps.
 
