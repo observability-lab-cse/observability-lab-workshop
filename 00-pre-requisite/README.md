@@ -12,6 +12,7 @@ Next, let’s get the codebase ready:
 
 - Get the code: Clone the [observability-lab](https://github.com/observability-lab-cse/observability-lab) repository.
 - Setup your local environment: Open the cloned repository in the Dev Container, which is equipped with all the necessary tools.
+- If you are facing issues with your set up open the project in [GitHub Codespaces](https://docs.github.com/en/codespaces/overview).
 
 ## Navigation
 
