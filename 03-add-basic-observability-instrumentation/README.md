@@ -2,6 +2,16 @@
 
 >🎯 **Goal:** Explore different options to instrument applications with standard tooling and easily integrate them into Azure for data collection and observability.
 
+<details markdown="1">
+<summary> <b> ⏩ Catch-up corner: If you missed previous sections 🏇</b></summary>
+
+If you have not completed previous sections, follow these steps:
+- Check out this branch [`section/03-add-basic-observability-instrumentation`](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation).
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- Run the command `make` from the root repository folder.
+</details>
+
+
 Now, let's dive into the exciting part of this workshop.
 
 The goal of this section is to instrument the application we developed earlier to gain more visibility into its availability and health.
@@ -23,13 +33,6 @@ To gain this lower level of visibility into our solution, we have various tools 
 But first, let's provision our resources so that we have a destination to send the newly gathered data.
 
 ## ⚙️ Provision Resources
-
-> **📌 Starting point 📌**
->
-> In case you have not completed the previous section:
-> - Check out this branch: [section/03-add-basic-observability-instrumentation](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation)
-> - Copy .env.example file into .env and update the file with your values
-> - Run `make` from the root folder.
 
 Can you guess the first resource we need for this section? If you said Application Insights, then 🛎️ ding, ding, ding... 💯 points to you!
 

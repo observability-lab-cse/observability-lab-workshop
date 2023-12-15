@@ -2,6 +2,19 @@
 
 > 🎯 **Goal:** Play around with KQL and learn how to create custom dashboards.
 
+<details markdown="1">
+<summary> <b> ⏩ Catch-up corner: If you missed previous sections 🏇</b></summary>
+
+If you have not completed previous sections, follow these steps:
+- Check out this branch [`section/06-dashboards`](https://github.com/observability-lab-cse/observability-lab/tree/section/06-dashboards).
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- Run the command `make` from the root repository folder.
+
+To trigger sending messages in your system follow the instructions from [Section 2: Deploy: 🌡️ Devices Data Simulator](../02-deploy-application/README.md#deploy---devices-data-simulator)
+
+</details>
+
+
 As you saw previously, there are a lot of out-of-the-box dashboards that visualize things. But what if we don't have things visualized as we want? What if we want a birds-eye view on some metrics, visualization and graphs that are custom to us?
 
 Don't worry; there's also a way for that.
@@ -19,14 +32,6 @@ Firstly, we need to locate the information to display. In other words, find our 
 Secondly, we need to visualize these queries somehow on a dashboard. 📊✨
 
 ## 📈 How to get the data we need
-
-> **📌 Starting point 📌**
->
-> In case you have not completed the previous sections:
->
-> - Check out this branch: [section/06-dashboards](https://github.com/observability-lab-cse/observability-lab/tree/section/06-dashboards)
-> - Copy .env.example file into .env and update the file with your values
-> - Run `make` from the root folder.
 
 Let's walk through one of the examples: "We would like to actually know the temperature of each of our devices, their names, and status."
 

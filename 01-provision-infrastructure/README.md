@@ -12,9 +12,7 @@ While this solution is rather oversimple and not really a real-world example, it
 
 ## 🛠️ Provisioning
 
-> **📌 Starting point 📌**
->
-> Check out this branch to get started: [section/01-provision-infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/section/01-provision-infrastructure)
+> 📝 **Note:** Make sure that you use [00-workshop](https://github.com/observability-lab-cse/observability-lab/tree/00-workshop) branch.
 >
 > We recommend opening the project in [VS Code within Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) or using [GitHub Codespaces](https://docs.github.com/en/codespaces/overview).
 
@@ -45,7 +43,7 @@ Here's what you need to do:
 
 When you return, your resources should be provisioned and ready to go 🚀.
 
-> 📝 **Note:** If you are interested in how its deployed and all the Bicep scripts, here they all are: [/infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/section/01-provision-infrastructure/infrastructure)
+> 📝 **Note:** If you are interested in how its deployed and all the Bicep scripts, here they all are: [/infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/00-workshop/infrastructure)
 
 Running the script will provision the following essential resources for your application:
 

@@ -2,6 +2,19 @@
 
 > 🎯 **Goal:**  Gain a basic understanding of alerts on Azure.
 
+<details markdown="1">
+<summary> <b> ⏩ Catch-up corner: If you missed previous sections 🏇</b></summary>
+
+If you have not completed previous sections, follow these steps:
+- Check out this branch [`section/07-alert`](https://github.com/observability-lab-cse/observability-lab/tree/section/06-alert).
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- From the root repository folder, run the command: `make`
+
+To trigger sending messages in your system follow the instructions from [Section 2: Deploy: 🌡️ Devices Data Simulator](../02-deploy-application/README.md#deploy---devices-data-simulator)
+
+</details>
+
+
 Do you want to be the first to know when your apps and infra are acting up? Do you want to get ahead of the problems before they ruin your day (or night)? If you answered yes to any of these questions, then this workshop section is for you!
 
 ## 🧐 Why do we need alerts?
@@ -17,14 +30,6 @@ Alerts are stored for 30 days. You can see all alert instances for all of your A
 Alerts consist of a few elements, presented in the next sections.
 
 ## 🛠️ Step-by-step
-
-> **📌 Starting point 📌**
->
-> In case you have not completed the previous sections:
->
-> - Check out this branch: [section/06-alert](https://github.com/observability-lab-cse/observability-lab/tree/section/06-alert)
-> - Copy .env.example file into .env and update the file with your values
-> - Run `make` from the root folder.
 
 ### Action groups
 
