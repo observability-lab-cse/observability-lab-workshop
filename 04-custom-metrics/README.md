@@ -1,4 +1,4 @@
-# 7. Custom metrics
+# 4. Custom metrics
 
 > 🎯 **Goal:** Gain insights into how to add custom metrics to an application and visualize them in Application Insights.
 
@@ -231,4 +231,5 @@ In this section we added custom metrics to our .NET application and learned how 
 
 ## Navigation
 
-[Previous Section ⏪](../07-alert/README.md) ‖ [Return to Main Index 🏠](../README.md)
+[Previous Section ⏪](../03-add-basic-observability-instrumentation/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Next Section ⏩️](../05-visualization/README.md)

@@ -1,4 +1,4 @@
-# 4. Visualization
+# 5. Visualization
 
 > 🎯 **Goal:** Gain knowledge of available out-of-the-box visualizations in Azure and learn how to use it effectively to get insights about your applications.
 
@@ -236,5 +236,5 @@ Take a moment to acquaint yourself with the structure of your data. Can you trac
 
 ## Navigation
 
-[Previous Section ⏪](../03-add-basic-observability-instrumentation/) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Previous Section ⏪](../04-custom-metrics/) ‖ [Return to Main Index 🏠](../README.md) ‖
 [Next Section ⏩️](../06-dashboards/README.md)

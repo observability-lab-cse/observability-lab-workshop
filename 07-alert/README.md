@@ -1,4 +1,4 @@
-# 6. Alerts 🔔
+# 7. Alerts 🔔
 
 > 🎯 **Goal:**  Gain a basic understanding of alerts on Azure.
 
@@ -296,5 +296,4 @@ Move your custom alert from previous section to bicep.
 
 ## Navigation
 
-[Previous Section ⏪](../06-dashboards/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
-[Next Section ⏩️](../07-custom-metrics/README.md)
+[Previous Section ⏪](../06-dashboards/README.md) ‖ [Return to Main Index 🏠](../README.md)

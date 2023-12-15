@@ -1,4 +1,4 @@
-# 5. Custom Dashboards
+# 6. Custom Dashboards
 
 > 🎯 **Goal:** Play around with KQL and learn how to create custom dashboards.
 
@@ -334,4 +334,4 @@ Head to the next section to learn how to set up alerts so you will always know i
 ## Navigation
 
 [Previous Section ⏪](../05-visualization/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
-[Next Section ⏩️](../06-alert/README.md)
+[Next Section ⏩️](../07-alert/README.md)
