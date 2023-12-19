@@ -14,9 +14,9 @@ This workshop will include:
 
 ## Navigating this Journey
 
-> 📝 **Note:** If you follow through the workshop from the start all you need is the starting branch [00-workshop](https://github.com/observability-lab-cse/observability-lab/tree/00-workshop) that is checkout by default when cloning the repository. Everything else you will build as you go.
+> 📌 **Starting Point:** If you follow through the workshop from the start all you need is the starting branch [00-workshop](https://github.com/observability-lab-cse/observability-lab/tree/00-workshop) that is checkout by default when cloning the repository. Everything else you will build as you go.
 >
-> In case you are only interested in certain section or parts of the workshop, each section has a designated branch in the corresponding GitHub code repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). Check out the branch of the section your are interested in and the **⏩ Catch-up corner: If you missed previous sections 🏇** paragraph in that section will give you further instructions on how to get your workshop environment up to speed, as if you had done all previous sections all yourself 😉.
+> 📝 **Note:** In case you are only interested in certain section or parts of the workshop, each section has a designated branch in the corresponding GitHub code repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). Check out the branch of the section your are interested in and the **⏩ Catch-up corner: If you missed previous sections 🏇** paragraph in that section will give you further instructions on how to get your workshop environment up to speed, as if you had done all previous sections all yourself 😉.
 
 
 ### 📱 Application
