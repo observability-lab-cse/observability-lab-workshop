@@ -29,7 +29,7 @@ This workshop will include:
 ### 🎻 Instrumentation
 
 - [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Using OpenTelemetry instrument your application
-- [🌟 Custom metrics](./07-custom-metrics/README.md) - Add custom metrics to your application
+- [🌟 Custom metrics](./04-custom-metrics/README.md) - Add custom metrics to your application
 
 ### 🎨 Visualization
 
