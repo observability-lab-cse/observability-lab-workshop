@@ -1,21 +1,25 @@
-# 4. Visualization
+# 5. Visualization
 
 > 🎯 **Goal:** Gain knowledge of available out-of-the-box visualizations in Azure and learn how to use it effectively to get insights about your applications.
+
+<details markdown="1">
+<summary> <b> ⏩ Catch-up corner: If you missed previous sections 🏇</b></summary>
+
+If you have not completed previous sections, follow these steps:
+- Check out this branch [`section/05-visualization`](https://github.com/observability-lab-cse/observability-lab/tree/section/05-visualization).
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- Run the command `make` from the root repository folder.
+
+To trigger sending messages in your system follow the instructions from [Section 2: Deploy: 🌡️ Devices Data Simulator](../02-deploy-application/README.md#deploy---devices-data-simulator)
+
+</details>
+
 
 You’ve done a great job collecting telemetry data from your applications, but that's only half of the story. Now you need to see what your data can tell you about your application's performance, reliability, and user experience. 🕵️‍♂️
 
 Azure has a lot of awesome visualizations that you can use to investigate your data in depth. In this section we will have a look what is available out-of-the-box.
 
 ## 📈 Platform metrics visualizations
-
-> **📌 Starting point 📌**
->
-> In case you have not completed the previous sections:
-> - Check out this branch: [section/05-visualization](https://github.com/observability-lab-cse/observability-lab/tree/section/05-visualization)
-> - Copy .env.example file into .env and update the file with your values
-> - Run `make` from the root folder.
-> 
-> To trigger sending messages in your system follow the instructions from [Section 2: Deploy: 🌡️ Devices Data Simulator](../02-deploy-application/README.md#deploy---devices-data-simulator)
 
 Let's start from the observability pillar that is the easiest to visualize - metrics.
 
@@ -232,5 +236,5 @@ Take a moment to acquaint yourself with the structure of your data. Can you trac
 
 ## Navigation
 
-[Previous Section ⏪](../03-add-basic-observability-instrumentation/) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Previous Section ⏪](../04-custom-metrics/) ‖ [Return to Main Index 🏠](../README.md) ‖
 [Next Section ⏩️](../06-dashboards/README.md)

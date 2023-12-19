@@ -1,19 +1,22 @@
-# 7. Custom metrics
+# 4. Custom metrics
 
 > 🎯 **Goal:** Gain insights into how to add custom metrics to an application and visualize them in Application Insights.
+
+<details markdown="1">
+<summary> <b> ⏩ Catch-up corner: If you missed previous sections 🏇</b></summary>
+
+If you have not completed previous sections, follow these steps:
+- Check out this branch [`section/04-custom-metrics`](https://github.com/observability-lab-cse/observability-lab/tree/section/04-custom-metrics).
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- Run the command `make` from the root repository folder.
+</details>
+
 
 Custom metrics, also called user-defined or application-specific metrics, allow us to define and collect information about our system that the standard built-in metrics cannot track.
 This will typically be metrics related to the business logic of our application, allowing us to measure the impact of events happening in the system on the user experience or the business.
 In this section you will learn how to add custom metrics to our applications and find out how to visualize them in Application Insights. 🕵️‍♂️
 
 ## 📉 Adding custom metrics
-
-> **📌 Starting point 📌**
->
-> In case you have not completed the previous sections:
-> - Check out this branch: [section/07-custom-metrics](https://github.com/observability-lab-cse/observability-lab/tree/section/07-custom-metrics)
-> - Copy .env.example file into .env and update the file with your values
-> - Run `make` from the root folder.
 
 Given our business logic, where devices periodically send temperature measurements, it would be useful to know how many device updates occurred in a specific time window. This will be our device update counter metric which we will define in the `devices-state-manager` application that handles all device state and temperature changes.
 
@@ -228,4 +231,5 @@ In this section we added custom metrics to our .NET application and learned how 
 
 ## Navigation
 
-[Previous Section ⏪](../07-alert/README.md) ‖ [Return to Main Index 🏠](../README.md)
+[Previous Section ⏪](../03-add-basic-observability-instrumentation/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
+[Next Section ⏩️](../05-visualization/README.md)

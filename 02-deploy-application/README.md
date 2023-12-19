@@ -6,17 +6,16 @@
 >
 > 2. Being able to observe the running applications and getting familiar with out-of-the-box monitoring capabilities of the AKS cluster.
 
-## 🚀  Deploy Application
+<details markdown="1">
+<summary> <b> ⏩ Catch-up corner: If you missed previous sections 🏇</b></summary>
 
-> **📌 Starting point 📌**
->
-> ❗️First, check out branch [section/02-deploy-application](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application) ️to get the application code used in this section.
->
-> You need to provision your resources before you start with this section.
-> In case you have not done the [previous section](../01-provision-infrastructure/README.md) get yourself up to speed by executing these steps:
->
-> - Copy .env.example file into .env and update the file with your values
-> - Run `make provision`
+If you have not completed previous sections, follow these steps:
+- Check out this branch [`section/02-deploy-application`](https://github.com/observability-lab-cse/observability-lab/tree/section/02-deploy-application).
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- Run the command `make` from the root repository folder.
+</details>
+
+## 🚀  Deploy Application
 
 Now, let's start deploying the individual services in our application. There are three components to our solution:
 
