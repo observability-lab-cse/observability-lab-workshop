@@ -56,7 +56,7 @@ docker build -t "acr$ENV_PROJECT_NAME.azurecr.io/devices-api":"$TAG" ./sample-ap
 docker push "acr$ENV_PROJECT_NAME.azurecr.io/devices-api":"$TAG"
 ```
 
-Now, it’s time to deploy it to our Kubernetes cluster. The Bash script used to deploy your resources should have already connected you to your AKS cluster. You can double check this by running `kubectl config get-contexts`. In case your are not connected open the section below to see how to connect to it.
+Now, it’s time to deploy it to our Kubernetes cluster. The Bash script used to deploy your resources should have already connected you to your AKS cluster. You can double check this by running `kubectl config get-contexts`. In case your are not connected, open the section below to see how to connect to it.
 
 <details markdown="1">
 <summary> Here’s how to connect to your AKS cluster:</summary>
@@ -70,7 +70,7 @@ az aks get-credentials \
 
 </details>
 
-You’ll find the devices-api Kubernetes deployment manifest below or in the [k8s-files folder](https://github.com/observability-lab-cse/observability-lab/blob/section/02-deploy-application/k8s-files/devices-api-deployment.yaml).
+You’ll find the devices-api Kubernetes deployment manifest below or in the [k8s-files folder](https://github.com/observability-lab-cse/observability-lab/blob/section/02-deploy-application/k8s-files/devices-api-deployment.yaml) located in the **root** of the repository.
 
 Replace `${project-name}` with the value of your `$ENV_PROJECT_NAME` in your **devices-api-deployment.yaml** file. You can do this either manually or run the below command from the **root** folder:
 
@@ -186,8 +186,8 @@ docker build -t "acr$ENV_PROJECT_NAME.azurecr.io/devices-state-manager":"$TAG" .
 docker push "acr$ENV_PROJECT_NAME.azurecr.io/devices-state-manager":"$TAG"
 ```
 
-Just like we did for the devices-api, you’ll find the deployment manifest for the devices-state-manager in the same
-[k8s-files folder](https://github.com/observability-lab-cse/observability-lab/blob/section/02-deploy-application/k8s-files/devices-state-manager-deployment.yaml) or below.
+Just like for the devices-api, you’ll find the deployment manifest for the devices-state-manager below or in the
+[k8s-files folder](https://github.com/observability-lab-cse/observability-lab/blob/section/02-deploy-application/k8s-files/devices-state-manager-deployment.yaml) located in the **root** of the repository.
 Same as previously, replace `${project-name}` with the value of your `$ENV_PROJECT_NAME` (manually or run the command below from **root** folder).
 
 ```bash
