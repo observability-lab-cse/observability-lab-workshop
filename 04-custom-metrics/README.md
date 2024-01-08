@@ -6,11 +6,12 @@
 <summary> <b> ⏩ Catch-up corner: If you missed previous sections 🏇</b></summary>
 
 If you have not completed previous sections, follow these steps:
+
 - Check out this branch [`section/04-custom-metrics`](https://github.com/observability-lab-cse/observability-lab/tree/section/04-custom-metrics).
 - Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
 - Run the command `make` from the root repository folder.
-</details>
 
+</details>
 
 Custom metrics, also called user-defined or application-specific metrics, allow us to define and collect information about our system that the standard built-in metrics cannot track.
 This will typically be metrics related to the business logic of our application, allowing us to measure the impact of events happening in the system on the user experience or the business.
@@ -161,11 +162,13 @@ make deploy
 
 </details>
 
-## 🖼️ Visualizing custom metrics
+## 👀 Find newly created custom metrics
 
-Now that we defined our custom metrics, let's try to visualize them.
+Now that we defined our custom metrics, let's find the im the Azure Portal and see the fruits of our work!
 
-Go to Application Insights and select the **Metrics** section. You can find your custom metric telemetry as both a log-based and custom metric. Select the `device-updates` metric and adjust the aggregation and time span and see how the generated graph changes.
+Go to Application Insights and select the **Metrics** section. You can find your custom metric called `device-updates` as both a log-based and custom metric.
+
+Select the `device-updates` metric and adjust the aggregation and time span and see how the generated graph changes.
 
 <details markdown="1">
 <summary>Click here to see the graph showing device updates 📈 </summary>
@@ -174,7 +177,8 @@ Go to Application Insights and select the **Metrics** section. You can find your
 
 </details>
 
-This is interesting but it would be more useful to have a chart showing updates per device. We can do this by splitting the metric by `deviceId`. Select the `device-updates` metric in the `Log-based metrics` Namespace and then select the `Apply splitting` option to generate separate graphs for each device.
+Remember how we added `customDimension` with to the metrics, when we created them?
+The graph created above is useful, but using our `customDimension` we could now go as far as to create a chart showing updates per device. We can do this by splitting the metric by `deviceId`. Select the `device-updates` metric in the `Log-based metrics` Namespace and then select the `Apply splitting` option to generate separate graphs for each device.
 
 <details markdown="1">
 <summary>Click here to see the device update chart split by device ID 📠</summary>
@@ -183,7 +187,7 @@ This is interesting but it would be more useful to have a chart showing updates 
 
 </details>
 
-Let's have a look at reported temperature values. Select the `temperature` metric, adjust the aggregation to Min, Max or Avg and change the graph type to `Bar chart`. We can now see the distribution of temperature measurements sent by our devices.
+Now, let's go and have a look at the second custom metrics we created, which is for the reported temperature values. Select the `temperature` metric, adjust the aggregation to Min, Max or Avg and change the graph type to `Bar chart`. We can now see the distribution of temperature measurements sent by our devices.
 
 <details markdown="1">
 <summary>Click here to see the temperature chart 🌡️</summary>
@@ -192,7 +196,11 @@ Let's have a look at reported temperature values. Select the `temperature` metri
 
 </details>
 
-In a previous section we covered the topic of creating a custom dashboard for our application. You can now pin the custom metrics to add them to your dashboard.
+
+
+To learn about more features of the metrics view, as well as how to create and add these generated graphs into a custom dashboard, follow the next few chapters 😉.
+
+<!-- In a previous section we covered the topic of creating a custom dashboard for our application. You can now pin the custom metrics to add them to your dashboard.
 
 <details markdown="1">
 <summary>Click here to see how to pin a custom metric to a dashboard.</summary>
@@ -227,7 +235,7 @@ In this section we added custom metrics to our .NET application and learned how 
 
 > **📌 Pick up the pieces 📌**
 >
-> If you didn't manage to make all the code changes needed for custom metrics and would like to see it all work, don't worry! Check out the [main branch](https://github.com/observability-lab-cse/observability-lab) to see the ready solution.
+> If you didn't manage to make all the code changes needed for custom metrics and would like to see it all work, don't worry! Check out the [main branch](https://github.com/observability-lab-cse/observability-lab) to see the ready solution. -->
 
 ## Navigation
 
