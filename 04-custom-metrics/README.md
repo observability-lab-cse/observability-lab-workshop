@@ -207,14 +207,11 @@ Just as an example, looking at the `device-updates` metric entries. Can you find
 
 </details>  
 
+---
 
-
-In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎 </br>
+In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎
 
 To learn about more features of the metrics view, as well as how to create and add these generated graphs into a custom dashboard, follow the next few chapters 😉.
-
-
-
 
 <!-- In a previous section we covered the topic of creating a custom dashboard for our application. You can now pin the custom metrics to add them to your dashboard.
 
@@ -235,8 +232,6 @@ Using the `customMetrics` table, let's write a query that will only display devi
 </details>
 
 ## Conclusion
-
-
 
 > **📌 Pick up the pieces 📌**
 >
