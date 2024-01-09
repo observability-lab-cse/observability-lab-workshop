@@ -78,6 +78,11 @@ Replace `${project-name}` with the value of your `$ENV_PROJECT_NAME` in your **d
 sed -i "s/\${project-name}/$ENV_PROJECT_NAME/g" k8s-files/devices-api-deployment.yaml
 ```
 
+> 📝 **Note:** On 🍏 macOS, the sed command requires an argument after the -i flag to perform in-place editing, where an empty string '' is used to edit files without creating backups, differing from Linux behavior that allows in-place editing without requiring an argument.
+>
+>`sed -i '' "s/\${project-name}/$ENV_PROJECT_NAME/g" k8s-files/devices-api-deployment.yaml`
+
+
 Then, deploy it using the following command from the **root** repository folder:
 
 ```sh
@@ -193,6 +198,10 @@ Same as previously, replace `${project-name}` with the value of your `$ENV_PROJE
 ```bash
 sed -i "s/\${project-name}/$ENV_PROJECT_NAME/g" k8s-files/devices-state-manager-deployment.yaml
 ```
+
+> 📝 **Note:** Same as before on 🍏 macOS add the additional argument needed after the `-i`.
+>
+>`sed -i '' "s/\${project-name}/$ENV_PROJECT_NAME/g" k8s-files/devices-state-manager-deployment.yaml`
 
 Then, from the **root** repository folder, deploy it using the following command:
 
