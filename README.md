@@ -36,3 +36,8 @@ This workshop will include:
 - [📈 Visualization](./05-visualization/README.md) - Use out-of-the-box Azure visualizations
 - [📋 Dashboards](./06-dashboards/README.md) - Create your custom dashboard
 - [🚨 Alerts](./07-alert/README.md) - Create alerts
+
+
+### Other Resources
+
+- [⚠️ Troubleshooting](./troubleshoot/README.md) - Solution for common issues
