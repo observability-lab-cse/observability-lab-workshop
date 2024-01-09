@@ -205,12 +205,11 @@ Just as an example, looking at the `device-updates` metric entries. Can you find
 
 ![Metric logs](./images/custom-metrics-logs.png)
 
-</details>
+</details>  
 
-</br>
-</br>
 
-In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎
+
+In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎 </br>
 
 To learn about more features of the metrics view, as well as how to create and add these generated graphs into a custom dashboard, follow the next few chapters 😉.
 
