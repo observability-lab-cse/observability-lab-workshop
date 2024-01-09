@@ -196,9 +196,25 @@ Now, let's go and have a look at the second custom metrics we created, which is 
 
 </details>
 
+You can also query your custom metrics like all the other logs you have.  For this go to the **Logs** section of the portal and query the `customMetrics` table to see more your custom metrics and details on them.
 
+Just as an example, looking at the `device-updates` metric entries. Can you find the device ID which you previously used to tag the metric updates?
+
+<details markdown="1">
+<summary> 🔦 Click here to see the custom metric in the <b>Logs</b> section and the device ID tag📔</summary>
+
+![Metric logs](./images/custom-metrics-logs.png)
+
+</details>
+
+
+
+In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎
 
 To learn about more features of the metrics view, as well as how to create and add these generated graphs into a custom dashboard, follow the next few chapters 😉.
+
+
+
 
 <!-- In a previous section we covered the topic of creating a custom dashboard for our application. You can now pin the custom metrics to add them to your dashboard.
 
@@ -206,17 +222,6 @@ To learn about more features of the metrics view, as well as how to create and a
 <summary>Click here to see how to pin a custom metric to a dashboard.</summary>
 
 ![Pin custom metric](./images/custom-metrics-dashboard.png)
-
-</details>
-
-You can also query your custom metrics to access more details, such as custom dimensions, including the added tags. Go to the **Logs** section of the portal and query the `customMetrics` table to see more details of the custom metrics tracking successful and failed device updates.
-
-- Pick one of the query results. Can you find the device ID which you previously used to tag the metric updates?
-
-<details markdown="1">
-<summary>Click here to see the custom metric in Logs analytics query 📔</summary>
-
-![Metric logs](./images/custom-metrics-logs.png)
 
 </details>
 
@@ -231,7 +236,7 @@ Using the `customMetrics` table, let's write a query that will only display devi
 
 ## Conclusion
 
-In this section we added custom metrics to our .NET application and learned how to visualize them in Application Insights. OpenTelemetry allows you to add similar metrics to applications written in other languages. Although we won't go into the details here, this [page](https://opentelemetry.io/docs/instrumentation/java/manual/#metrics) provides useful details on how you can add custom metrics to our Java application. 🔎
+
 
 > **📌 Pick up the pieces 📌**
 >
