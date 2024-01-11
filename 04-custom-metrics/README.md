@@ -177,7 +177,7 @@ Select the `device-updates` metric and adjust the aggregation and time span and 
 
 </details>
 
-Remember how we added `customDimension` with to the metrics, when we created them?
+Remember how we added `tags` to our metrics, when we created them?
 The graph created above is useful, but using our `customDimension` we could now go as far as to create a chart showing updates per device. We can do this by splitting the metric by `deviceId`. Select the `device-updates` metric in the `Log-based metrics` Namespace and then select the `Apply splitting` option to generate separate graphs for each device.
 
 <details markdown="1">
