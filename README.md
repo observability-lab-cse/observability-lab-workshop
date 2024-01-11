@@ -36,3 +36,7 @@ This workshop will include:
 - [📈 Visualization](./05-visualization/README.md) - Use out-of-the-box Azure visualizations
 - [📋 Dashboards](./06-dashboards/README.md) - Create your custom dashboard
 - [🚨 Alerts](./07-alert/README.md) - Create alerts
+
+### 👋Feedback
+
+We appreciate your feedback and suggestions on how to make this workshop better. If you have a bug report, a feature request, or a question, please open a GitHub issue [here](https://github.com/observability-lab-cse/observability-lab-workshop/issues).
