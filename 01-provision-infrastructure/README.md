@@ -25,9 +25,9 @@ Here's what you need to do:
 1. Create a `.env` in the root of the project and add the following content to it.
 
     ```text
-    ENV_RESOURCE_GROUP_NAME=
-    ENV_LOCATION="westeurope"
-    ENV_PROJECT_NAME= # should just be lowercase letters or numbers
+    ENV_RESOURCE_GROUP_NAME=        # name of the resource group that will be created in your Azure subscription
+    ENV_LOCATION="westeurope"       # Azure region to use for the created infrastructure
+    ENV_PROJECT_NAME=               # project name that will be used for all created resources; should contain only lowercase letters or numbers
     ```
 
 2. Run the following command in the root of the repository
