@@ -39,7 +39,7 @@ You can click on any of these charts to go to the Metrics section, where you can
 <details markdown="1">
 <summary>Click here to see a selected Event Hub metric chart.</summary>
 
-![EventHub-metrics](./images/EventHub-metrics.png/)
+![EventHub-metrics](./images/EventHub-metrics.png)
 
 </details>
 
