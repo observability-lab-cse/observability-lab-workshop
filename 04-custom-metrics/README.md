@@ -211,30 +211,6 @@ In this section we added custom metrics to our .NET application and learned how 
 
 To learn about other features of the metrics view, as well as how to create and add these generated graphs into a custom dashboard, follow the next few chapters 😉.
 
-<!-- In a previous section we covered the topic of creating a custom dashboard for our application. You can now pin the custom metrics to add them to your dashboard.
-
-<details markdown="1">
-<summary>Click here to see how to pin a custom metric to a dashboard.</summary>
-
-![Pin custom metric](./images/custom-metrics-dashboard.png)
-
-</details>
-
-Using the `customMetrics` table, let's write a query that will only display device updates of one of the devices.
-
-<details markdown="1">
-<summary>Click here to see the query showing updates of one device.</summary>
-
-![Metric query](./images/custom-metrics-query.png)
-
-</details>
-
-## Conclusion
-
-> **📌 Pick up the pieces 📌**
->
-> If you didn't manage to make all the code changes needed for custom metrics and would like to see it all work, don't worry! Check out the [main branch](https://github.com/observability-lab-cse/observability-lab) to see the ready solution. -->
-
 ## Navigation
 
 [Previous Section ⏪](../03-add-basic-observability-instrumentation/README.md) ‖ [Return to Main Index 🏠](../README.md) ‖
