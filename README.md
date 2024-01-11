@@ -18,7 +18,6 @@ This workshop will include:
 >
 > 📝 **Note:** In case you are only interested in certain section or parts of the workshop, each section has a designated branch in the corresponding GitHub code repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). Check out the branch of the section your are interested in and the **⏩ Catch-up corner: If you missed previous sections 🏇** paragraph in that section will give you further instructions on how to get your workshop environment up to speed, as if you had done all previous sections all yourself 😉.
 
-
 ### 📱 Application
 
 - [⚒️ Pre Requisites](./00-pre-requisite/README.md) - Covering the tools that will be
@@ -37,7 +36,10 @@ This workshop will include:
 - [📋 Dashboards](./06-dashboards/README.md) - Create your custom dashboard
 - [🚨 Alerts](./07-alert/README.md) - Create alerts
 
-
 ### Other Resources
 
 - [⚠️ Troubleshooting](./troubleshoot/README.md) - Solution for common issues
+
+### 👋 Feedback
+
+We appreciate your feedback and suggestions on how to make this workshop better. If you have a bug report, a feature request, or a question, please open a GitHub issue [here](https://github.com/observability-lab-cse/observability-lab-workshop/issues).
