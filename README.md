@@ -20,7 +20,7 @@ This workshop will include:
 
 ### 📱 Application
 
-- [⚒️ Pre Requisites](./00-pre-requisite/README.md) - Covering the tools that will be
+- [⚒️ Prerequisites](./00-pre-requisite/README.md) - Covering the tools that will be
   needed.
 - [⚙️ Provision Infrastructure](./01-provision-infrastructure/README.md) - Provision AKS cluster, Application Insights etc.
 - [🧩 Deploy application to AKS](./02-deploy-application/README.md) - Deploy all required components of the application
