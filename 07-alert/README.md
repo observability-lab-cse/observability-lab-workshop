@@ -7,7 +7,8 @@
 
 If you have not completed previous sections, follow these steps:
 - Check out this branch [`section/07-alert`](https://github.com/observability-lab-cse/observability-lab/tree/section/06-alert).
-- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values (`ENV_PROJECT_NAME` may contain only alpha numeric characters and must be between 5 and 50 characters).
+- Run `source .env` to set environment variables.
 - From the root repository folder, run the command: `make`
 
 To trigger sending messages in your system follow the instructions from [Section 2: Deploy: 🌡️ Devices Data Simulator](../02-deploy-application/README.md#deploy---devices-data-simulator)

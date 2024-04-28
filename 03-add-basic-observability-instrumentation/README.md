@@ -7,7 +7,8 @@
 
 If you have not completed previous sections, follow these steps:
 - Check out this branch [`section/03-add-basic-observability-instrumentation`](https://github.com/observability-lab-cse/observability-lab/tree/section/03-add-basic-observability-instrumentation).
-- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values (`ENV_PROJECT_NAME` may contain only alpha numeric characters and must be between 5 and 50 characters).
+- Run `source .env` to set environment variables.
 - Run the command `make` from the root repository folder.
 </details>
 
@@ -574,7 +575,7 @@ spec:
 
 </details>
 
-Using these new deployment yaml's, you can redeploy the applications into your AKS cluster.  In case you forgot how to do that, section  [🚀  Deploy Application](../02-deploy-application/README.md#🚀-deploy-application) is your friend! 😉
+Using these new deployment yaml's, you can redeploy the applications into your AKS cluster. Run `make deploy` or in case you want to do it step by step, section [🚀 Deploy Application](../02-deploy-application/README.md#🚀-deploy-application) is your friend! 😉
 
 Nearly done! Go grab another coffee ☕ (or tea 🍵, we don't discriminate) and come back to a bunch of telemetry  already send upstream and in your Application Insights!
 

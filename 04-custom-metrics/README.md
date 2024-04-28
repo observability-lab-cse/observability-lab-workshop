@@ -8,7 +8,8 @@
 If you have not completed previous sections, follow these steps:
 
 - Check out this branch [`section/04-custom-metrics`](https://github.com/observability-lab-cse/observability-lab/tree/section/04-custom-metrics).
-- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values.
+- Copy the `.env.example` file into a new file named `.env`, and update this new file with your values (`ENV_PROJECT_NAME` may contain only alpha numeric characters and must be between 5 and 50 characters).
+- Run `source .env` to set environment variables.
 - Run the command `make` from the root repository folder.
 
 </details>
