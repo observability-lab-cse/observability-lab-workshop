@@ -56,7 +56,7 @@ Alerts are based on certain rules that you define. Each resource has its own set
 
 Let's create an **Alert Rule**. Feel free to create your own if you want. Here, we will go with an alert condition about AKS pods - let's set up an email notification if the number of pod in the pod lifecycle is less than 3 (or 4 if you have 4 pods deployed).
 
-First go to Alerts -> Create -> Alert rule in Azure portal. in the Scope section pick your AKS resource.
+First go to Alerts -> Create -> Alert rule in Azure portal. In the Scope section pick your AKS resource.
 
 ![alert_rule](./images/create_alert_rule.png)
 
@@ -219,7 +219,7 @@ One of the [good practices](https://learn.microsoft.com/en-us/azure/azure-monito
 is to set up Resource Health alert rules.
 Resource Health alerts can notify you in near real-time when these resources have a change in their health status.
 
-Please note also that Resource Health alerts are [free of charge](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#cost-optimization) (same as service health alerts).
+Please note also, that as for April 2024, Resource Health alerts are [free of charge](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#cost-optimization) (same as service health alerts).
 
 Go ahead and [create a Resource Alert](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide) in Azure Portal.
 
