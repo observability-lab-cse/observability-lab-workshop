@@ -51,17 +51,19 @@ Let's [create an Action Group](https://learn.microsoft.com/en-us/azure/azure-mon
 
 > 📝 **Note:** You can test your Action Group Notification by going to **Action Groups** section in **Alerts** and using **Test** button.Try it out and check if you get a test email 📧!
 
-### 🚨 Alert conditions
+### 🚨 Alert rules
 
-Alerts are based on certain conditions that you define. Each resource has its own set of conditions.
+Alerts are based on certain rules that you define. Each resource has its own set of conditions that we can use in Alert rules.
 
-Let's create an **Alert Condition**. Feel free to create your own if you want. Here, we will go with an alert condition about AKS pods - let's set up an email notification if the number of pod in the pod lifecycle is less than 3 (or 4 if you have 4 pods deployed).
+Let's create an **Alert Rule**. Feel free to create your own if you want. Here, we will go with an alert condition about AKS pods - let's set up an email notification if the number of pod in the pod lifecycle is less than 3 (or 4 if you have 4 pods deployed).
 
-![](./images/create_alert_rule.png)
+First go to Alerts -> Create -> Alert rule in Azure portal. In the Scope section pick your AKS resource.
+
+![alert_rule](./images/create_alert_rule.png)
 
 In the Actions tab pick the **Action Group** that you created previously.
 
-![](./images/create_alert_rule_details.png)
+![alert_rule_detail](./images/create_alert_rule_details.png)
 
 > 📝 **Note:**  You can set up if the alert should be resolved automatically. If we uncheck that then the user needs to manually resolve the alert.
 
@@ -83,7 +85,7 @@ opentelemetrycollector   1/1     1            1           3h1m
 Grab the name of one of the deployments
 
 ```sh
-kubectl remove deployment devices-state-manager
+kubectl delete deployment devices-state-manager
 ```
 
 And now wait until you get your alert email.
@@ -94,15 +96,19 @@ And now wait until you get your alert email.
 
 User response is a feature that allows you to manually set the status of an alert.
 
-Now you should get your email and see the alert in the Alerts window. If you click on the fired alert you can see more details.
+Now you should get your email and see the alert in the Alerts window.
+
+![alert_rule_fired](./images/alert_rule_fired.png)
+
+If you click on the fired alert you can see more details.
 
 One thing you can do is change the User response. Let's change it to **Acknowledged** as we noticed the alert.
 
-![](./images/fired_alert.png)
+![fired_alert](./images/fired_alert.png)
 
 Once the condition changes and the alert is no longer valid (we deployed missing pods) then the Alert changes his status to **Resolved**:
 
-![](./images/alert_status.png)
+![alert_status](./images/alert_status.png)
 
 ### 🔩 Alert processing rules
 
@@ -151,15 +157,15 @@ We are going to create an alert based on a custom log. Feel free to go to your d
  | take 1
 ```
 
-Now go ahead and click **+New Alert Rule** and create the alert using the Alert Action Group created above.
+Now go ahead and click **+New Alert Rule** and create the alert using the Alert Action Group created before.
 
-![](./images/create_alert_log_based_1.png)
+![alert_log](./images/create_alert_log_based_1.png)
 
 You can **View result and edit query in Logs** and run your query:
 
-![](./images/create_alert_log_based_query.png)
+![alert_log](./images/create_alert_log_based_query.png)
 
-![](./images/create_alert_log_based_2.png)
+![alert_log](./images/create_alert_log_based_2.png)
 
 For the learning purposes modify the processing time threshold so that the alert is triggered.
 
@@ -190,7 +196,7 @@ To look at Smart detection rules go to Application Insights -> Smart Detection.
 
 In Alerts view you should see also alert rules created by Smart Detector:
 
-![](./images/smart_detector_alerts.png)
+![Smart detection](./images/smart_detector_alerts.png)
 
 ## 🩺 Service Health alerts
 
@@ -208,7 +214,15 @@ The alerts can be also integrated with external alerting tools, like PagerDuty.
 Azure Service Health provides you also with a section called Resource Health, which keeps you informed about health of your Azure resources.
 Same as Service health notifications, Resource health notifications are stored in the Azure activity log. And they also can be used to create alerts!
 
-Find Azure Service Health in Azure portal and pause here for a moment to explore the differences between Service and Resource Health Alerts.
+Find Azure Service Health in Azure portal and feel free to pause here for a moment to explore the differences between Service and Resource Health Alerts.
+
+One of the [good practices](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#configuration-recommendations) for alerts
+is to set up Resource Health alert rules.
+Resource Health alerts can notify you in near real-time when these resources have a change in their health status.
+
+Please note also, that as for April 2024, Resource Health alerts are [free of charge](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#cost-optimization) (same as service health alerts).
+
+Go ahead and [create a Resource Alert](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide) in Azure Portal.
 
 ## Exercise 💪
 
@@ -231,20 +245,7 @@ Some ideas (there are probably even more options to do it):
 </details>
 
 <details markdown="1">
-<summary>👑 Recommended solution</summary>
-
-One of the [best practices](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#configuration-recommendations) for alerts
-is to set up Resource Health alert rules.
-Resource Health alerts can notify you in near real-time when these resources have a change in their health status.
-
-Please note also that Resource Health alerts are [free of charge](https://learn.microsoft.com/en-us/azure/azure-monitor/best-practices-alerts#cost-optimization) (same as service health alerts).
-
-Go ahead and [create a Resource Alert](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide) in Azure Portal.
-
-</details>
-
-<details markdown="1">
-<summary>💭 Another solution</summary>
+<summary>👑 Solution</summary>
 
 Let's now take a closer look at the last idea - Availability Standard test alert!
 
@@ -261,13 +262,13 @@ DEVICES_API_IP=$(kubectl get service devices-api-service -o jsonpath='{.status.l
 HEALTHCHECK_URL="http://$DEVICES_API_IP:8080/health"
 ```
 
-![](./images/availability_standard_test.png)
+![availability_standard_test](./images/availability_standard_test.png)
 
-![](./images/availability_alert.png)
+![availability_alert](./images/availability_alert.png)
 
 The Alert Rule will be automatically created for you!
 
-![](./images/alert_rules_availability_check.png)
+![alert_rules_availability_check](./images/alert_rules_availability_check.png)
 
 </details>
 
