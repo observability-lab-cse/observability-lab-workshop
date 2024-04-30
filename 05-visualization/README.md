@@ -201,6 +201,8 @@ Based on these metrics, find out:
 1. What is the memory usage for the devices-api application?
 1. What is the memory usage for the devices-state-manager application?
 
+> ✏️ **Tip:** To know if a metric comes from the devices-api or the devices-state-manager, select "Apply spliting" and use `service.name` or `host.name` as a dimension. If you're unable to select "Apply splitting", make sure to [Enable multidimensional metrics](https://learn.microsoft.com/en-us/azure/azure-monitor/app/get-metric#enable-multidimensional-metrics).
+
 ### Optional: Metrics with a twist 🍋
 
 There is also another way to query these metrics. These metrics are so-called log-based metrics, which means they are stored in the Log Analytics workspace in the `customMetrics` table. This way, you can access more details about the metrics, such as the custom dimensions.
