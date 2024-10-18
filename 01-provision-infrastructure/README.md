@@ -33,8 +33,7 @@ Here's what you need to do:
 2. Run the following command in the root of the repository
 
     ```sh
-    az login
-    az account set --subscription <name or ID of your subscription>
+    az login --tenant <tenant ID>  // when prompted, select the desired Azure subscription
 
     make provision
     ```
