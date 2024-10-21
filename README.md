@@ -18,23 +18,50 @@ This workshop will include:
 >
 > 📝 **Note:** In case you are only interested in certain section or parts of the workshop, each section has a designated branch in the corresponding GitHub code repository [observability-lab](https://github.com/observability-lab-cse/observability-lab). Check out the branch of the section your are interested in and the **⏩ Catch-up corner: If you missed previous sections 🏇** paragraph in that section will give you further instructions on how to get your workshop environment up to speed, as if you had done all previous sections all yourself 😉.
 
-### 📱 Application
+---
+
+### xx PATH 1: Basic observability
+
+#### 📱 Application
 
 - [⚒️ Prerequisites](./00-pre-requisite/README.md) - Covering the tools that will be
   needed.
 - [⚙️ Provision Infrastructure](./01-provision-infrastructure/README.md) - Provision AKS cluster, Application Insights etc.
 - [🧩 Deploy application to AKS](./02-deploy-application/README.md) - Deploy all required components of the application
 
-### 🎻 Instrumentation
+#### 🎻 Instrumentation
 
 - [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Using OpenTelemetry instrument your application
 - [🌟 Custom metrics](./04-custom-metrics/README.md) - Add custom metrics to your application
 
-### 🎨 Visualization
+#### 🎨 Visualization
 
 - [📈 Visualization](./05-visualization/README.md) - Use out-of-the-box Azure visualizations
 - [📋 Dashboards](./06-dashboards/README.md) - Create your custom dashboard
 - [🚨 Alerts](./07-alert/README.md) - Create alerts
+
+-----
+
+### 🤖 PATH 2: AI Lab
+
+#### 📱 AI Assistant Application
+
+- [⚒️ Prerequisites](./00-pre-requisite/README.md) - Covering the tools that will be
+  needed.
+- [⚙️ Provision Infrastructure]() - Provision OpenAI resource, etc.
+- [🧩 Deploy application to AKS](./02-deploy-application/README.md) - Deploy Device Assistant and Frontend.
+
+#### 🎻 Instrumentation
+
+- [🔎 Add basic observability instrumentation](./03-add-basic-observability-instrumentation/README.md) - Using OpenTelemetry instrument your AI component
+
+#### 🎨 Visualization
+
+- [📈 Visualization](./05-visualization/README.md) - Use out-of-the-box Azure visualizations
+- [📋 Dashboards](./06-dashboards/README.md) - Create your custom dashboard
+- [🚨 Alerts](./07-alert/README.md) - Create alerts
+
+----
 
 ### Other Resources
 
