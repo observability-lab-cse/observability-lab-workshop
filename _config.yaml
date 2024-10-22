@@ -1,6 +1,6 @@
 title: "Observability Workshop"
 description: "Technical hands-on workshop for Observability"
-remote_theme: observability-lab-cse/lab-theme
+remote_theme: obs-lab-theme
 hide_github: true
 hide_tagline: true
 favicon: https://github.com/observability-lab-cse/observability-lab-workshop/blob/b2cf13bf6b70b2e43522e92480b188e93baaa1f6/favicon.png
