@@ -26,7 +26,7 @@ Here's what you need to do:
 
     ```text
     ENV_RESOURCE_GROUP_NAME=        # name of the resource group that will be created in your Azure subscription
-    ENV_LOCATION="westeurope"       # Azure region to use for the created infrastructure
+    ENV_LOCATION="eastus2"          # Azure region to use for the created infrastructure
     ENV_PROJECT_NAME=               # project name that will be used for all created resources; should contain only lowercase letters or numbers
     ```
 
@@ -42,6 +42,8 @@ Here's what you need to do:
 3. Take a coffee break ☕️
 
 When you return, your resources should be provisioned and ready to go 🚀.
+
+> 🚨 **Important:** If you now have a coffee and an error message in your terminal after returns from your break you might need to check out the [troubleshoot page](../troubleshoot/README.md) for additional help. Things on Azure move and shift so it could be that with a few tricks from the troubleshoot page you get your problem resolved. Another option would be to try to deploy the listed resources manually. In case none of these options resolve your problem please open a new issue on [github](https://github.com/observability-lab-cse/observability-lab-workshop/issues) or contact the maintainers.
 
 > 📝 **Note:** If you are interested in how its deployed and all the Bicep scripts, here they all are: [/infrastructure](https://github.com/observability-lab-cse/observability-lab/tree/00-workshop/infrastructure)
 
